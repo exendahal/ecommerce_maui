@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="Homepage"
+    Title="HomePage"
+    BackgroundColor="White"
+    Shell.NavBarIsVisible="False">
+    <VerticalStackLayout>
+        <StackLayout Margin="8,12" Spacing="0">
+
+            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                <Frame
+                    Padding="0"
+                    BackgroundColor="LightGray"
+                    BorderColor="Transparent"
+                    CornerRadius="22"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout
+                        Margin="12,2"
+                        Orientation="Horizontal"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            FontFamily="icon"
+                            FontSize="22"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Text="&#xf349;"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+
+                        <Entry
+                            Margin="8,0"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="Search Here" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame
+                    Margin="12,0"
+                    Padding="6"
+                    BackgroundColor="Green"
+                    BorderColor="Transparent"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    WidthRequest="40">
+                    <Label
+                        FontFamily="icon"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="&#xf100;"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </Frame>
+            </StackLayout>
+
+
+            <Label
+                Margin="0,12"
+                FontAttributes="Bold"
+                FontSize="16"
+                HorizontalOptions="Start"
+                HorizontalTextAlignment="Start"
+                Text="Categories"
+                TextColor="Black"
+                VerticalOptions="EndAndExpand" />
+
+            <CollectionView
+                Margin="0,6"
+                ItemsSource="{Binding CategoriesDataList}"
+                VerticalScrollBarVisibility="Never">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        HorizontalItemSpacing="12"
+                        Orientation="Vertical"
+                        Span="5"
+                        VerticalItemSpacing="0" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="0">
+                            <Frame
+                                Margin="0,4"
+                                Padding="12"
+                                BackgroundColor="White"
+                                BorderColor="LightGray"
+                                CornerRadius="30"
+                                HasShadow="True"
+                                HeightRequest="60"
+                                HorizontalOptions="Center"
+                                IsClippedToBounds="True"
+                                VerticalOptions="Center"
+                                WidthRequest="60">
+                                <Label
+                                    FontFamily="icon"
+                                    FontSize="32"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Icon}"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand" />
+                            </Frame>
+
+                            <Label
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding CategoryName}"
+                                TextColor="Black"
+                                VerticalOptions="EndAndExpand" />
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
