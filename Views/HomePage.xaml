@@ -7,118 +7,335 @@
     Title="HomePage"
     BackgroundColor="White"
     Shell.NavBarIsVisible="False">
-    <VerticalStackLayout>
-        <StackLayout Margin="8,12" Spacing="0">
+    <ScrollView>
+        <StackLayout Margin="8,12"
+                     Spacing="0">
 
-            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                <Frame
-                    Padding="0"
-                    BackgroundColor="LightGray"
-                    BorderColor="Transparent"
-                    CornerRadius="22"
-                    HorizontalOptions="FillAndExpand">
-                    <StackLayout
-                        Margin="12,2"
-                        Orientation="Horizontal"
-                        VerticalOptions="CenterAndExpand">
-                        <Label
-                            FontFamily="icon"
-                            FontSize="22"
-                            HorizontalOptions="Center"
-                            HorizontalTextAlignment="Center"
-                            Text="&#xf349;"
-                            TextColor="Black"
-                            VerticalOptions="CenterAndExpand" />
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         Orientation="Horizontal"
+                         Margin="12,0">
+                <Frame Padding="0"
+                       BackgroundColor="LightGray"
+                       BorderColor="Transparent"
+                       CornerRadius="22"
+                       HorizontalOptions="FillAndExpand">
+                    <StackLayout Margin="12,2"
+                                 Orientation="Horizontal"
+                                 VerticalOptions="CenterAndExpand">
+                        <Label FontFamily="icon"
+                               FontSize="22"
+                               HorizontalOptions="Center"
+                               HorizontalTextAlignment="Center"
+                               Text="&#xf349;"
+                               TextColor="Black"
+                               VerticalOptions="CenterAndExpand" />
 
-                        <Entry
-                            Margin="8,0"
-                            HorizontalOptions="FillAndExpand"
-                            Placeholder="Search Here" />
+                        <Entry Margin="8,0"
+                               HorizontalOptions="FillAndExpand"
+                               Placeholder="Search Here" />
                     </StackLayout>
                 </Frame>
 
-                <Frame
-                    Margin="12,0"
-                    Padding="6"
-                    BackgroundColor="Green"
-                    BorderColor="Transparent"
-                    CornerRadius="20"
-                    HeightRequest="40"
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    WidthRequest="40">
-                    <Label
-                        FontFamily="icon"
-                        FontSize="22"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="&#xf100;"
-                        TextColor="White"
-                        VerticalOptions="CenterAndExpand" />
+                <Frame Margin="12,0,0,0"
+                       Padding="6"
+                       BackgroundColor="Green"
+                       BorderColor="Transparent"
+                       CornerRadius="20"
+                       HeightRequest="40"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"
+                       WidthRequest="40">
+                    <Label FontFamily="icon"
+                           FontSize="22"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="&#xf100;"
+                           TextColor="White"
+                           VerticalOptions="CenterAndExpand" />
                 </Frame>
             </StackLayout>
 
+            <Label Margin="0,12"
+                   FontAttributes="Bold"
+                   FontSize="16"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   Text="Categories"
+                   TextColor="Black"
+                   VerticalOptions="EndAndExpand" />
 
-            <Label
-                Margin="0,12"
-                FontAttributes="Bold"
-                FontSize="16"
-                HorizontalOptions="Start"
-                HorizontalTextAlignment="Start"
-                Text="Categories"
-                TextColor="Black"
-                VerticalOptions="EndAndExpand" />
-
-            <CollectionView
-                Margin="0,6"
-                ItemsSource="{Binding CategoriesDataList}"
-                VerticalScrollBarVisibility="Never">
+            <CollectionView Margin="0,6"
+                            ItemsSource="{Binding CategoriesDataList}"
+                            VerticalScrollBarVisibility="Never">
                 <CollectionView.ItemsLayout>
-                    <GridItemsLayout
-                        HorizontalItemSpacing="12"
-                        Orientation="Vertical"
-                        Span="5"
-                        VerticalItemSpacing="0" />
+                    <GridItemsLayout HorizontalItemSpacing="12"
+                                     Orientation="Vertical"
+                                     Span="5"
+                                     VerticalItemSpacing="0" />
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Spacing="0">
-                            <Frame
-                                Margin="0,4"
-                                Padding="12"
-                                BackgroundColor="White"
-                                BorderColor="LightGray"
-                                CornerRadius="30"
-                                HasShadow="True"
-                                HeightRequest="60"
-                                HorizontalOptions="Center"
-                                IsClippedToBounds="True"
-                                VerticalOptions="Center"
-                                WidthRequest="60">
-                                <Label
-                                    FontFamily="icon"
-                                    FontSize="32"
-                                    HorizontalOptions="Center"
-                                    HorizontalTextAlignment="Center"
-                                    Text="{Binding Icon}"
-                                    TextColor="Black"
-                                    VerticalOptions="CenterAndExpand" />
+                            <Frame Margin="0,4"
+                                   Padding="12"
+                                   BackgroundColor="White"
+                                   BorderColor="LightGray"
+                                   CornerRadius="30"
+                                   HasShadow="True"
+                                   HeightRequest="60"
+                                   HorizontalOptions="Center"
+                                   IsClippedToBounds="True"
+                                   VerticalOptions="Center"
+                                   WidthRequest="60">
+                                <Label FontFamily="icon"
+                                       FontSize="32"
+                                       HorizontalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       Text="{Binding Icon}"
+                                       TextColor="Black"
+                                       VerticalOptions="CenterAndExpand" />
                             </Frame>
 
-                            <Label
-                                FontSize="14"
-                                HorizontalOptions="Center"
-                                HorizontalTextAlignment="Center"
-                                Text="{Binding CategoryName}"
-                                TextColor="Black"
-                                VerticalOptions="EndAndExpand" />
+                            <Label FontSize="14"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
+                                   Text="{Binding CategoryName}"
+                                   TextColor="Black"
+                                   VerticalOptions="EndAndExpand" />
 
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </StackLayout>
 
-    </VerticalStackLayout>
+            <StackLayout Orientation="Horizontal"
+                         Spacing="0"
+                         Margin="0,12">
+                <Label FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       FontSize="16"
+                       HorizontalOptions="Start"
+                       HorizontalTextAlignment="Start"
+                       Text="Best Selling"
+                       TextColor="Black" />
+
+                <Button BackgroundColor="Transparent"
+                        Text="View All"
+                        FontSize="16"
+                        TextColor="Black"
+                        HorizontalOptions="EndAndExpand"
+                        VerticalOptions="Center"></Button>
+            </StackLayout>
+
+            <CollectionView ItemsSource="{Binding BestSellingDataList}"
+                            Margin="0,12">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="12"
+                                       Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="0"
+                                     HorizontalOptions="CenterAndExpand">
+                            <StackLayout>
+                                <Frame CornerRadius="5"
+                                       HasShadow="False"
+                                       Padding="0"
+                                       HorizontalOptions="Center"
+                                       IsClippedToBounds="True">
+                                    <Image Aspect="AspectFit"
+                                           HeightRequest="240"
+                                           Source="{Binding ImageUrl}"
+                                           WidthRequest="165" />
+                                </Frame>
+                            </StackLayout>
+
+                            <StackLayout Margin="0,8,0,0">
+                                <Label FontSize="16"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding Name}"
+                                       TextColor="Black"
+                                       VerticalOptions="Start">
+
+                                </Label>
+
+                                <Label FontSize="12"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding BrandName}"
+                                       TextColor="#929292"
+                                       VerticalOptions="Start">
+
+                                </Label>
+
+                                <Label FontSize="16"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding Price}"
+                                       TextColor="#00C569"
+                                       VerticalOptions="Start">
+
+                                </Label>
+                            </StackLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference Homepage}, Path=BindingContext.ItemTapCommand}"
+                                                      CommandParameter="{Binding .}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Margin="0,12"
+                   FontAttributes="Bold"
+                   FontSize="16"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   Text="Featured Brands"
+                   TextColor="Black"
+                   VerticalOptions="EndAndExpand" />
+
+            <CollectionView ItemsSource="{Binding FeaturedBrandsDataList}"
+                            Margin="15,10">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="12"
+                                       Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame Padding="0"
+                                   BorderColor="#F7F7F7"
+                                   HasShadow="False"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand">
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame Padding="0"
+                                           CornerRadius="20"
+                                           HasShadow="False"
+                                           HeightRequest="40"
+                                           Opacity="10"
+                                           WidthRequest="40">
+                                        <Image Aspect="AspectFit"
+                                               HeightRequest="40"
+                                               HorizontalOptions="CenterAndExpand"
+                                               Source="{Binding ImageUrl}"
+                                               VerticalOptions="CenterAndExpand"
+                                               WidthRequest="40" />
+                                    </Frame>
+
+                                    <StackLayout Margin="6,0">
+                                        <Label FontAttributes="Bold"
+                                               FontSize="16"
+                                               HorizontalOptions="Center"
+                                               Text="{Binding BrandName}"
+                                               TextColor="Black">
+                                        </Label>
+
+                                        <Label FontSize="12"
+                                               HorizontalOptions="Center"
+                                               Text="{Binding Details}"
+                                               TextColor="#929292">
+
+                                        </Label>
+                                    </StackLayout>
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference Homepage}, Path=BindingContext.FeaturedTapCommand}"
+                                                          CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <StackLayout Orientation="Horizontal"
+                         Spacing="0"
+                         Margin="0,12">
+                <Label FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       FontSize="16"
+                       HorizontalOptions="Start"
+                       HorizontalTextAlignment="Start"
+                       Text="Recommended"
+                       TextColor="Black" />
+
+                <Button BackgroundColor="Transparent"
+                        Text="View All"
+                        FontSize="16"
+                        TextColor="Black"
+                        HorizontalOptions="EndAndExpand"
+                        VerticalOptions="Center"></Button>
+            </StackLayout>
+
+            <CollectionView ItemsSource="{Binding BestSellingDataList}"
+                            Margin="0,12">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="12"
+                                       Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="0"
+                                     HorizontalOptions="CenterAndExpand">
+                            <StackLayout>
+                                <Frame CornerRadius="5"
+                                       HasShadow="False"
+                                       Padding="0"
+                                       HorizontalOptions="Center"
+                                       IsClippedToBounds="True">
+                                    <Image Aspect="AspectFit"
+                                           HeightRequest="240"
+                                           Source="{Binding ImageUrl}"
+                                           WidthRequest="165" />
+                                </Frame>
+                            </StackLayout>
+
+                            <StackLayout Margin="0,8,0,0">
+                                <Label FontSize="16"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding Name}"
+                                       TextColor="Black"
+                                       VerticalOptions="Start">
+
+                                </Label>
+
+                                <Label FontSize="12"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding BrandName}"
+                                       TextColor="#929292"
+                                       VerticalOptions="Start">
+
+                                </Label>
+
+                                <Label FontSize="16"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding Price}"
+                                       TextColor="#00C569"
+                                       VerticalOptions="Start">
+
+                                </Label>
+                            </StackLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference Homepage}, Path=BindingContext.ItemTapCommand}"
+                                                      CommandParameter="{Binding .}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
