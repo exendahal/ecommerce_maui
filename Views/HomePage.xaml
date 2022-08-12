@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Name="Homepage"
-    Title="HomePage"
+    Title="HomePage"   
     BackgroundColor="White"
     Shell.NavBarIsVisible="False">
     <ScrollView>
@@ -277,17 +277,19 @@
             </StackLayout>
 
             <CollectionView ItemsSource="{Binding BestSellingDataList}"
-                            Margin="0,12">
+                            Margin="12">
 
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="12"
-                                       Orientation="Horizontal" />
+                    <GridItemsLayout HorizontalItemSpacing="12"
+                                     Orientation="Vertical"
+                                     Span="2"
+                                     VerticalItemSpacing="12" />
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="0"
-                                     HorizontalOptions="CenterAndExpand">
+                                     HorizontalOptions="FillAndExpand">
                             <StackLayout>
                                 <Frame CornerRadius="5"
                                        HasShadow="False"
