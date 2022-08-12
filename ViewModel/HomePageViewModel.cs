@@ -89,7 +89,7 @@ namespace EcommerceMAUI.ViewModel
 
             RecommendedTapCommand = new Command(items =>
             {
-                
+                Application.Current.MainPage.Navigation.PushModalAsync(new AllProduct());
             });
         }
 

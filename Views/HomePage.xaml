@@ -3,7 +3,7 @@
     x:Class="EcommerceMAUI.Views.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Name="Homepage"
+    x:Name="homePage"
     Title="HomePage"   
     BackgroundColor="White"
     Shell.NavBarIsVisible="False">
@@ -122,6 +122,7 @@
 
                 <Button BackgroundColor="Transparent"
                         Text="View All"
+                        Command="{Binding RecommendedTapCommand}"
                         FontSize="16"
                         TextColor="Black"
                         HorizontalOptions="EndAndExpand"
@@ -180,7 +181,7 @@
                             </StackLayout>
 
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:Reference Homepage}, Path=BindingContext.TapCommand}"
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference homePage}, Path=BindingContext.TapCommand}"
                                                       CommandParameter="{Binding .}" />
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
@@ -335,7 +336,7 @@
                             </StackLayout>
 
                             <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:Reference Homepage}, Path=BindingContext.TapCommand}"
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference homePage}, Path=BindingContext.TapCommand}"
                                                       CommandParameter="{Binding .}" />
                             </Grid.GestureRecognizers>
                         </Grid>
