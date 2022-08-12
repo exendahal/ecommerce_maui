@@ -180,7 +180,7 @@
                             </StackLayout>
 
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:Reference Homepage}, Path=BindingContext.ItemTapCommand}"
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference Homepage}, Path=BindingContext.TapCommand}"
                                                       CommandParameter="{Binding .}" />
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
@@ -271,6 +271,7 @@
                 <Button BackgroundColor="Transparent"
                         Text="View All"
                         FontSize="16"
+                        Command="{Binding RecommendedTapCommand}"
                         TextColor="Black"
                         HorizontalOptions="EndAndExpand"
                         VerticalOptions="Center"></Button>
@@ -288,52 +289,57 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Margin="0"
-                                     HorizontalOptions="FillAndExpand">
-                            <StackLayout>
-                                <Frame CornerRadius="5"
-                                       HasShadow="False"
-                                       Padding="0"
-                                       HorizontalOptions="Center"
-                                       IsClippedToBounds="True">
-                                    <Image Aspect="AspectFit"
-                                           HeightRequest="240"
-                                           Source="{Binding ImageUrl}"
-                                           WidthRequest="165" />
-                                </Frame>
+                        <Grid>
+                            <StackLayout Margin="0"
+                                         HorizontalOptions="FillAndExpand">
+                                <StackLayout>
+                                    <Frame CornerRadius="5"
+                                           HasShadow="False"
+                                           Padding="0"
+                                           HorizontalOptions="Center"
+                                           IsClippedToBounds="True">
+                                        <Image Aspect="AspectFit"
+                                               HeightRequest="240"
+                                               Source="{Binding ImageUrl}"
+                                               WidthRequest="165" />
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Margin="0,8,0,0">
+                                    <Label FontSize="16"
+                                           HorizontalOptions="Center"
+                                           Text="{Binding Name}"
+                                           TextColor="Black"
+                                           VerticalOptions="Start">
+
+                                    </Label>
+
+                                    <Label FontSize="12"
+                                           HorizontalOptions="Center"
+                                           Text="{Binding BrandName}"
+                                           TextColor="#929292"
+                                           VerticalOptions="Start">
+
+                                    </Label>
+
+                                    <Label FontSize="16"
+                                           HorizontalOptions="Center"
+                                           Text="{Binding Price}"
+                                           TextColor="#00C569"
+                                           VerticalOptions="Start">
+
+                                    </Label>
+                                </StackLayout>
+
+                                
                             </StackLayout>
 
-                            <StackLayout Margin="0,8,0,0">
-                                <Label FontSize="16"
-                                       HorizontalOptions="Center"
-                                       Text="{Binding Name}"
-                                       TextColor="Black"
-                                       VerticalOptions="Start">
-
-                                </Label>
-
-                                <Label FontSize="12"
-                                       HorizontalOptions="Center"
-                                       Text="{Binding BrandName}"
-                                       TextColor="#929292"
-                                       VerticalOptions="Start">
-
-                                </Label>
-
-                                <Label FontSize="16"
-                                       HorizontalOptions="Center"
-                                       Text="{Binding Price}"
-                                       TextColor="#00C569"
-                                       VerticalOptions="Start">
-
-                                </Label>
-                            </StackLayout>
-
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:Reference Homepage}, Path=BindingContext.ItemTapCommand}"
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference Homepage}, Path=BindingContext.TapCommand}"
                                                       CommandParameter="{Binding .}" />
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                       
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
