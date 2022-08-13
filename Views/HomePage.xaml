@@ -66,6 +66,7 @@
 
             <CollectionView Margin="0,6"
                             ItemsSource="{Binding CategoriesDataList}"
+                            SelectionMode="Single"                           
                             VerticalScrollBarVisibility="Never">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout HorizontalItemSpacing="12"
@@ -129,7 +130,7 @@
                         VerticalOptions="Center"></Button>
             </StackLayout>
 
-            <CollectionView ItemsSource="{Binding BestSellingDataList}"
+            <CollectionView ItemsSource="{Binding BestSellingDataList}"                           
                             Margin="0,12">
 
                 <CollectionView.ItemsLayout>
@@ -140,19 +141,18 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="0"
-                                     HorizontalOptions="CenterAndExpand">
-                            <StackLayout>
-                                <Frame CornerRadius="5"
-                                       HasShadow="False"
-                                       Padding="0"
-                                       HorizontalOptions="Center"
-                                       IsClippedToBounds="True">
-                                    <Image Aspect="AspectFit"
-                                           HeightRequest="240"
-                                           Source="{Binding ImageUrl}"
-                                           WidthRequest="165" />
-                                </Frame>
-                            </StackLayout>
+                                     Background="White"
+                                     HorizontalOptions="FillAndExpand">
+                            <Border StrokeShape="RoundRectangle 6,0,0,6"
+                                    Padding="0"                                    
+                                    Background="transparent"
+                                    StrokeThickness="1">
+                                <Image Aspect="AspectFit"
+                                      
+                                       HeightRequest="240"
+                                       Source="{Binding ImageUrl}"
+                                       WidthRequest="165" />
+                            </Border>
 
                             <StackLayout Margin="0,8,0,0">
                                 <Label FontSize="16"
@@ -179,7 +179,6 @@
 
                                 </Label>
                             </StackLayout>
-
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:Reference homePage}, Path=BindingContext.TapCommand}"
                                                       CommandParameter="{Binding .}" />
@@ -290,57 +289,48 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <StackLayout Margin="0"
-                                         HorizontalOptions="FillAndExpand">
-                                <StackLayout>
-                                    <Frame CornerRadius="5"
-                                           HasShadow="False"
-                                           Padding="0"
-                                           HorizontalOptions="Center"
-                                           IsClippedToBounds="True">
-                                        <Image Aspect="AspectFit"
-                                               HeightRequest="240"
-                                               Source="{Binding ImageUrl}"
-                                               WidthRequest="165" />
-                                    </Frame>
-                                </StackLayout>
+                        <StackLayout Margin="0"                                    
+                                     Background="White"
+                                     HorizontalOptions="FillAndExpand">
+                            <Border StrokeShape="RoundRectangle 6,0,0,6"
+                                    Background="transparent"
+                                    StrokeThickness="1">
+                                <Image Aspect="AspectFit"
+                                       HeightRequest="240"
+                                       Source="{Binding ImageUrl}"
+                                       WidthRequest="165" />
+                            </Border>
 
-                                <StackLayout Margin="0,8,0,0">
-                                    <Label FontSize="16"
-                                           HorizontalOptions="Center"
-                                           Text="{Binding Name}"
-                                           TextColor="Black"
-                                           VerticalOptions="Start">
+                            <StackLayout Margin="0,8,0,0">
+                                <Label FontSize="16"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding Name}"
+                                       TextColor="Black"
+                                       VerticalOptions="Start">
 
-                                    </Label>
+                                </Label>
 
-                                    <Label FontSize="12"
-                                           HorizontalOptions="Center"
-                                           Text="{Binding BrandName}"
-                                           TextColor="#929292"
-                                           VerticalOptions="Start">
+                                <Label FontSize="12"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding BrandName}"
+                                       TextColor="#929292"
+                                       VerticalOptions="Start">
 
-                                    </Label>
+                                </Label>
 
-                                    <Label FontSize="16"
-                                           HorizontalOptions="Center"
-                                           Text="{Binding Price}"
-                                           TextColor="#00C569"
-                                           VerticalOptions="Start">
+                                <Label FontSize="16"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding Price}"
+                                       TextColor="#00C569"
+                                       VerticalOptions="Start">
 
-                                    </Label>
-                                </StackLayout>
-
-                                
+                                </Label>
                             </StackLayout>
-
-                            <Grid.GestureRecognizers>
+                            <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:Reference homePage}, Path=BindingContext.TapCommand}"
                                                       CommandParameter="{Binding .}" />
-                            </Grid.GestureRecognizers>
-                        </Grid>
-                       
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>                       
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

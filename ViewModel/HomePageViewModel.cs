@@ -1,7 +1,9 @@
 ﻿
 
+using Android.Speech.Tts;
 using EcommerceMAUI.Model;
 using EcommerceMAUI.Views;
+using Microsoft.Maui.ApplicationModel;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -9,8 +11,8 @@ namespace EcommerceMAUI.ViewModel
 {
     public class HomePageViewModel : BaseViewModel
     {
-        public ICommand TapCommand { get; private set; }
-        public ICommand RecommendedTapCommand { get; private set; }
+        public ICommand TapCommand { get; set; }
+        public Command<object> RecommendedTapCommand { get; private set; }
 
         public ObservableCollection<CategoriesModel> _CategoriesDataList = new ObservableCollection<CategoriesModel>();
         public ObservableCollection<CategoriesModel> CategoriesDataList
@@ -53,12 +55,13 @@ namespace EcommerceMAUI.ViewModel
                 OnPropertyChanged("FeaturedBrandsDataList");
             }
         }
+
         public HomePageViewModel()
         {
             PopulateData();
-            CommandInit();
-        }
-
+            TapCommand = new Command<ProductModel>(SelectProduct);
+            RecommendedTapCommand = new Command<object>(SelectRecommend);
+        }       
         void PopulateData()
         {
             CategoriesDataList.Clear();
@@ -79,19 +82,16 @@ namespace EcommerceMAUI.ViewModel
             FeaturedBrandsDataList.Add(new ProductModel() { BrandName = "Beats", Details = "1124 Products", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/beats.png" });
             FeaturedBrandsDataList.Add(new ProductModel() { BrandName = "Apple Inc", Details = "5693 Products", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Icon_Apple.png" });
            
-        }
-        private void CommandInit()
+        }      
+
+        private void SelectProduct(ProductModel obj)
         {
-            TapCommand = new Command<ProductModel>(items =>
-            {
-                Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetails());
-            });
-
-            RecommendedTapCommand = new Command(items =>
-            {
-                Application.Current.MainPage.Navigation.PushModalAsync(new AllProduct());
-            });
+            Application.Current.MainPage.Navigation.PushAsync(new ProductDetails());
         }
 
+        private void SelectRecommend(object obj)
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new AllProduct());
+        }
     }
 }

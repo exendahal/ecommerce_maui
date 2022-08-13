@@ -9,7 +9,8 @@ namespace EcommerceMAUI.ViewModel
 {
     public class AllProductViewModel : BaseViewModel
     {
-      
+        public ICommand TapCommand { get; private set; }
+
         public ObservableCollection<ProductModel> _AllProductDataList = new ObservableCollection<ProductModel>();
         public ObservableCollection<ProductModel> AllProductDataList
         {
@@ -27,6 +28,7 @@ namespace EcommerceMAUI.ViewModel
         public AllProductViewModel()
         {
             PopulateData();
+            CommandInit();
         }
 
         void PopulateData()
@@ -41,7 +43,14 @@ namespace EcommerceMAUI.ViewModel
             AllProductDataList.Add(new ProductModel() { Name = "BeoPlay Stand Speaker", BrandName = "Bang and Olufse", Price = "$3000", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image8.png" });
             AllProductDataList.Add(new ProductModel() { Name = "Airpods", BrandName = "B&o Phone Case", Price = "$30", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image9.png" });
         }
-       
 
+        private void CommandInit()
+        {
+            TapCommand = new Command<ProductModel>(items =>
+            {
+                Application.Current.MainPage.Navigation.PushAsync(new ProductDetails());
+            });
+           
+        }
     }
 }
