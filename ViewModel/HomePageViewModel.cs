@@ -9,8 +9,9 @@ namespace EcommerceMAUI.ViewModel
 {
     public class HomePageViewModel : BaseViewModel
     {
-        public ICommand TapCommand { get; set; }
+        public ICommand TapCommand { get; private set; }
         public Command<object> RecommendedTapCommand { get; private set; }
+        public ICommand CategoryTapCommand { get; private set; }
 
         public ObservableCollection<CategoriesModel> _CategoriesDataList = new ObservableCollection<CategoriesModel>();
         public ObservableCollection<CategoriesModel> CategoriesDataList
@@ -59,6 +60,7 @@ namespace EcommerceMAUI.ViewModel
             PopulateData();
             TapCommand = new Command<ProductListModel>(SelectProduct);
             RecommendedTapCommand = new Command<object>(SelectRecommend);
+            CategoryTapCommand = new Command<CategoriesModel>(SelectCategory);
         }
         void PopulateData()
         {
@@ -87,6 +89,10 @@ namespace EcommerceMAUI.ViewModel
             await Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetails());
         }
 
+        private async void SelectCategory(CategoriesModel obj)
+        {
+            await Application.Current.MainPage.Navigation.PushModalAsync(new CategoryDetail(obj));
+        }
         private async void SelectRecommend(object obj)
         {
             await Application.Current.MainPage.Navigation.PushAsync(new AllProduct());

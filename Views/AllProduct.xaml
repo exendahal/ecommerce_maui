@@ -3,8 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EcommerceMAUI.Views.AllProduct"
              x:Name="allProduct"
+             Shell.BackgroundColor="White"
+             Shell.ForegroundColor="Black"
+             Shell.TitleColor="Black"
              BackgroundColor="White"
-             Title="AllProduct">
+             Title="All Product">
     <CollectionView ItemsSource="{Binding AllProductDataList}"
                     Margin="12">
 

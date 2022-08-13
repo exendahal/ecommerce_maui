@@ -38,7 +38,6 @@ namespace EcommerceMAUI.ViewModel
                 _IsFavorite = value;
                 OnPropertyChanged("IsFavorite");
                 OnPropertyChanged("FavStatusColor");
-                
             }
         }   
         public Color FavStatusColor
