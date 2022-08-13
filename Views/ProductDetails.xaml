@@ -4,8 +4,8 @@
              x:Class="EcommerceMAUI.Views.ProductDetails"
              Background="White"
              Title="Product Detail">
-    <ScrollView>
-        <Grid>
+    <Grid>
+        <ScrollView Scrolled="ScrollView_Scrolled">
             <StackLayout IsClippedToBounds="True">
                 <Image Aspect="AspectFill"
                        HeightRequest="200"
@@ -156,52 +156,85 @@
                     </CollectionView>
                 </StackLayout>
             </StackLayout>
-            <StackLayout Margin="15"
-                         HeightRequest="42"
-                         HorizontalOptions="FillAndExpand"
-                         Orientation="Horizontal"
-                         VerticalOptions="StartAndExpand">
-                <Border StrokeShape="RoundRectangle 20,20,20,20"
-                        HorizontalOptions="StartAndExpand"
-                        HeightRequest="40"
-                        WidthRequest="40"
-                        Padding="0"
-                        Background="transparent"
-                        StrokeThickness="0">
+        </ScrollView>
 
-                    <Label VerticalOptions="Center"
-                           FontFamily="icon"
-                           FontSize="26"
+        <StackLayout Margin="15"
+                     HeightRequest="42"
+                     HorizontalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     VerticalOptions="StartAndExpand">
+            <Border StrokeShape="RoundRectangle 20,20,20,20"
+                    HorizontalOptions="StartAndExpand"
+                    HeightRequest="40"
+                    WidthRequest="40"
+                    Padding="0"
+                    Background="transparent"
+                    StrokeThickness="0">
+
+                <Label VerticalOptions="Center"
+                       FontFamily="icon"
+                       FontSize="26"
+                       HorizontalOptions="Center"
+                       Text="&#xf141;"
+                       TextColor="Black" />
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapBackCommand}"></TapGestureRecognizer>
+                </Border.GestureRecognizers>
+            </Border>
+
+
+            <Border StrokeShape="RoundRectangle 20,20,20,20"
+                    HorizontalOptions="EndAndExpand"
+                    HeightRequest="40"
+                    WidthRequest="40"
+                    Padding="0"
+                    Background="white"
+                    StrokeThickness="1">
+
+                <Label VerticalOptions="Center"
+                       FontFamily="icon"
+                       FontSize="26"
+                       HorizontalOptions="Center"
+                       Text="&#xf4d2;"
+                       TextColor="{Binding FavStatusColor}" />
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapFavCommand}"
+                                          CommandParameter="{Binding FavStatus}"></TapGestureRecognizer>
+                </Border.GestureRecognizers>
+            </Border>
+
+        </StackLayout>
+
+        <Border StrokeShape="RoundRectangle 6,6,0,0"
+                IsVisible="{Binding IsFooterVisible}"
+                Padding="0"
+                HeightRequest="80"
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Background="White"
+                StrokeThickness="1">
+            <StackLayout Orientation="Horizontal"
+                         Margin="24,0">
+                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
+                    <Label FontSize="12"
                            HorizontalOptions="Center"
-                           Text="&#xf141;"
-                           TextColor="Black" />
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapBackCommand}"></TapGestureRecognizer>
-                    </Border.GestureRecognizers>
-                </Border>
+                           Text="PRICE"
+                           TextColor="#929292" />
+                    <Label FontSize="18"
+                           HorizontalOptions="Center"
+                           Text="{Binding ProductDetail.Price, StringFormat='{}{0:c}'}"
+                           TextColor="#00C569" />
+                </StackLayout>
 
-
-                <Border StrokeShape="RoundRectangle 20,20,20,20"
+                <Button Text="ADD"                       
+                        Padding="54,12"
+                        BackgroundColor="#00C569"
+                        TextColor="White"
                         HorizontalOptions="EndAndExpand"
-                        HeightRequest="40"
-                        WidthRequest="40"
-                        Padding="0"
-                        Background="white"
-                        StrokeThickness="1">
-
-                    <Label VerticalOptions="Center"
-                           FontFamily="icon"
-                           FontSize="26"
-                           HorizontalOptions="Center"
-                           Text="&#xf4d2;"
-                           TextColor="{Binding FavStatusColor}" />
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapFavCommand}"
-                                              CommandParameter="{Binding FavStatus}"></TapGestureRecognizer>
-                    </Border.GestureRecognizers>
-                </Border>
-
+                        VerticalOptions="CenterAndExpand">
+                </Button>
             </StackLayout>
-        </Grid>
-    </ScrollView>   
+        </Border>
+
+    </Grid>
 </ContentPage>

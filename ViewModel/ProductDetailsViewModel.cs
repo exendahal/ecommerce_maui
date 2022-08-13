@@ -6,8 +6,25 @@ namespace EcommerceMAUI.ViewModel
 {
     public class ProductDetailsViewModel : BaseViewModel
     {
+        double lastScrollIndex;
+        double currentScrollIndex;
         public ICommand TapBackCommand { get; set; }
         public ICommand TapFavCommand { get; set; }
+
+        public bool _IsFooterVisible = false;
+        public bool IsFooterVisible
+        {
+            get
+            {
+                return _IsFooterVisible;
+            }
+            set
+            {
+                _IsFooterVisible = value;
+                OnPropertyChanged("IsFooterVisible");
+               
+            }
+        }
 
         public bool _IsFavorite = false;
         public bool IsFavorite
@@ -65,6 +82,19 @@ namespace EcommerceMAUI.ViewModel
         private void FavItem(Color obj)
         {
             IsFavorite = true ? !IsFavorite : IsFavorite;
+        }
+        public void ChageFooterVisibility(double currentY)
+        {
+            currentScrollIndex = currentY;
+            if (currentScrollIndex > lastScrollIndex)
+            {
+                IsFooterVisible = false;
+            }
+            else
+            {
+                IsFooterVisible = true;
+            }
+            lastScrollIndex = currentScrollIndex;
         }
         void PopulateData()
         {
