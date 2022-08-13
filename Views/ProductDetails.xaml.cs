@@ -1,9 +1,12 @@
+using EcommerceMAUI.ViewModel;
+
 namespace EcommerceMAUI.Views;
 
 public partial class ProductDetails : ContentPage
 {
-	public ProductDetails()
-	{
-		InitializeComponent();
-	}
+    public ProductDetails()
+    {
+        InitializeComponent();
+        BindingContext = new ProductDetailsViewModel();
+    }
 }

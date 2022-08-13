@@ -7,6 +7,6 @@ namespace EcommerceMAUI.Model
         public string CategoryName { get; set; }
         public string Icon { get; set; }
 
-        
+
     }
 }

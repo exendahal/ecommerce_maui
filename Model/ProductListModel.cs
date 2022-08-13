@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EcommerceMAUI.Model
+﻿namespace EcommerceMAUI.Model
 {
-    public class ProductModel
+    public class ProductListModel
     {
         public string ImageUrl { get; set; }
         public string Name { get; set; }

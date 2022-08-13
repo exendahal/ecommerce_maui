@@ -1,81 +1,86 @@
 ﻿using EcommerceMAUI.Model;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EcommerceMAUI.Views;
+using System.Windows.Input;
 
 namespace EcommerceMAUI.ViewModel
 {
     public class ProductDetailsViewModel : BaseViewModel
     {
-        public ObservableCollection<CategoriesModel> _CategoriesDataList = new ObservableCollection<CategoriesModel>();
-        public ObservableCollection<CategoriesModel> CategoriesDataList
+        public ICommand TapBackCommand { get; set; }
+        public ICommand TapFavCommand { get; set; }
+
+        public bool _IsFavorite = false;
+        public bool IsFavorite
         {
             get
             {
-                return _CategoriesDataList;
+                return _IsFavorite;
             }
             set
             {
-                _CategoriesDataList = value;
-                OnPropertyChanged("CategoriesDataList");
+                _IsFavorite = value;
+                OnPropertyChanged("IsFavorite");
+                OnPropertyChanged("FavStatusColor");
+                
             }
+        }   
+        public Color FavStatusColor
+        {
+            get
+            {
+                if (IsFavorite)
+                {
+                    return Color.FromArgb("#00C569");
+                }
+                return Color.FromArgb("#000000");
+            }            
         }
 
-        public ObservableCollection<ProductModel> _BestSellingDataList = new ObservableCollection<ProductModel>();
-        public ObservableCollection<ProductModel> BestSellingDataList
-        {
-            get
-            {
-                return _BestSellingDataList;
+        public ProductDetail _ProductDetail = new ProductDetail();
+        public ProductDetail ProductDetail 
+        { 
+            get 
+            { 
+                return _ProductDetail; 
             }
             set
             {
-                _BestSellingDataList = value;
-                OnPropertyChanged("BestSellingDataList");
+                _ProductDetail = value;
+                OnPropertyChanged("ProductDetail");
             }
         }
-
-        public ObservableCollection<ProductModel> _FeaturedBrandsDataList = new ObservableCollection<ProductModel>();
-        public ObservableCollection<ProductModel> FeaturedBrandsDataList
-        {
-            get
-            {
-                return _FeaturedBrandsDataList;
-            }
-            set
-            {
-                _FeaturedBrandsDataList = value;
-                OnPropertyChanged("FeaturedBrandsDataList");
-            }
-        }
+        
         public ProductDetailsViewModel()
         {
             PopulateData();
+            TapBackCommand = new Command<object>(GoBack);
+            TapFavCommand = new Command<Color>(FavItem);
         }
 
+        private async void GoBack(object obj)
+        {
+            await Application.Current.MainPage.Navigation.PopModalAsync();
+        }
+
+        private void FavItem(Color obj)
+        {
+            IsFavorite = true ? !IsFavorite : IsFavorite;
+        }
         void PopulateData()
         {
-            CategoriesDataList.Clear();
-            CategoriesDataList.Add(new CategoriesModel() { CategoryID = 1, CategoryName = "Men", Icon = "\ufb22" });
-            CategoriesDataList.Add(new CategoriesModel() { CategoryID = 2, CategoryName = "Women", Icon = "\ufb23" });
-            CategoriesDataList.Add(new CategoriesModel() { CategoryID = 2, CategoryName = "Devices", Icon = "\uf322" });
-            CategoriesDataList.Add(new CategoriesModel() { CategoryID = 2, CategoryName = "Gadgets", Icon = "\uf2cb" });
-            CategoriesDataList.Add(new CategoriesModel() { CategoryID = 2, CategoryName = "Games", Icon = "\uf5ba" });
+            ProductDetail.Price = 1500;
+            ProductDetail.Name = "Nike Dri-FIT Long Sleeve";
+            ProductDetail.ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image10.png";
+            ProductDetail.Colors = Color.FromArgb("#33427D");
+            ProductDetail.Details = "Nike Dri-FIT is a polyester fabric designed to help you keep dry so you can more comfortably work harder, longer.";
+        
+            List<ReviewModel> reviewData = new List<ReviewModel>();
+            reviewData.Add(new ReviewModel() { ImageUrl= "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user1.png", Name= "Samuel Smith", Review= "Wonderful jean, perfect gift for my girl for our anniversary!",Rating = 4 });
+            reviewData.Add(new ReviewModel() { ImageUrl= "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user2.png", Name= "Beth Aida", Review= "I love this, paired it with a nice blouse and all eyes on me.", Rating = 3 });
+            reviewData.Add(new ReviewModel() { ImageUrl= "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user1.png", Name= "Samuel Smith", Review= "Wonderful jean, perfect gift for my girl for our anniversary!",Rating = 4 });
+            reviewData.Add(new ReviewModel() { ImageUrl= "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user2.png", Name= "Beth Aida", Review= "I love this, paired it with a nice blouse and all eyes on me.", Rating = 3 });
 
-            BestSellingDataList.Clear();
-            BestSellingDataList.Add(new ProductModel() { Name = "BeoPlay Speaker", BrandName = "Bang and Olufsen", Price = "$755", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image1.png" });
-            BestSellingDataList.Add(new ProductModel() { Name = "Leather Wristwatch", BrandName = "Tag Heuer", Price = "$450", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image2.png" });
-            BestSellingDataList.Add(new ProductModel() { Name = "Smart Bluetooth Speaker", BrandName = "Google LLC", Price = "$900", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image3.png" });
-            BestSellingDataList.Add(new ProductModel() { Name = "Smart Luggage", BrandName = "Smart Inc", Price = "$1200", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image4.png" });
-
-            FeaturedBrandsDataList.Clear();
-            FeaturedBrandsDataList.Add(new ProductModel() { BrandName = "B&o", Details = "5693 Products", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Icon_Bo.png" });
-            FeaturedBrandsDataList.Add(new ProductModel() { BrandName = "Beats", Details = "1124 Products", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/beats.png" });
-            FeaturedBrandsDataList.Add(new ProductModel() { BrandName = "Apple Inc", Details = "5693 Products", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Icon_Apple.png" });
-
+            ProductDetail.Reviews = reviewData;
         }
     }
 }
