@@ -56,6 +56,9 @@
 	  <MauiXaml Update="Views\AllProduct.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\BrandDetail.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\CategoryDetail.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

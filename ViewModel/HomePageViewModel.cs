@@ -10,6 +10,7 @@ namespace EcommerceMAUI.ViewModel
     public class HomePageViewModel : BaseViewModel
     {
         public ICommand TapCommand { get; private set; }
+        public ICommand BrandTapCommand { get; private set; }
         public Command<object> RecommendedTapCommand { get; private set; }
         public ICommand CategoryTapCommand { get; private set; }
 
@@ -61,6 +62,7 @@ namespace EcommerceMAUI.ViewModel
             TapCommand = new Command<ProductListModel>(SelectProduct);
             RecommendedTapCommand = new Command<object>(SelectRecommend);
             CategoryTapCommand = new Command<CategoriesModel>(SelectCategory);
+            BrandTapCommand = new Command<ProductListModel>(SelectBrand);
         }
         void PopulateData()
         {
@@ -84,6 +86,10 @@ namespace EcommerceMAUI.ViewModel
 
         }
 
+        private async void SelectBrand(ProductListModel obj)
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new BrandDetail());
+        }
         private async void SelectProduct(ProductListModel obj)
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetails());

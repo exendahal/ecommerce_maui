@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EcommerceMAUI.Views.BrandDetail"          
+            x:Name="brandListPage"
+             Shell.BackgroundColor="#2B0B98"
+             Shell.ForegroundColor="White"
+             Shell.TitleColor="White"
+             BackgroundColor="White"
+             xmlns:local="clr-namespace:EcommerceMAUI.Views"
+       Title="Brand Detail">   
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <CollectionView ItemsSource="{Binding TabPageList}"
+                            Background="#2B0B98" >
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout 
+                                     Orientation="Horizontal"
+                                     HorizontalItemSpacing="6" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="6,0,0,12">
+                            <StackLayout>
+                                <Label FontSize="18"
+                                       Margin="6"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding Name}"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       VerticalTextAlignment="Center"
+                                       VerticalOptions="Center" />
+
+                                <Border HeightRequest="4"
+                                        IsVisible="{Binding IsSelected}"
+                                        Background="White"
+                                        Stroke="white"
+                                        StrokeShape="RoundRectangle 0"></Border>
+                            </StackLayout>
+                           
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference brandListPage}, Path=BindingContext.TapCommandMenu}"
+                                                      CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <CollectionView ItemsSource="{Binding AllProductDataList}"
+                            Margin="12" VerticalOptions="FillAndExpand">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout HorizontalItemSpacing="12"
+                                     Orientation="Vertical"
+                                     Span="2"
+                                     VerticalItemSpacing="12" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <StackLayout Margin="0"
+                                         HorizontalOptions="FillAndExpand">
+                                <StackLayout>
+                                    <Frame CornerRadius="5"
+                                           HasShadow="False"
+                                           Padding="0"
+                                           HorizontalOptions="Center"
+                                           IsClippedToBounds="True">
+                                        <Image Aspect="AspectFit"
+                                               HeightRequest="240"
+                                               Source="{Binding ImageUrl}"
+                                               WidthRequest="165" />
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Margin="0,8,0,0">
+                                    <Label FontSize="16"
+                                           HorizontalOptions="Center"
+                                           Text="{Binding Name}"
+                                           TextColor="Black"
+                                           VerticalOptions="Start">
+
+                                    </Label>
+
+                                    <Label FontSize="12"
+                                           HorizontalOptions="Center"
+                                           Text="{Binding BrandName}"
+                                           TextColor="#929292"
+                                           VerticalOptions="Start">
+
+                                    </Label>
+
+                                    <Label FontSize="16"
+                                           HorizontalOptions="Center"
+                                           Text="{Binding Price}"
+                                           TextColor="#00C569"
+                                           VerticalOptions="Start">
+
+                                    </Label>
+                                </StackLayout>
+
+
+                            </StackLayout>
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference brandListPage}, Path=BindingContext.TapCommand}"
+                                                      CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>       
+    </ContentPage.Content>
+</ContentPage>

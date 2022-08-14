@@ -213,7 +213,7 @@
                                         StrokeShape="RoundRectangle 6"
                                         Stroke="wheat"
                                         HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="CenterAndExpand">
+                                        VerticalOptions="FillAndExpand">
 
                                     <StackLayout Orientation="Horizontal">
                                         <Frame Padding="0"
@@ -247,7 +247,7 @@
                                         </StackLayout>
                                     </StackLayout>
                                     <Border.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={x:Reference Homepage}, Path=BindingContext.FeaturedTapCommand}"
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference homePage}, Path=BindingContext.BrandTapCommand}"
                                                               CommandParameter="{Binding .}" />
                                     </Border.GestureRecognizers>
                                 </Border>

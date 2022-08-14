@@ -1,4 +1,6 @@
-﻿namespace EcommerceMAUI;
+﻿using EcommerceMAUI.Views;
+
+namespace EcommerceMAUI;
 
 public partial class App : Application
 {
