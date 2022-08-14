@@ -39,7 +39,7 @@
                     Padding="0"
                     HeightRequest="40"
                     Margin="6,0"
-                    Background="Green"
+                    Background="#00C569"
                     WidthRequest="40"
                     HorizontalOptions="End"
                     StrokeThickness="0">
