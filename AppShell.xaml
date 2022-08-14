@@ -4,11 +4,32 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:EcommerceMAUI.Views"
+    Shell.TabBarBackgroundColor ="White"
+       Shell.TabBarTitleColor="Green"
+    Shell.TabBarUnselectedColor="Black"
     Shell.FlyoutBehavior="Disabled">
-
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:HomePage}"
-        Route="MainPage" />
+    <TabBar>
+        <Tab Title="Explore">
+            <Tab.Icon>
+                <FontImageSource FontFamily="icon"
+                                 Glyph="&#xf56e;"></FontImageSource>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:HomePage}" />
+        </Tab>
+        <Tab Title="Cart">
+            <Tab.Icon>
+                <FontImageSource FontFamily="icon"
+                                 Glyph="&#xf110;"></FontImageSource>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:Cart}" />
+        </Tab>
+        <Tab Title="Account">
+            <Tab.Icon>
+                <FontImageSource FontFamily="icon"
+                                 Glyph="&#xf004;"></FontImageSource>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:Profile}" />
+        </Tab>
+    </TabBar>
 
 </Shell>
