@@ -48,7 +48,7 @@ namespace EcommerceMAUI.ViewModel
         {
             TapCommand = new Command<ProductListModel>(items =>
             {
-                Application.Current.MainPage.Navigation.PushAsync(new ProductDetails());
+                Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetails());
             });
 
         }
