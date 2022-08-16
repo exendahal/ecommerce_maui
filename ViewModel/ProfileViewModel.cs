@@ -12,7 +12,16 @@ namespace EcommerceMAUI.ViewModel
     {
         public ICommand TapCommand { get; private set; }
 
-        public List<MenuItems> MenuItems = new List<MenuItems>();
+        public string Name { get; set; } = "David Spade";
+        public string Email { get; set; } = "iamdavid@gmail.com";
+        public string ImageUrl { get; set; } = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Avatar.png";
+
+        public List<MenuItems> _MenuItems = new List<MenuItems>();
+        public List<MenuItems> MenuItems
+        {
+            get { return _MenuItems; }
+            set { _MenuItems = value; }
+        }
        
         public ProfileViewModel()
         {
@@ -23,19 +32,20 @@ namespace EcommerceMAUI.ViewModel
         void PopulateData()
         {
             MenuItems.Clear();
-            MenuItems.Add(new Model.MenuItems() { Title = "Edit Profile", Body = "\U000f056e", TargetType = typeof(HomePage) });
-            MenuItems.Add(new Model.MenuItems() { Title = "Edit Profile", Body = "\U000f056e", TargetType = typeof(HomePage) });
-            MenuItems.Add(new Model.MenuItems() { Title = "Edit Profile", Body = "\U000f056e", TargetType = typeof(HomePage) });
-            MenuItems.Add(new Model.MenuItems() { Title = "Edit Profile", Body = "\U000f056e", TargetType = typeof(HomePage) });
-            MenuItems.Add(new Model.MenuItems() { Title = "Edit Profile", Body = "\U000f056e", TargetType = typeof(HomePage) });
-            MenuItems.Add(new Model.MenuItems() { Title = "Edit Profile", Body = "\U000f056e", TargetType = typeof(HomePage) });
+            MenuItems.Add(new Model.MenuItems() { Title = "Edit Profile", Body = "\uf3eb", TargetType = typeof(HomePage) });
+            MenuItems.Add(new Model.MenuItems() { Title = "Shipping Address", Body = "\uf34e", TargetType = typeof(HomePage) });
+            MenuItems.Add(new Model.MenuItems() { Title = "Wishlist", Body = "\uf2d5", TargetType = typeof(HomePage) });
+            MenuItems.Add(new Model.MenuItems() { Title = "Order History", Body = "\uf150", TargetType = typeof(HomePage) });
+            MenuItems.Add(new Model.MenuItems() { Title = "Track Order", Body = "\uf787", TargetType = typeof(HomePage) });
+            MenuItems.Add(new Model.MenuItems() { Title = "Cards", Body = "\uf19b", TargetType = typeof(HomePage) });
+            MenuItems.Add(new Model.MenuItems() { Title = "Notifications", Body = "\uf09c", TargetType = typeof(HomePage) });
         }
 
         private void CommandInit()
         {
             TapCommand = new Command<MenuItems>(item =>
             {
-                Application.Current.MainPage.Navigation.PushAsync(new NavigationPage((Page)Activator.CreateInstance(item.TargetType)));
+                Application.Current.MainPage.Navigation.PushModalAsync(((Page)Activator.CreateInstance(item.TargetType)));
             });
 
         }

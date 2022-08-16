@@ -21,7 +21,7 @@
                 <FontImageSource FontFamily="icon"
                                  Glyph="&#xf110;"></FontImageSource>
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate local:Cart}" />
+            <ShellContent ContentTemplate="{DataTemplate local:CartPage}" />
         </Tab>
         <Tab Title="Account">
             <Tab.Icon>

@@ -10,6 +10,7 @@ namespace EcommerceMAUI.ViewModel
     public class CartViewModel : BaseViewModel
     {
         public ICommand TapCommand { get; private set; }
+        public ICommand DeleteCommand { get; private set; }
 
         public ObservableCollection<ProductListModel> _AllProductDataList = new ObservableCollection<ProductListModel>();
         public ObservableCollection<ProductListModel> AllProductDataList
@@ -50,6 +51,12 @@ namespace EcommerceMAUI.ViewModel
             {
                 Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetails());
             });
+
+            DeleteCommand = new Command<ProductListModel>(items =>
+            {
+                
+            });
+
 
         }
     }
