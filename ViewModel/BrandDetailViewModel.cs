@@ -1,14 +1,7 @@
-﻿using Android.Bluetooth;
-using EcommerceMAUI.Model;
+﻿using EcommerceMAUI.Model;
 using EcommerceMAUI.Views;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using static Java.Util.Jar.Attributes;
 
 namespace EcommerceMAUI.ViewModel
 {
@@ -68,7 +61,7 @@ namespace EcommerceMAUI.ViewModel
                     item.IsSelected = false;
                 }
             }
-           
+
         }
         void PopulateData()
         {
@@ -84,8 +77,8 @@ namespace EcommerceMAUI.ViewModel
 
             TabPageList.Clear();
             TabPageList.Add(new TabPageModel("All", 0, true));
-            TabPageList.Add(new TabPageModel("Smart Bluetooth Speaker", 1,false));
-            TabPageList.Add(new TabPageModel("Lamp", 2,false));
+            TabPageList.Add(new TabPageModel("Smart Bluetooth Speaker", 1, false));
+            TabPageList.Add(new TabPageModel("Lamp", 2, false));
             TabPageList.Add(new TabPageModel("Airpods", 3, false));
         }
     }

@@ -4,7 +4,7 @@
              x:Class="EcommerceMAUI.Views.BrandDetail"          
             x:Name="brandListPage"
              Shell.BackgroundColor="#00C569"
-             Shell.ForegroundColor="White"
+             Shell.ForegroundColor="Black"
              Shell.TitleColor="White"
              BackgroundColor="White"
              xmlns:local="clr-namespace:EcommerceMAUI.Views"

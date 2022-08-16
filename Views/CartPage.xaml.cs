@@ -4,9 +4,9 @@ namespace EcommerceMAUI.Views;
 
 public partial class CartPage : ContentPage
 {
-	public CartPage()
-	{
-		InitializeComponent();
+    public CartPage()
+    {
+        InitializeComponent();
         BindingContext = new CartViewModel();
     }
     private void SwipeItem_Invoked(object sender, EventArgs e)

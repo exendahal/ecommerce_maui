@@ -1,5 +1,4 @@
 ﻿using EcommerceMAUI.Model;
-using EcommerceMAUI.Views;
 using System.Windows.Input;
 
 namespace EcommerceMAUI.ViewModel
@@ -22,7 +21,7 @@ namespace EcommerceMAUI.ViewModel
             {
                 _IsFooterVisible = value;
                 OnPropertyChanged("IsFooterVisible");
-               
+
             }
         }
 
@@ -39,7 +38,7 @@ namespace EcommerceMAUI.ViewModel
                 OnPropertyChanged("IsFavorite");
                 OnPropertyChanged("FavStatusColor");
             }
-        }   
+        }
         public Color FavStatusColor
         {
             get
@@ -49,15 +48,15 @@ namespace EcommerceMAUI.ViewModel
                     return Color.FromArgb("#00C569");
                 }
                 return Color.FromArgb("#000000");
-            }            
+            }
         }
 
         public ProductDetail _ProductDetail = new ProductDetail();
-        public ProductDetail ProductDetail 
-        { 
-            get 
-            { 
-                return _ProductDetail; 
+        public ProductDetail ProductDetail
+        {
+            get
+            {
+                return _ProductDetail;
             }
             set
             {
@@ -65,7 +64,7 @@ namespace EcommerceMAUI.ViewModel
                 OnPropertyChanged("ProductDetail");
             }
         }
-        
+
         public ProductDetailsViewModel()
         {
             PopulateData();
@@ -102,12 +101,12 @@ namespace EcommerceMAUI.ViewModel
             ProductDetail.ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image10.png";
             ProductDetail.Colors = Color.FromArgb("#33427D");
             ProductDetail.Details = "Nike Dri-FIT is a polyester fabric designed to help you keep dry so you can more comfortably work harder, longer.";
-        
+
             List<ReviewModel> reviewData = new List<ReviewModel>();
-            reviewData.Add(new ReviewModel() { ImageUrl= "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user1.png", Name= "Samuel Smith", Review= "Wonderful jean, perfect gift for my girl for our anniversary!",Rating = 4 });
-            reviewData.Add(new ReviewModel() { ImageUrl= "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user2.png", Name= "Beth Aida", Review= "I love this, paired it with a nice blouse and all eyes on me.", Rating = 3 });
-            reviewData.Add(new ReviewModel() { ImageUrl= "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user1.png", Name= "Samuel Smith", Review= "Wonderful jean, perfect gift for my girl for our anniversary!",Rating = 4 });
-            reviewData.Add(new ReviewModel() { ImageUrl= "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user2.png", Name= "Beth Aida", Review= "I love this, paired it with a nice blouse and all eyes on me.", Rating = 3 });
+            reviewData.Add(new ReviewModel() { ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user1.png", Name = "Samuel Smith", Review = "Wonderful jean, perfect gift for my girl for our anniversary!", Rating = 4 });
+            reviewData.Add(new ReviewModel() { ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user2.png", Name = "Beth Aida", Review = "I love this, paired it with a nice blouse and all eyes on me.", Rating = 3 });
+            reviewData.Add(new ReviewModel() { ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user1.png", Name = "Samuel Smith", Review = "Wonderful jean, perfect gift for my girl for our anniversary!", Rating = 4 });
+            reviewData.Add(new ReviewModel() { ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user2.png", Name = "Beth Aida", Review = "I love this, paired it with a nice blouse and all eyes on me.", Rating = 3 });
 
             ProductDetail.Reviews = reviewData;
         }

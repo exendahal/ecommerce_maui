@@ -38,13 +38,13 @@ namespace EcommerceMAUI.ViewModel
                 OnPropertyChanged("FeaturedBrandsDataList");
             }
         }
-         public string PageTitle 
-         { 
+        public string PageTitle
+        {
             get
             {
                 return CategoryModel.CategoryName;
-            } 
-         }
+            }
+        }
         CategoriesModel CategoryModel { get; set; }
         public CategoryDetailViewModel(CategoriesModel data)
         {

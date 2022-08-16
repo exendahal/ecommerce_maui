@@ -5,9 +5,9 @@ namespace EcommerceMAUI.Views;
 
 public partial class CategoryDetail : ContentPage
 {
-	public CategoryDetail(CategoriesModel data)
-	{
-		InitializeComponent();
+    public CategoryDetail(CategoriesModel data)
+    {
+        InitializeComponent();
         BindingContext = new CategoryDetailViewModel(data);
     }
 }

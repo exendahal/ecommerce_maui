@@ -54,7 +54,7 @@ namespace EcommerceMAUI.ViewModel
 
             DeleteCommand = new Command<ProductListModel>(items =>
             {
-                
+
             });
 
 
