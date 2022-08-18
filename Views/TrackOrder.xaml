@@ -6,7 +6,7 @@
              Shell.ForegroundColor="Black"
              Shell.TitleColor="White"
              BackgroundColor="White"
-             Title="TrackOrder">
+             Title="{Binding PageTitle}">
     <StackLayout>
         <StackLayout Margin="6,12"
                      HeightRequest="42"                    
@@ -33,121 +33,80 @@
                     FontSize="18"
                    HorizontalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center"
-                    Text="Track Order"
+                    Text="{Binding PageTitle}"
                     TextColor="Black"
                     VerticalOptions="CenterAndExpand" />
           
         </StackLayout>
-
-        <CollectionView IsGrouped="True"                      
-                        Margin="18,0"
-                        VerticalOptions="FillAndExpand"
-                        ItemsSource="{Binding TrackData}">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical"
-                                 VerticalItemSpacing="12" />
-            </CollectionView.ItemsLayout>
-
+        <CollectionView Margin="20"
+                        ItemsSource="{Binding TrackStatusData}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <StackLayout HorizontalOptions="StartAndExpand">
-                                <Label FontSize="16"
-                                       HorizontalOptions="StartAndExpand"
-                                       Text="{Binding OrderId}"
-                                       TextColor="Black">
-                                </Label>
+                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                 Orientation="Horizontal"
+                                 Spacing="0">
+                        <StackLayout>
+                            <Label FontAttributes="Bold"
+                                   FontSize="18"
+                                   Text="{Binding DateMonth}"
+                                   TextColor="Gray">                               
+                            </Label>
+                            <Label FontAttributes="Bold"
+                                   FontSize="14"
+                                   Text="{Binding Time}"
+                                   TextColor="Gray">                               
+                            </Label>
+                        </StackLayout>
 
-                                <Label Margin="0,5"
-                                       FontSize="14"
-                                       HorizontalOptions="StartAndExpand"
-                                       Text="{Binding Price}"
-                                       TextColor="#00C569">
-                                </Label>
+                        <StackLayout Margin="30,0,20,0" Spacing="0">
+                            <Border StrokeShape="RoundRectangle 16"                                   
+                                    Stroke="black"
+                                    Background="Transparent"
+                                    Padding="4"
+                                    StrokeThickness="1">
+                                
+                                <Border StrokeShape="RoundRectangle 16"
+                                        Stroke="{Binding StatusColor}"
+                                        Background="{Binding StatusColor}"
+                                        Padding="4"
+                                        HeightRequest="16"
+                                        WidthRequest="16"
+                                        StrokeThickness="1">
+                                </Border>
+                                
 
-                                <Frame Margin="0,16"
-                                       Padding="0"
-                                       BorderColor="Transparent"
-                                       BackgroundColor="#00C569"
-                                       CornerRadius="2"
-                                       HasShadow="False"
-                                       IsClippedToBounds="True">
-                                    <Label Margin="12,10,12,10"
-                                           FontSize="14"
-                                           HorizontalOptions="CenterAndExpand"
-                                           Text="{Binding Status}"
-                                           TextColor="White"
-                                           VerticalOptions="CenterAndExpand"
-                                           VerticalTextAlignment="Center">
-                                    </Label>
-                                </Frame>
-                            </StackLayout>
+                            </Border>
 
-                            <Grid HorizontalOptions="EndAndExpand" ColumnSpacing="2" RowSpacing="2">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="50"></RowDefinition>
-                                    <RowDefinition Height="50"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50"></ColumnDefinition>
-                                    <ColumnDefinition Width="50"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
+                            <Border StrokeShape="RoundRectangle 16"
+                                    IsVisible="{Binding IsLineVisible}"
+                                    Stroke="{Binding StatusColor}"
+                                    HorizontalOptions="CenterAndExpand"
+                                    WidthRequest="2"
+                                    HeightRequest="80"
+                                    VerticalOptions="FillAndExpand"
+                                    Background="{Binding StatusColor}"
+                                    StrokeThickness="1">
+                            </Border>
+                           
+                        </StackLayout>
 
-                                <Image IsVisible="{Binding ImageOneVisibility}"
-                                       Grid.Column="0"
-                                       Grid.Row="0"
-                                       Aspect="AspectFit"
-                                       HeightRequest="50"
-                                       Source="buyitem"
-                                       WidthRequest="50" />
-
-                                <Image IsVisible="{Binding ImageTwoVisibility}"
-                                       Grid.Column="1"
-                                       Grid.Row="0"
-                                       Aspect="AspectFit"
-                                       HeightRequest="50"
-                                       Source="buyitem"
-                                       WidthRequest="50" />
-
-                                <Image  IsVisible="{Binding ImageThreeVisibility}"
-                                        Grid.Column="0"
-                                        Grid.Row="1"
-                                        Aspect="AspectFit"
-                                       HeightRequest="50"
-                                       Source="buyitem"
-                                       WidthRequest="50" />
-
-                                <Frame IsVisible="{Binding ImageMoreVisibility}"
-                                       Grid.Column="1"
-                                       Grid.Row="1"
-                                       Padding="0"
-                                       BorderColor="#E1E1E1"
-                                       HasShadow="False"
-                                       HeightRequest="50"
-                                       WidthRequest="50">
-                                    <Label FontSize="14"
-                                           HorizontalOptions="CenterAndExpand"
-                                           Text="+4"
-                                           TextColor="Black"
-                                           VerticalOptions="CenterAndExpand">
-                                    </Label>
-                                </Frame>
-                            </Grid>                           
-                        </StackLayout>                        
+                        <StackLayout Margin="20,0">
+                            <Label FontAttributes="Bold"
+                                   FontSize="16"
+                                   Text="{Binding Name}"
+                                   TextColor="Black">                                
+                            </Label>
+                            <Label FontAttributes="None"
+                                   FontSize="12"
+                                   Text="{Binding Location}"
+                                   TextColor="Black">                               
+                            </Label>
+                        </StackLayout>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-            <CollectionView.GroupHeaderTemplate>
-                <DataTemplate>
-                    <Label FontSize="14"
-                           HorizontalOptions="StartAndExpand"
-                           Text="{Binding Date}"
-                           TextColor="Black">
-                    </Label>
 
-                </DataTemplate>
-            </CollectionView.GroupHeaderTemplate>
         </CollectionView>
+
     </StackLayout>
 </ContentPage>

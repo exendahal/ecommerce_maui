@@ -8,91 +8,39 @@ namespace EcommerceMAUI.ViewModel
 {
     public class TrackOrderViewModel : BaseViewModel
     {
-        public ICommand TapBackCommand { get; set; }
-        public List<TrackOrderModel> TrackData { get; private set; } = new List<TrackOrderModel>();
 
-        public TrackOrderViewModel(bool emptyGroups = false)
+        public List<DeliveryStepsModel> TrackStatusData { get; private set; } = new List<DeliveryStepsModel>();
+
+        public ICommand TapBackCommand { get; set; }
+
+        Track TrackOrderData { get; set; }
+        public string PageTitle
         {
-            PopulateData();
-            TapBackCommand = new Command<object>(GoBack);
+            get
+            {
+                return TrackOrderData.OrderId;
+            }
         }
+        public TrackOrderViewModel(Track data, bool emptyGroups = false)
+        {
+            TrackOrderData = data;
+            TapBackCommand = new Command<object>(GoBack);
+            CreateCollection();
+        }
+
+        void CreateCollection()
+        {
+            TrackStatusData.Add(new DeliveryStepsModel() { Id = 1, DateMonth = "20/18", IsComplete = true, Time = "12:00", Name = "Order Signed", Location = "Lagos State, Nigeria" });
+            TrackStatusData.Add(new DeliveryStepsModel() { Id = 2, DateMonth = "20/18", IsComplete = true, Time = "12:00", Name = "Order Signed", Location = "Lagos State, Nigeria" });
+            TrackStatusData.Add(new DeliveryStepsModel() { Id = 3, DateMonth = "20/18", IsComplete = true, Time = "12:00", Name = "Order Signed", Location = "Lagos State, Nigeria" });
+            TrackStatusData.Add(new DeliveryStepsModel() { Id = 4, DateMonth = "20/18", IsComplete = false, Time = "12:00", Name = "Order Signed", Location = "Lagos State, Nigeria" });
+            TrackStatusData.Add(new DeliveryStepsModel() { Id = 5, DateMonth = "20/18", IsComplete = false, Time = "12:00", Name = "Order Signed", Location = "Lagos State, Nigeria" });
+        }
+
+
         private async void GoBack(object obj)
         {
             await Application.Current.MainPage.Navigation.PopModalAsync();
-        }
-        void PopulateData()
-        {
-            TrackData.Add(new TrackOrderModel("Sept 23, 2018", new List<Track>
-            {
-                new Track
-                {
-                    OrderId = "OD - 424923192 - N",
-                    Price = "$4500",
-                    Status = "Delivered"
-                }
-            }));
-
-            TrackData.Add(new TrackOrderModel("Sept 23, 2018", new List<Track>
-            {
-                new Track
-                {
-                    OrderId = "OD - 424923192 - N",
-                    Price = "$500",
-                    Status = "Delivered"
-                },
-                new Track
-                {
-                    OrderId = "OD - 424923192 - N",
-                    Price = "$700",
-                    Status = "Delivered"
-                }
-            }));
-
-            TrackData.Add(new TrackOrderModel("Sept 22, 2018", new List<Track>
-            {
-                new Track
-                {
-                    OrderId = "OD - 424923192 - N",
-                    Price = "$1500",
-                    Status = "Delivered"
-                },
-                new Track
-                {
-                    OrderId = "OD - 424923192 - N",
-                    Price = "$2700",
-                    Status = "Delivered"
-                }
-            }));
-
-            TrackData.Add(new TrackOrderModel("Sept 23, 2018", new List<Track>
-            {
-                new Track
-                {
-                    OrderId = "OD - 424923192 - N",
-                    Price = "$4500",
-                    Status = "Delivered"
-                }
-            }));
-
-            TrackData.Add(new TrackOrderModel("Sept 23, 2018", new List<Track>
-            {
-                new Track
-                {
-                    OrderId = "OD - 424923192 - N",
-                    Price = "$4500",
-                    Status = "Delivered"
-                }
-            }));
-
-            TrackData.Add(new TrackOrderModel("Sept 23, 2018", new List<Track>
-            {
-                new Track
-                {
-                    OrderId = "OD - 424923192 - N",
-                    Price = "$4500",
-                    Status = "Delivered"
-                }
-            }));
         }
 
     }
