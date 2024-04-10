@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.BrandDetailView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
+    xmlns:local="clr-namespace:EcommerceMAUI.Views"
+    xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
+    x:Name="BrandDetailPage"
+    Title="Brand Detail"
+    BackgroundColor="White"
+    Shell.BackgroundColor="#00C569"
+    Shell.ForegroundColor="{AppThemeBinding Light={StaticResource Black},
+                                            Dark={StaticResource White}}"
+    Shell.TitleColor="White">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout IsVisible="{Binding IsLoaded}" Spacing="0">
+                <CollectionView Background="#00C569" ItemsSource="{Binding TabPageList}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout HorizontalItemSpacing="6" Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="6,0,0,12">
+                                <StackLayout>
+                                    <Label
+                                        Margin="6"
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding Name}"
+                                        TextColor="White"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+                                    <Border
+                                        Background="White"
+                                        HeightRequest="4"
+                                        IsVisible="{Binding IsSelected}"
+                                        Stroke="white"
+                                        StrokeShape="RoundRectangle 0" />
+                                </StackLayout>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference BrandDetailPage}, Path=BindingContext.SelectMenuCommand}" CommandParameter="{Binding .}" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <CollectionView
+                    Margin="12"
+                    ItemsSource="{Binding AllProductDataList}"
+                    VerticalOptions="FillAndExpand">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                            HorizontalItemSpacing="12"
+                            Orientation="Vertical"
+                            Span="2"
+                            VerticalItemSpacing="12" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout
+                                Margin="0"
+                                Background="White"
+                                HorizontalOptions="FillAndExpand">
+                                <Border
+                                    Background="transparent"
+                                    StrokeShape="RoundRectangle 6,0,0,6"
+                                    StrokeThickness="1">
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="240"
+                                        Source="{Binding ImageUrl}"
+                                        WidthRequest="165" />
+                                </Border>
+                                <StackLayout Margin="0,8,0,0">
+                                    <Label
+                                        FontSize="16"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding Name}"
+                                        TextColor="Black"
+                                        VerticalOptions="Start" />
+                                    <Label
+                                        FontSize="12"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding BrandName}"
+                                        TextColor="#929292"
+                                        VerticalOptions="Start" />
+                                    <Label
+                                        FontSize="16"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding Price}"
+                                        TextColor="#00C569"
+                                        VerticalOptions="Start" />
+                                </StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference BrandDetailPage}, Path=BindingContext.SelectProductCommand}" CommandParameter="{Binding .}" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            <ActivityIndicator
+                HeightRequest="45"
+                HorizontalOptions="Center"
+                IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
+                VerticalOptions="Center"
+                WidthRequest="45"
+                Color="#00C569" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

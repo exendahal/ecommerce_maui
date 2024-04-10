@@ -7,8 +7,8 @@ namespace EcommerceMAUI.ViewModel
     {
         double lastScrollIndex;
         double currentScrollIndex;
-        public ICommand TapBackCommand { get; set; }
-        public ICommand TapFavCommand { get; set; }
+        public ICommand BackCommand { get; set; }
+        public ICommand FavCommand { get; set; }
 
         public bool _IsFooterVisible = false;
         public bool IsFooterVisible
@@ -51,7 +51,7 @@ namespace EcommerceMAUI.ViewModel
             }
         }
 
-        public ProductDetail _ProductDetail = new ProductDetail();
+        public ProductDetail _ProductDetail = new();
         public ProductDetail ProductDetail
         {
             get
@@ -65,13 +65,27 @@ namespace EcommerceMAUI.ViewModel
             }
         }
 
+        bool _IsLoaded = false;
+        public bool IsLoaded
+        {
+            get { return _IsLoaded; }
+            set
+            {
+                _IsLoaded = value;
+                OnPropertyChanged("IsLoaded");
+            }
+        }
         public ProductDetailsViewModel()
         {
-            PopulateData();
-            TapBackCommand = new Command<object>(GoBack);
-            TapFavCommand = new Command<Color>(FavItem);
+            BackCommand = new Command<object>(GoBack);
+            FavCommand = new Command<Color>(FavItem);
+            InitializeAsync();
         }
 
+        private async void InitializeAsync()
+        {
+            await PopulateData();
+        }
         private async void GoBack(object obj)
         {
             await Application.Current.MainPage.Navigation.PopModalAsync();
@@ -94,21 +108,25 @@ namespace EcommerceMAUI.ViewModel
             }
             lastScrollIndex = currentScrollIndex;
         }
-        void PopulateData()
+        async Task PopulateData()
         {
+            await Task.Delay(500);
+            //TODO: Remove Delay here and call API
             ProductDetail.Price = 1500;
             ProductDetail.Name = "Nike Dri-FIT Long Sleeve";
             ProductDetail.ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image10.png";
             ProductDetail.Colors = Color.FromArgb("#33427D");
             ProductDetail.Details = "Nike Dri-FIT is a polyester fabric designed to help you keep dry so you can more comfortably work harder, longer.";
 
-            List<ReviewModel> reviewData = new List<ReviewModel>();
-            reviewData.Add(new ReviewModel() { ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user1.png", Name = "Samuel Smith", Review = "Wonderful jean, perfect gift for my girl for our anniversary!", Rating = 4 });
-            reviewData.Add(new ReviewModel() { ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user2.png", Name = "Beth Aida", Review = "I love this, paired it with a nice blouse and all eyes on me.", Rating = 3 });
-            reviewData.Add(new ReviewModel() { ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user1.png", Name = "Samuel Smith", Review = "Wonderful jean, perfect gift for my girl for our anniversary!", Rating = 4 });
-            reviewData.Add(new ReviewModel() { ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user2.png", Name = "Beth Aida", Review = "I love this, paired it with a nice blouse and all eyes on me.", Rating = 3 });
-
+            List<ReviewModel> reviewData =
+            [
+                new ReviewModel() { ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user1.png", Name = "Samuel Smith", Review = "Wonderful jean, perfect gift for my girl for our anniversary!", Rating = 4 },
+                new ReviewModel() { ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user2.png", Name = "Beth Aida", Review = "I love this, paired it with a nice blouse and all eyes on me.", Rating = 3 },
+                new ReviewModel() { ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user1.png", Name = "Samuel Smith", Review = "Wonderful jean, perfect gift for my girl for our anniversary!", Rating = 4 },
+                new ReviewModel() { ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/user2.png", Name = "Beth Aida", Review = "I love this, paired it with a nice blouse and all eyes on me.", Rating = 3 },
+            ];
             ProductDetail.Reviews = reviewData;
+            IsLoaded = true;
         }
     }
 }

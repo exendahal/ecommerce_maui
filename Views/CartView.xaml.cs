@@ -2,9 +2,9 @@ using EcommerceMAUI.ViewModel;
 
 namespace EcommerceMAUI.Views;
 
-public partial class CartPage : ContentPage
+public partial class CartView : ContentPage
 {
-    public CartPage()
+    public CartView()
     {
         InitializeComponent();
         BindingContext = new CartViewModel();

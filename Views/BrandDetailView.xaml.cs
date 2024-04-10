@@ -2,9 +2,9 @@ using EcommerceMAUI.ViewModel;
 
 namespace EcommerceMAUI.Views;
 
-public partial class BrandDetail : ContentPage
+public partial class BrandDetailView : ContentPage
 {
-    public BrandDetail()
+    public BrandDetailView()
     {
         InitializeComponent();
         BindingContext = new BrandDetailViewModel();

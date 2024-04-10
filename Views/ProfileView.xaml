@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.ProfileView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
+    xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
+    x:Name="ProfilePage"
+    Title="Profile"
+    BackgroundColor="White"
+    Shell.NavBarIsVisible="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid
+        Margin="15,12"
+        RowDefinitions="Auto,*"
+        VerticalOptions="Center">
+        <StackLayout
+            Grid.Row="0"
+            Margin="0,30"
+            IsVisible="{Binding IsLoaded}"
+            Orientation="Horizontal">
+            <Border
+                Grid.Column="0"
+                Background="Transparent"
+                StrokeShape="RoundRectangle 6"
+                StrokeThickness="0">
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="120"
+                    Source="{Binding ImageUrl}"
+                    WidthRequest="120" />
+            </Border>
+
+            <StackLayout Margin="20" VerticalOptions="CenterAndExpand">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="26"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="David Spade"
+                    TextColor="Black"
+                    VerticalTextAlignment="Center" />
+                <Label
+                    FontSize="14"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="iamdavid@gmail.com"
+                    TextColor="Black"
+                    VerticalTextAlignment="Center" />
+            </StackLayout>
+        </StackLayout>
+        <CollectionView
+            Grid.Row="1"
+            IsVisible="{Binding IsLoaded}"
+            ItemsSource="{Binding MenuItems}">
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    HorizontalItemSpacing="12"
+                    Orientation="Vertical"
+                    Span="1"
+                    VerticalItemSpacing="12" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="40" />
+                        </Grid.ColumnDefinitions>
+                        <Border
+                            Grid.Column="0"
+                            HeightRequest="40"
+                            StrokeShape="RoundRectangle 6"
+                            StrokeThickness="0"
+                            WidthRequest="36">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1">
+                                    <GradientStop Offset="0.1" Color="LightGreen" />
+                                    <GradientStop Offset="1.0" Color="LightGray" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Label
+                                FontFamily="icon"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                Text="{Binding Body}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </Border>
+
+                        <Label
+                            Grid.Column="1"
+                            Margin="18,0"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HorizontalOptions="Start"
+                            Text="{Binding Title}"
+                            TextColor="Black"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center" />
+
+                        <Label
+                            Grid.Column="2"
+                            FontAttributes="Bold"
+                            FontFamily="icon"
+                            FontSize="16"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="Center"
+                            Text="&#xf142;"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference ProfilePage}, Path=BindingContext.SelectMenuCommand}" CommandParameter="{Binding .}" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <ActivityIndicator
+            HeightRequest="45"
+            HorizontalOptions="Center"
+            IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
+            VerticalOptions="Center"
+            WidthRequest="45"
+            Color="#00C569" />
+    </Grid>
+</ContentPage>

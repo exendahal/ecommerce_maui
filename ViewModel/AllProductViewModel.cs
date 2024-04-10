@@ -1,6 +1,4 @@
-﻿
-
-using EcommerceMAUI.Model;
+﻿using EcommerceMAUI.Model;
 using EcommerceMAUI.Views;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -9,9 +7,9 @@ namespace EcommerceMAUI.ViewModel
 {
     public class AllProductViewModel : BaseViewModel
     {
-        public ICommand TapCommand { get; private set; }
+        public ICommand SelectProductCommand { get; private set; }
 
-        public ObservableCollection<ProductListModel> _AllProductDataList = new ObservableCollection<ProductListModel>();
+        public ObservableCollection<ProductListModel> _AllProductDataList =[];
         public ObservableCollection<ProductListModel> AllProductDataList
         {
             get
@@ -25,14 +23,30 @@ namespace EcommerceMAUI.ViewModel
             }
         }
 
+        bool _IsLoaded = false;
+        public bool IsLoaded
+        {
+            get { return _IsLoaded; }
+            set
+            {
+                _IsLoaded = value;
+                OnPropertyChanged("IsLoaded");
+            }
+        }
         public AllProductViewModel()
         {
-            PopulateData();
-            CommandInit();
+            SelectProductCommand = new Command<ProductListModel>(SelectProduct);
+            InitializeAsync();
         }
 
-        void PopulateData()
+        private async void InitializeAsync()
         {
+            await PopulateData();
+        }
+        async Task PopulateData()
+        {
+            await Task.Delay(500);
+            //TODO: Remove Delay here and call API
             AllProductDataList.Clear();
             AllProductDataList.Add(new ProductListModel() { Name = "BeoPlay Speaker", BrandName = "Bang and Olufsen", Price = "$755", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image1.png" });
             AllProductDataList.Add(new ProductListModel() { Name = "Leather Wristwatch", BrandName = "Tag Heuer", Price = "$450", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image2.png" });
@@ -42,15 +56,12 @@ namespace EcommerceMAUI.ViewModel
             AllProductDataList.Add(new ProductListModel() { Name = "B&o Desk Lamp", BrandName = "Bang and Olufsen", Price = "$450", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image7.png" });
             AllProductDataList.Add(new ProductListModel() { Name = "BeoPlay Stand Speaker", BrandName = "Bang and Olufse", Price = "$3000", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image8.png" });
             AllProductDataList.Add(new ProductListModel() { Name = "Airpods", BrandName = "B&o Phone Case", Price = "$30", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image9.png" });
+            IsLoaded = true;
         }
 
-        private void CommandInit()
+        private async void SelectProduct(ProductListModel product)
         {
-            TapCommand = new Command<ProductListModel>(items =>
-            {
-                Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetails());
-            });
-
-        }
+            await Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetailsView());
+        }        
     }
 }

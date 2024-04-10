@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.OrderDetailsView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
+    xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
+    x:Name="OrderDetails"
+    Title="Order Details"
+    BackgroundColor="White"
+    Shell.BackgroundColor="#00C569"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="White">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <StackLayout IsVisible="{Binding IsLoaded}">
+            <StackLayout
+                Margin="6,12"
+                HeightRequest="42"
+                Orientation="Horizontal">
+                <Border
+                    Padding="0"
+                    Background="transparent"
+                    HeightRequest="40"
+                    StrokeShape="RoundRectangle 20,20,20,20"
+                    StrokeThickness="0"
+                    WidthRequest="40">
+                    <Label
+                        FontFamily="icon"
+                        FontSize="26"
+                        HorizontalOptions="Center"
+                        Text="&#xf141;"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </Border.GestureRecognizers>
+                </Border>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Track Order"
+                    TextColor="Black"
+                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            <CollectionView
+                Margin="18,0"
+                IsGrouped="True"
+                ItemsSource="{Binding TrackData}"
+                VerticalOptions="FillAndExpand">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="12" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout HorizontalOptions="StartAndExpand">
+                                    <Label
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{Binding OrderId}"
+                                        TextColor="Black" />
+                                    <Label
+                                        Margin="0,5"
+                                        FontSize="14"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{Binding Price}"
+                                        TextColor="#00C569" />
+                                    <Frame
+                                        Margin="0,16"
+                                        Padding="0"
+                                        BackgroundColor="#00C569"
+                                        BorderColor="Transparent"
+                                        CornerRadius="2"
+                                        HasShadow="False"
+                                        IsClippedToBounds="True">
+                                        <Label
+                                            Margin="12,10,12,10"
+                                            FontSize="14"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="{Binding Status}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand"
+                                            VerticalTextAlignment="Center" />
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference OrderDetails}, Path=BindingContext.SelectOrderCommand}" CommandParameter="{Binding .}" />
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
+                                </StackLayout>
+
+                                <Grid
+                                    ColumnSpacing="4"
+                                    HorizontalOptions="EndAndExpand"
+                                    RowSpacing="4">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="50" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Padding="4"
+                                        Background="Transparent"
+                                        IsVisible="{Binding ImageOneVisibility}"
+                                        Stroke="Lightgray"
+                                        StrokeShape="RoundRectangle 5,5,5,5"
+                                        StrokeThickness="1">
+                                        <Image Aspect="AspectFit" Source="{Binding ImageOneUrl}" />
+                                    </Border>
+
+
+                                    <Border
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Padding="4"
+                                        Background="Transparent"
+                                        IsVisible="{Binding ImageTwoVisibility}"
+                                        Stroke="Lightgray"
+                                        StrokeShape="RoundRectangle 5,5,5,5"
+                                        StrokeThickness="1">
+                                        <Image
+                                            Aspect="AspectFit"
+                                            IsVisible="{Binding ImageTwoVisibility}"
+                                            Source="{Binding ImageTwoUrl}" />
+                                    </Border>
+
+                                    <Border
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Padding="4"
+                                        Background="Transparent"
+                                        IsVisible="{Binding ImageThreeVisibility}"
+                                        Stroke="Lightgray"
+                                        StrokeShape="RoundRectangle 5,5,5,5"
+                                        StrokeThickness="1">
+                                        <Image
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Aspect="AspectFit"
+                                            Source="{Binding ImageThreeUrl}" />
+
+                                    </Border>
+
+                                    <Border
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Padding="4"
+                                        Background="Transparent"
+                                        IsVisible="{Binding ImageMoreVisibility}"
+                                        Stroke="Lightgray"
+                                        StrokeShape="RoundRectangle 5,5,5,5"
+                                        StrokeThickness="1">
+                                        <Label
+                                            FontSize="14"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="{Binding RemainingImages, StringFormat='+{0}'}"
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Border>
+                                </Grid>
+                            </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <Label
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{Binding Date}"
+                            TextColor="Black" />
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+            </CollectionView>
+        </StackLayout>
+        <ActivityIndicator
+            HeightRequest="45"
+            HorizontalOptions="Center"
+            IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
+            VerticalOptions="Center"
+            WidthRequest="45"
+            Color="#00C569" />
+    </Grid>
+</ContentPage>

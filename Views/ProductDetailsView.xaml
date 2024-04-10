@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.ProductDetailsView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
+    xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
+    Title="Product Detail"
+    Background="White">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid IsVisible="{Binding IsLoaded}">
+            <ScrollView Scrolled="ScrollView_Scrolled">
+                <StackLayout IsClippedToBounds="True">
+                    <Image
+                        Aspect="AspectFill"
+                        HeightRequest="200"
+                        Source="{Binding ProductDetail.ImageUrl}" />
+                    <StackLayout Margin="16">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="26"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{Binding ProductDetail.Name}"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center" />
+
+                        <StackLayout
+                            Margin="0,16"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal">
+                            <Border
+                                Margin="6,0"
+                                Padding="0"
+                                Background="transparent"
+                                HorizontalOptions="FillAndExpand"
+                                StrokeShape="RoundRectangle 20"
+                                StrokeThickness="1">
+                                <StackLayout
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label
+                                        Margin="20,15,35,15"
+                                        FontSize="14"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="Size"
+                                        TextColor="Black"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Margin="24,15"
+                                        FontSize="14"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="XL"
+                                        TextColor="Black"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                            </Border>
+
+                            <Border
+                                Margin="6,0"
+                                Padding="0"
+                                Background="transparent"
+                                HorizontalOptions="FillAndExpand"
+                                StrokeShape="RoundRectangle 20"
+                                StrokeThickness="1">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                    <Label
+                                        Margin="20,15"
+                                        FontSize="14"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="Color"
+                                        TextColor="Black"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Border
+                                        Margin="10"
+                                        Padding="0"
+                                        Background="{Binding ProductDetail.Colors}"
+                                        HeightRequest="26"
+                                        HorizontalOptions="FillAndExpand"
+                                        StrokeShape="RoundRectangle 8"
+                                        StrokeThickness="1"
+                                        WidthRequest="26" />
+                                </StackLayout>
+                            </Border>
+
+                        </StackLayout>
+
+                        <StackLayout>
+
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Details"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
+
+                            <Label
+                                FontSize="14"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding ProductDetail.Details}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
+
+                            <Label
+                                Margin="0,30,0,0"
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Reviews"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
+
+                            <Label
+                                Margin="0,5,0,0"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Write your review"
+                                TextColor="#00C569"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+
+                        <CollectionView Margin="0,16" ItemsSource="{Binding ProductDetail.Reviews}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="12" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Border
+                                            Padding="0"
+                                            HeightRequest="46"
+                                            StrokeShape="RoundRectangle 23"
+                                            StrokeThickness="0"
+                                            WidthRequest="46">
+                                            <Image
+                                                Aspect="AspectFill"
+                                                HeightRequest="46"
+                                                Source="{Binding ImageUrl}"
+                                                WidthRequest="46" />
+                                        </Border>
+
+                                        <StackLayout Margin="8,0" Spacing="2">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="14"
+                                                Text="{Binding Name}"
+                                                TextColor="Black" />
+
+                                            <Label
+                                                FontSize="14"
+                                                Text="{Binding Review}"
+                                                TextColor="Black"
+                                                VerticalTextAlignment="Center" />
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout
+                Margin="15"
+                HeightRequest="42"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="StartAndExpand">
+                <Border
+                    Padding="0"
+                    Background="transparent"
+                    HeightRequest="40"
+                    HorizontalOptions="StartAndExpand"
+                    StrokeShape="RoundRectangle 20,20,20,20"
+                    StrokeThickness="0"
+                    WidthRequest="40">
+
+                    <Label
+                        FontFamily="icon"
+                        FontSize="26"
+                        HorizontalOptions="Center"
+                        Text="&#xf141;"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </Border.GestureRecognizers>
+                </Border>
+
+
+                <Border
+                    Padding="0"
+                    Background="white"
+                    HeightRequest="40"
+                    HorizontalOptions="EndAndExpand"
+                    StrokeShape="RoundRectangle 20,20,20,20"
+                    StrokeThickness="1"
+                    WidthRequest="40">
+
+                    <Label
+                        FontFamily="icon"
+                        FontSize="26"
+                        HorizontalOptions="Center"
+                        Text="&#xf4d2;"
+                        TextColor="{Binding FavStatusColor}"
+                        VerticalOptions="Center" />
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding FavCommand}" CommandParameter="{Binding FavStatusColor}" />
+                    </Border.GestureRecognizers>
+                </Border>
+
+            </StackLayout>
+
+            <Border
+                Padding="0"
+                Background="White"
+                HeightRequest="80"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsFooterVisible}"
+                StrokeShape="RoundRectangle 6,6,0,0"
+                StrokeThickness="1"
+                VerticalOptions="EndAndExpand">
+                <StackLayout Margin="24,0" Orientation="Horizontal">
+                    <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
+                        <Label
+                            FontSize="12"
+                            HorizontalOptions="Center"
+                            Text="PRICE"
+                            TextColor="#929292" />
+                        <Label
+                            FontSize="18"
+                            HorizontalOptions="Center"
+                            Text="{Binding ProductDetail.Price, StringFormat='{}{0:c}'}"
+                            TextColor="#00C569" />
+                    </StackLayout>
+
+                    <Button
+                        Padding="54,12"
+                        BackgroundColor="#00C569"
+                        HorizontalOptions="EndAndExpand"
+                        Text="ADD"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+            </Border>
+
+        </Grid>
+        <ActivityIndicator
+            HeightRequest="45"
+            HorizontalOptions="Center"
+            IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
+            VerticalOptions="Center"
+            WidthRequest="45"
+            Color="#00C569" />
+    </Grid>
+</ContentPage>

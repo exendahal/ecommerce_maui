@@ -1,6 +1,4 @@
-﻿
-
-using EcommerceMAUI.Model;
+﻿using EcommerceMAUI.Model;
 using EcommerceMAUI.Views;
 using System.Windows.Input;
 using static EcommerceMAUI.Model.TrackOrderModel;
@@ -9,28 +7,44 @@ namespace EcommerceMAUI.ViewModel
 {
     public class OrderDetailsViewModel : BaseViewModel
     {
-        public ICommand TapBackCommand { get; set; }
-        public ICommand TapCommand { get; set; }
+        public ICommand BackCommand { get; set; }
+        public ICommand SelectOrderCommand { get; set; }
         public List<TrackOrderModel> TrackData { get; private set; } = new List<TrackOrderModel>();
 
+        bool _IsLoaded = false;
+        public bool IsLoaded
+        {
+            get { return _IsLoaded; }
+            set
+            {
+                _IsLoaded = value;
+                OnPropertyChanged("IsLoaded");
+            }
+        }
         public OrderDetailsViewModel(bool emptyGroups = false)
         {
-            PopulateData();
-            TapBackCommand = new Command<object>(GoBack);
-            TapCommand = new Command<object>(TrackCommand);
+            BackCommand = new Command<object>(GoBack);
+            SelectOrderCommand = new Command<object>(TrackCommand);
+            InitializeAsync();
+        }
+        private async void InitializeAsync()
+        {
+            await PopulateData();
         }
         private async void TrackCommand(object obj)
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new TrackOrder((Track)obj));
+            await Application.Current.MainPage.Navigation.PushModalAsync(new TrackOrderView((Track)obj));
         }
         private async void GoBack(object obj)
         {
             await Application.Current.MainPage.Navigation.PopModalAsync();
         }
-        void PopulateData()
+        async Task PopulateData()
         {
-            TrackData.Add(new TrackOrderModel("Sept 23, 2018", new List<Track>
-            {
+            await Task.Delay(500);
+            //TODO: Remove Delay here and call API
+            TrackData.Add(new TrackOrderModel("Sept 23, 2018",
+            [
                 new Track
                 {
                     OrderId = "OD - 424923192 - N",
@@ -44,7 +58,7 @@ namespace EcommerceMAUI.ViewModel
                         new ImageList(){ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Icon_Bo.png"}
                     }
                 }
-            }));
+            ]));
 
             TrackData.Add(new TrackOrderModel("Sept 23, 2018", new List<Track>
             {
@@ -173,6 +187,7 @@ namespace EcommerceMAUI.ViewModel
                     }
                 }
             }));
+            IsLoaded = true;
         }
 
     }

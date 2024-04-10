@@ -1,10 +1,8 @@
 using EcommerceMAUI.ViewModel;
-
 namespace EcommerceMAUI.Views;
-
-public partial class AllProduct : ContentPage
+public partial class AllProductView : ContentPage
 {
-    public AllProduct()
+    public AllProductView()
     {
         InitializeComponent();
         BindingContext = new AllProductViewModel();

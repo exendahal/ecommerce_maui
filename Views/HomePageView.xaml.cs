@@ -2,9 +2,9 @@ using EcommerceMAUI.ViewModel;
 
 namespace EcommerceMAUI.Views;
 
-public partial class HomePage : ContentPage
+public partial class HomePageView : ContentPage
 {
-    public HomePage()
+    public HomePageView()
     {
         InitializeComponent();
         BindingContext = new HomePageViewModel();

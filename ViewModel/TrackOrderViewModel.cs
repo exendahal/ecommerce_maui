@@ -8,11 +8,8 @@ namespace EcommerceMAUI.ViewModel
 {
     public class TrackOrderViewModel : BaseViewModel
     {
-
-        public List<DeliveryStepsModel> TrackStatusData { get; private set; } = new List<DeliveryStepsModel>();
-
-        public ICommand TapBackCommand { get; set; }
-
+        public List<DeliveryStepsModel> TrackStatusData { get; private set; } = [];
+        public ICommand BackCommand { get; set; }
         Track TrackOrderData { get; set; }
         public string PageTitle
         {
@@ -21,23 +18,38 @@ namespace EcommerceMAUI.ViewModel
                 return TrackOrderData.OrderId;
             }
         }
+        bool _IsLoaded = false;
+        public bool IsLoaded
+        {
+            get { return _IsLoaded; }
+            set
+            {
+                _IsLoaded = value;
+                OnPropertyChanged("IsLoaded");
+            }
+        }
         public TrackOrderViewModel(Track data, bool emptyGroups = false)
         {
             TrackOrderData = data;
-            TapBackCommand = new Command<object>(GoBack);
-            CreateCollection();
+            BackCommand = new Command<object>(GoBack);
+            InitializeAsync();
         }
 
-        void CreateCollection()
+        private async void InitializeAsync()
         {
+            await PopulateData();
+        }
+        async Task PopulateData()
+        {
+            await Task.Delay(500);
+            //TODO: Remove Delay here and call API if needed
             TrackStatusData.Add(new DeliveryStepsModel() { Id = 1, DateMonth = "20/18", IsComplete = true, Time = "12:00", Name = "Order Signed", Location = "Lagos State, Nigeria" });
             TrackStatusData.Add(new DeliveryStepsModel() { Id = 2, DateMonth = "20/18", IsComplete = true, Time = "12:00", Name = "Order Signed", Location = "Lagos State, Nigeria" });
             TrackStatusData.Add(new DeliveryStepsModel() { Id = 3, DateMonth = "20/18", IsComplete = true, Time = "12:00", Name = "Order Signed", Location = "Lagos State, Nigeria" });
             TrackStatusData.Add(new DeliveryStepsModel() { Id = 4, DateMonth = "20/18", IsComplete = false, Time = "12:00", Name = "Order Signed", Location = "Lagos State, Nigeria" });
             TrackStatusData.Add(new DeliveryStepsModel() { Id = 5, DateMonth = "20/18", IsComplete = false, Time = "12:00", Name = "Order Signed", Location = "Lagos State, Nigeria" });
+            IsLoaded = true;
         }
-
-
         private async void GoBack(object obj)
         {
             await Application.Current.MainPage.Navigation.PopModalAsync();

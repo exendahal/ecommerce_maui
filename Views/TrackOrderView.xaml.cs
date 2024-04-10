@@ -3,9 +3,9 @@ using static EcommerceMAUI.Model.TrackOrderModel;
 
 namespace EcommerceMAUI.Views;
 
-public partial class TrackOrder : ContentPage
+public partial class TrackOrderView : ContentPage
 {
-    public TrackOrder(Track data)
+    public TrackOrderView(Track data)
     {
         InitializeComponent();
         BindingContext = new TrackOrderViewModel(data);

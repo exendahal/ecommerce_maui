@@ -2,9 +2,9 @@ using EcommerceMAUI.ViewModel;
 
 namespace EcommerceMAUI.Views;
 
-public partial class Profile : ContentPage
+public partial class ProfileView : ContentPage
 {
-    public Profile()
+    public ProfileView()
     {
         InitializeComponent();
         BindingContext = new ProfileViewModel();

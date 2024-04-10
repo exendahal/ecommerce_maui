@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.TrackOrderView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
+    xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
+    Title="{Binding PageTitle}"
+    BackgroundColor="White"
+    Shell.BackgroundColor="#00C569"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="White">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <StackLayout IsVisible="{Binding IsLoaded}">
+            <StackLayout
+                Margin="6,12"
+                HeightRequest="42"
+                Orientation="Horizontal">
+                <Border
+                    Padding="0"
+                    Background="transparent"
+                    HeightRequest="40"
+                    StrokeShape="RoundRectangle 20,20,20,20"
+                    StrokeThickness="0"
+                    WidthRequest="40">
+                    <Label
+                        FontFamily="icon"
+                        FontSize="26"
+                        HorizontalOptions="Center"
+                        Text="&#xf141;"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </Border.GestureRecognizers>
+                </Border>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding PageTitle}"
+                    TextColor="Black"
+                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            <CollectionView Margin="20" ItemsSource="{Binding TrackStatusData}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="0">
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="{Binding DateMonth}"
+                                    TextColor="Gray" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    Text="{Binding Time}"
+                                    TextColor="Gray" />
+                            </StackLayout>
+                            <StackLayout Margin="30,0,20,0" Spacing="0">
+                                <Border
+                                    Padding="4"
+                                    Background="Transparent"
+                                    Stroke="black"
+                                    StrokeShape="RoundRectangle 16"
+                                    StrokeThickness="1">
+                                    <Border
+                                        Padding="4"
+                                        Background="{Binding StatusColor}"
+                                        HeightRequest="16"
+                                        Stroke="{Binding StatusColor}"
+                                        StrokeShape="RoundRectangle 16"
+                                        StrokeThickness="1"
+                                        WidthRequest="16" />
+                                </Border>
+                                <Border
+                                    Background="{Binding StatusColor}"
+                                    HeightRequest="80"
+                                    HorizontalOptions="CenterAndExpand"
+                                    IsVisible="{Binding IsLineVisible}"
+                                    Stroke="{Binding StatusColor}"
+                                    StrokeShape="RoundRectangle 16"
+                                    StrokeThickness="1"
+                                    VerticalOptions="FillAndExpand"
+                                    WidthRequest="2" />
+                            </StackLayout>
+                            <StackLayout Margin="20,0">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Text="{Binding Name}"
+                                    TextColor="Black" />
+                                <Label
+                                    FontAttributes="None"
+                                    FontSize="12"
+                                    Text="{Binding Location}"
+                                    TextColor="Black" />
+                            </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        <ActivityIndicator
+            HeightRequest="45"
+            HorizontalOptions="Center"
+            IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
+            VerticalOptions="Center"
+            WidthRequest="45"
+            Color="#00C569" />
+    </Grid>
+
+</ContentPage>

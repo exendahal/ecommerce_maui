@@ -3,9 +3,9 @@ using EcommerceMAUI.ViewModel;
 
 namespace EcommerceMAUI.Views;
 
-public partial class CategoryDetail : ContentPage
+public partial class CategoryDetailView : ContentPage
 {
-    public CategoryDetail(CategoriesModel data)
+    public CategoryDetailView(CategoriesModel data)
     {
         InitializeComponent();
         BindingContext = new CategoryDetailViewModel(data);

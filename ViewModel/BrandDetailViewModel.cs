@@ -7,10 +7,10 @@ namespace EcommerceMAUI.ViewModel
 {
     public class BrandDetailViewModel : BaseViewModel
     {
-        public ICommand TapCommand { get; private set; }
-        public ICommand TapCommandMenu { get; private set; }
+        public ICommand SelectProductCommand { get; private set; }
+        public ICommand SelectMenuCommand { get; private set; }
 
-        public ObservableCollection<TabPageModel> _TabPageList = new ObservableCollection<TabPageModel>();
+        public ObservableCollection<TabPageModel> _TabPageList = [];
         public ObservableCollection<TabPageModel> TabPageList
         {
             get
@@ -24,7 +24,7 @@ namespace EcommerceMAUI.ViewModel
             }
         }
 
-        public ObservableCollection<ProductListModel> _AllProductDataList = new ObservableCollection<ProductListModel>();
+        public ObservableCollection<ProductListModel> _AllProductDataList = [];
         public ObservableCollection<ProductListModel> AllProductDataList
         {
             get
@@ -37,15 +37,31 @@ namespace EcommerceMAUI.ViewModel
                 OnPropertyChanged("AllProductDataList");
             }
         }
+
+        bool _IsLoaded = false;
+        public bool IsLoaded
+        {
+            get { return _IsLoaded; }
+            set
+            {
+                _IsLoaded = value;
+                OnPropertyChanged("IsLoaded");
+            }
+        }
         public BrandDetailViewModel()
         {
-            PopulateData();
-            TapCommand = new Command<ProductListModel>(SelectProduct);
-            TapCommandMenu = new Command<TabPageModel>(SelectMenu);
+            SelectProductCommand = new Command<ProductListModel>(SelectProduct);
+            SelectMenuCommand = new Command<TabPageModel>(SelectMenu);
+            InitializeAsync();
+        }
+
+        private async void InitializeAsync()
+        {
+            await PopulateData();
         }
         private async void SelectProduct(ProductListModel obj)
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetails());
+            await Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetailsView());
         }
 
         private void SelectMenu(TabPageModel obj)
@@ -63,9 +79,10 @@ namespace EcommerceMAUI.ViewModel
             }
 
         }
-        void PopulateData()
+        async Task PopulateData()
         {
-            AllProductDataList.Clear();
+            await Task.Delay(500);
+            //TODO: Remove Delay here and call API
             AllProductDataList.Add(new ProductListModel() { Name = "BeoPlay Speaker", BrandName = "Bang and Olufsen", Price = "$755", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image1.png" });
             AllProductDataList.Add(new ProductListModel() { Name = "Leather Wristwatch", BrandName = "Tag Heuer", Price = "$450", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image2.png" });
             AllProductDataList.Add(new ProductListModel() { Name = "Smart Bluetooth Speaker", BrandName = "Google LLC", Price = "$900", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image3.png" });
@@ -74,12 +91,12 @@ namespace EcommerceMAUI.ViewModel
             AllProductDataList.Add(new ProductListModel() { Name = "B&o Desk Lamp", BrandName = "Bang and Olufsen", Price = "$450", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image7.png" });
             AllProductDataList.Add(new ProductListModel() { Name = "BeoPlay Stand Speaker", BrandName = "Bang and Olufse", Price = "$3000", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image8.png" });
             AllProductDataList.Add(new ProductListModel() { Name = "Airpods", BrandName = "B&o Phone Case", Price = "$30", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image9.png" });
-
-            TabPageList.Clear();
+                      
             TabPageList.Add(new TabPageModel("All", 0, true));
             TabPageList.Add(new TabPageModel("Smart Bluetooth Speaker", 1, false));
             TabPageList.Add(new TabPageModel("Lamp", 2, false));
             TabPageList.Add(new TabPageModel("Airpods", 3, false));
+            IsLoaded = true;
         }
     }
 }

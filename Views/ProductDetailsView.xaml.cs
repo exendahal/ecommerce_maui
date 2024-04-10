@@ -2,10 +2,10 @@ using EcommerceMAUI.ViewModel;
 
 namespace EcommerceMAUI.Views;
 
-public partial class ProductDetails : ContentPage
+public partial class ProductDetailsView : ContentPage
 {
     ProductDetailsViewModel viewModel;
-    public ProductDetails()
+    public ProductDetailsView()
     {
         InitializeComponent();
         BindingContext = viewModel = new ProductDetailsViewModel();

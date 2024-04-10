@@ -9,10 +9,10 @@ namespace EcommerceMAUI.ViewModel
 {
     public class CategoryDetailViewModel : BaseViewModel
     {
-        public ICommand TapBackCommand { get; set; }
-        public ICommand TapCommand { get; private set; }
+        public ICommand BackCommand { get; set; }
+        public ICommand SelectProductCommand { get; private set; }
 
-        public ObservableCollection<ProductListModel> _AllProductDataList = new ObservableCollection<ProductListModel>();
+        public ObservableCollection<ProductListModel> _AllProductDataList = [];
         public ObservableCollection<ProductListModel> AllProductDataList
         {
             get
@@ -25,7 +25,7 @@ namespace EcommerceMAUI.ViewModel
                 OnPropertyChanged("AllProductDataList");
             }
         }
-        public ObservableCollection<ProductListModel> _FeaturedBrandsDataList = new ObservableCollection<ProductListModel>();
+        public ObservableCollection<ProductListModel> _FeaturedBrandsDataList = [];
         public ObservableCollection<ProductListModel> FeaturedBrandsDataList
         {
             get
@@ -46,17 +46,35 @@ namespace EcommerceMAUI.ViewModel
             }
         }
         CategoriesModel CategoryModel { get; set; }
+
+        bool _IsLoaded = false;
+
+        public bool IsLoaded
+        {
+            get { return _IsLoaded; }
+            set
+            {
+                _IsLoaded = value;
+                OnPropertyChanged("IsLoaded");
+            }
+        }
         public CategoryDetailViewModel(CategoriesModel data)
         {
-            PopulateData();
+            BackCommand = new Command<object>(GoBack);
+            SelectProductCommand = new Command<ProductListModel>(SelectProduct);
             CategoryModel = new CategoriesModel();
             CategoryModel = data;
-            TapBackCommand = new Command<object>(GoBack);
-            TapCommand = new Command<ProductListModel>(SelectProduct);
+            InitializeAsync();
         }
 
-        void PopulateData()
+        private async void InitializeAsync()
         {
+            await PopulateData();
+        }
+        async Task PopulateData()
+        {
+            await Task.Delay(500);
+            //TODO: Remove Delay here and call API
             AllProductDataList.Clear();
             AllProductDataList.Add(new ProductListModel() { Name = "BeoPlay Speaker", BrandName = "Bang and Olufsen", Price = "$755", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image1.png" });
             AllProductDataList.Add(new ProductListModel() { Name = "Leather Wristwatch", BrandName = "Tag Heuer", Price = "$450", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image2.png" });
@@ -71,7 +89,7 @@ namespace EcommerceMAUI.ViewModel
             FeaturedBrandsDataList.Add(new ProductListModel() { BrandName = "B&o", Details = "5693 Products", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Icon_Bo.png" });
             FeaturedBrandsDataList.Add(new ProductListModel() { BrandName = "Beats", Details = "1124 Products", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/beats.png" });
             FeaturedBrandsDataList.Add(new ProductListModel() { BrandName = "Apple Inc", Details = "5693 Products", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Icon_Apple.png" });
-
+            IsLoaded = true;
         }
 
         private async void GoBack(object obj)
@@ -80,7 +98,7 @@ namespace EcommerceMAUI.ViewModel
         }
         private async void SelectProduct(ProductListModel obj)
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetails());
+            await Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetailsView());
         }
 
     }
