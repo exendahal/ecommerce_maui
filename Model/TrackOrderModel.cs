@@ -17,56 +17,40 @@ namespace EcommerceMAUI.Model
             return Date;
         }
 
-        public class Track: BaseViewModel
+        public class Track : BaseViewModel
         {
-            public string _OrderId { get; set; }
+            private string _OrderId;
             public string OrderId
             {
-                get { return _OrderId; }
-                set
-                {
-                    _OrderId = value;
-                    OnPropertyChanged("OrderId");
-                }
+                get => _OrderId;
+                set => SetProperty(ref _OrderId, value);
             }
-            public string _Price { get; set; }
+            private string _Price;
             public string Price
             {
-                get { return _Price; }
-                set
-                {
-                    _Price = value;
-                    OnPropertyChanged("Price");
-                }
+                get => _Price;
+                set => SetProperty(ref _Price, value);
             }
-            public string _Status { get; set; }
+            private string _Status;
             public string Status
             {
-                get { return _Status; }
-                set
-                {
-                    _Status = value;
-                    OnPropertyChanged("Status");
-                }
+                get => _Status;
+                set => SetProperty(ref _Status, value);
             }
-            public List<ImageList> _Images { get; set; }
+            private List<ImageList> _Images;
             public List<ImageList> Images
             {
-                get { return _Images; }
-                set
-                {
-                    _Images = value;
-                    OnPropertyChanged("Images");
-                }
+                get => _Images;
+                set => SetProperty(ref _Images, value);
             }
             public int NumberOfItems { get { return Images.Count(); } }
-            public bool ImageOneVisibility { get { return NumberOfItems >= 1 ? true : false; } }
+            public bool ImageOneVisibility { get { return NumberOfItems >= 1; } }
             public string ImageOneUrl { get { return Images[0].ImageUrl; } }
-            public bool ImageTwoVisibility { get { return NumberOfItems >= 2 ? true : false; } }
+            public bool ImageTwoVisibility { get { return NumberOfItems >= 2; } }
             public string ImageTwoUrl { get { return Images[1].ImageUrl; } }
-            public bool ImageThreeVisibility { get { return NumberOfItems >= 3 ? true : false; } }
+            public bool ImageThreeVisibility { get { return NumberOfItems >= 3; } }
             public string ImageThreeUrl { get { return Images[2].ImageUrl; } }
-            public bool ImageMoreVisibility { get { return NumberOfItems >= 4 ? true : false; } }
+            public bool ImageMoreVisibility { get { return NumberOfItems >= 4; } }
             public int RemainingImages { get { return NumberOfItems - 3; } }
             public override string ToString()
             {

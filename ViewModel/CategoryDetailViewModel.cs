@@ -9,34 +9,18 @@ namespace EcommerceMAUI.ViewModel
 {
     public class CategoryDetailViewModel : BaseViewModel
     {
-        public ICommand BackCommand { get; set; }
-        public ICommand SelectProductCommand { get; private set; }
-
-        public ObservableCollection<ProductListModel> _AllProductDataList = [];
+        private ObservableCollection<ProductListModel> _AllProductDataList = [];
         public ObservableCollection<ProductListModel> AllProductDataList
         {
-            get
-            {
-                return _AllProductDataList;
-            }
-            set
-            {
-                _AllProductDataList = value;
-                OnPropertyChanged("AllProductDataList");
-            }
+            get => _AllProductDataList;
+            set => SetProperty(ref _AllProductDataList, value);
         }
-        public ObservableCollection<ProductListModel> _FeaturedBrandsDataList = [];
+
+        private ObservableCollection<ProductListModel> _FeaturedBrandsDataList = [];
         public ObservableCollection<ProductListModel> FeaturedBrandsDataList
         {
-            get
-            {
-                return _FeaturedBrandsDataList;
-            }
-            set
-            {
-                _FeaturedBrandsDataList = value;
-                OnPropertyChanged("FeaturedBrandsDataList");
-            }
+            get => _FeaturedBrandsDataList;
+            set => SetProperty(ref _FeaturedBrandsDataList, value);
         }
         public string PageTitle
         {
@@ -47,17 +31,14 @@ namespace EcommerceMAUI.ViewModel
         }
         CategoriesModel CategoryModel { get; set; }
 
-        bool _IsLoaded = false;
-
+        private bool _IsLoaded = false;
         public bool IsLoaded
         {
-            get { return _IsLoaded; }
-            set
-            {
-                _IsLoaded = value;
-                OnPropertyChanged("IsLoaded");
-            }
+            get => _IsLoaded;
+            set => SetProperty(ref _IsLoaded, value);
         }
+        public ICommand BackCommand { get; }
+        public ICommand SelectProductCommand { get; }
         public CategoryDetailViewModel(CategoriesModel data)
         {
             BackCommand = new Command<object>(GoBack);

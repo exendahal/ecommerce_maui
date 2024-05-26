@@ -11,15 +11,11 @@ namespace EcommerceMAUI.ViewModel
         public ICommand SelectOrderCommand { get; set; }
         public List<TrackOrderModel> TrackData { get; private set; } = new List<TrackOrderModel>();
 
-        bool _IsLoaded = false;
+        private bool _IsLoaded = false;
         public bool IsLoaded
         {
-            get { return _IsLoaded; }
-            set
-            {
-                _IsLoaded = value;
-                OnPropertyChanged("IsLoaded");
-            }
+            get => _IsLoaded;
+            set => SetProperty(ref _IsLoaded, value);
         }
         public OrderDetailsViewModel(bool emptyGroups = false)
         {

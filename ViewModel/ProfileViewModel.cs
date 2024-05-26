@@ -11,22 +11,18 @@ namespace EcommerceMAUI.ViewModel
         public string Email { get; set; } = "iamdavid@gmail.com";
         public string ImageUrl { get; set; } = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Avatar.png";
 
-        public List<MenuItems> _MenuItems = [];
+        private List<MenuItems> _MenuItems = [];
         public List<MenuItems> MenuItems
         {
-            get { return _MenuItems; }
-            set { _MenuItems = value; }
+            get => _MenuItems;
+            set => SetProperty(ref _MenuItems, value);
         }
 
-        bool _IsLoaded = false;
+        private bool _IsLoaded = false;
         public bool IsLoaded
         {
-            get { return _IsLoaded; }
-            set
-            {
-                _IsLoaded = value;
-                OnPropertyChanged("IsLoaded");
-            }
+            get => _IsLoaded;
+            set => SetProperty(ref _IsLoaded, value);
         }
         public ProfileViewModel()
         {
