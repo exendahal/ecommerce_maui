@@ -6,33 +6,21 @@ namespace EcommerceMAUI.ViewModel
 {
     public class CartViewModel : BaseViewModel
     {
-        public ICommand DeleteCommand { get; private set; }
-        public ICommand FavoriteCommand { get; private set; }
-
-        public ObservableCollection<ProductListModel> _AllProductDataList = [];
+        private ObservableCollection<ProductListModel> _AllProductDataList = [];
         public ObservableCollection<ProductListModel> AllProductDataList
         {
-            get
-            {
-                return _AllProductDataList;
-            }
-            set
-            {
-                _AllProductDataList = value;
-                OnPropertyChanged("AllProductDataList");
-            }
+            get => _AllProductDataList;
+            set => SetProperty(ref _AllProductDataList, value);
         }
 
-        bool _IsLoaded = false;
+        private bool _IsLoaded = false;
         public bool IsLoaded
         {
-            get { return _IsLoaded; }
-            set
-            {
-                _IsLoaded = value;
-                OnPropertyChanged("IsLoaded");
-            }
+            get => _IsLoaded;
+            set => SetProperty(ref _IsLoaded, value);
         }
+        public ICommand DeleteCommand { get; }
+        public ICommand FavoriteCommand { get; }
         public CartViewModel()
         {           
             DeleteCommand = new Command<ProductListModel>(DeleteProduct);

@@ -4,102 +4,53 @@ using EcommerceMAUI.ViewModel;
 namespace EcommerceMAUI.Model
 {
 
-    public class DeliveryStepsModel: BaseViewModel
+    public class DeliveryStepsModel : BaseViewModel
     {
-        public int Id { get; set; }    
-        public string _Name { get; set; }
+        public int Id { get; set; }
+        private string _Name;
         public string Name
         {
-            get
-            {
-                return _Name;
-            }
-            set
-            {
-                _Name = value;
-                OnPropertyChanged("Name");
-            }
-        }      
-        public string _Location { get; set; }
+            get => _Name;
+            set => SetProperty(ref _Name, value);
+        }
+        private string _Location;
         public string Location
         {
-            get
-            {
-                return _Location;
-            }
-            set
-            {
-                _Location = value;
-                OnPropertyChanged("Location");
-            }
-        }      
-        public string _DateMonth { get; set; }
+            get => _Location;
+            set => SetProperty(ref _Location, value);
+        }
+        private string _DateMonth;
         public string DateMonth
         {
-            get
-            {
-                return _DateMonth;
-            }
-            set
-            {
-                _DateMonth = value;
-                OnPropertyChanged("DateMonth");
-            }
+            get => _DateMonth;
+            set => SetProperty(ref _DateMonth, value);
         }
-        public string _Time { get; set; }
+        private string _Time;
         public string Time
         {
-            get
-            {
-                return _Time;
-            }
-            set
-            {
-                _Time = value;
-                OnPropertyChanged("Time");
-            }
+            get => _Time;
+            set => SetProperty(ref _Time, value);
         }
 
-        public bool _IsComplete { get; set; }
+        private bool _IsComplete;
         public bool IsComplete
         {
-            get
-            {
-                return _IsComplete;
-            }
-            set
-            {
-                _IsComplete = value;
-                OnPropertyChanged("IsComplete");
-            }
+            get => _IsComplete;
+            set => SetProperty(ref _IsComplete, value);
         }
 
-        public Color _StatusColor { get; set; }
+        private Color _StatusColor;
         public Color StatusColor
         {
-            get
-            {
-                return _StatusColor;
-            }
-            set
-            {
-                _StatusColor = value;
-                OnPropertyChanged("StatusColor");
-            }
+            get => _StatusColor;
+            set => SetProperty(ref _StatusColor, value);
         }
 
-        public bool _IsLineVisible { get; set; }
+        private bool _IsLineVisible;
         public bool IsLineVisible
         {
-            get
-            {
-                return _IsLineVisible;
-            }
-            set
-            {
-                _IsLineVisible = value;
-                OnPropertyChanged("IsLineVisible");
-            }
+            get => _IsLineVisible;
+            set => SetProperty(ref _IsLineVisible, value);
         }
 
     }
