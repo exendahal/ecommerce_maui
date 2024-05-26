@@ -10,34 +10,18 @@ namespace EcommerceMAUI.ViewModel
         public ICommand BackCommand { get; set; }
         public ICommand FavCommand { get; set; }
 
-        public bool _IsFooterVisible = false;
+        private bool _IsFooterVisible = false;
         public bool IsFooterVisible
         {
-            get
-            {
-                return _IsFooterVisible;
-            }
-            set
-            {
-                _IsFooterVisible = value;
-                OnPropertyChanged("IsFooterVisible");
-
-            }
+            get => _IsFooterVisible;
+            set => SetProperty(ref _IsFooterVisible, value);
         }
 
-        public bool _IsFavorite = false;
+        private bool _IsFavorite = false;
         public bool IsFavorite
         {
-            get
-            {
-                return _IsFavorite;
-            }
-            set
-            {
-                _IsFavorite = value;
-                OnPropertyChanged("IsFavorite");
-                OnPropertyChanged("FavStatusColor");
-            }
+            get => _IsFavorite;
+            set => SetProperty(ref _IsFavorite, value);
         }
         public Color FavStatusColor
         {
@@ -51,38 +35,26 @@ namespace EcommerceMAUI.ViewModel
             }
         }
 
-        public ProductDetail _ProductDetail = new();
+        private ProductDetail _ProductDetail = new();
         public ProductDetail ProductDetail
         {
-            get
-            {
-                return _ProductDetail;
-            }
-            set
-            {
-                _ProductDetail = value;
-                OnPropertyChanged("ProductDetail");
-            }
+            get => _ProductDetail;
+            set => SetProperty(ref _ProductDetail, value);
         }
 
-        bool _IsLoaded = false;
+        private bool _IsLoaded = false;
         public bool IsLoaded
         {
-            get { return _IsLoaded; }
-            set
-            {
-                _IsLoaded = value;
-                OnPropertyChanged("IsLoaded");
-            }
+            get => _IsLoaded;
+            set => SetProperty(ref _IsLoaded, value);
         }
         public ProductDetailsViewModel()
         {
             BackCommand = new Command<object>(GoBack);
             FavCommand = new Command<Color>(FavItem);
-            InitializeAsync();
         }
 
-        private async void InitializeAsync()
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             await PopulateData();
         }

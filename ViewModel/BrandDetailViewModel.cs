@@ -7,55 +7,35 @@ namespace EcommerceMAUI.ViewModel
 {
     public class BrandDetailViewModel : BaseViewModel
     {
-        public ICommand SelectProductCommand { get; private set; }
-        public ICommand SelectMenuCommand { get; private set; }
-
-        public ObservableCollection<TabPageModel> _TabPageList = [];
+        private ObservableCollection<TabPageModel> _TabPageList = [];
         public ObservableCollection<TabPageModel> TabPageList
         {
-            get
-            {
-                return _TabPageList;
-            }
-            set
-            {
-                _TabPageList = value;
-                OnPropertyChanged("TabPageList");
-            }
+            get => _TabPageList;
+            set => SetProperty(ref _TabPageList, value);
         }
 
-        public ObservableCollection<ProductListModel> _AllProductDataList = [];
+        private ObservableCollection<ProductListModel> _AllProductDataList = [];
         public ObservableCollection<ProductListModel> AllProductDataList
         {
-            get
-            {
-                return _AllProductDataList;
-            }
-            set
-            {
-                _AllProductDataList = value;
-                OnPropertyChanged("AllProductDataList");
-            }
+            get => _AllProductDataList;
+            set => SetProperty(ref _AllProductDataList, value);
         }
 
         bool _IsLoaded = false;
         public bool IsLoaded
         {
-            get { return _IsLoaded; }
-            set
-            {
-                _IsLoaded = value;
-                OnPropertyChanged("IsLoaded");
-            }
+            get => _IsLoaded;
+            set => SetProperty(ref _IsLoaded, value);
         }
+        public ICommand SelectProductCommand { get; }
+        public ICommand SelectMenuCommand { get; }
+
         public BrandDetailViewModel()
         {
-            SelectProductCommand = new Command<ProductListModel>(SelectProduct);
-            SelectMenuCommand = new Command<TabPageModel>(SelectMenu);
-            InitializeAsync();
+            SelectProductCommand = new DelegateCommand<ProductListModel>(SelectProduct);
+            SelectMenuCommand = new DelegateCommand<TabPageModel>(SelectMenu);
         }
-
-        private async void InitializeAsync()
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             await PopulateData();
         }

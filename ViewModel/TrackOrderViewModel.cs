@@ -18,24 +18,18 @@ namespace EcommerceMAUI.ViewModel
                 return TrackOrderData.OrderId;
             }
         }
-        bool _IsLoaded = false;
+        private bool _IsLoaded = false;
         public bool IsLoaded
         {
-            get { return _IsLoaded; }
-            set
-            {
-                _IsLoaded = value;
-                OnPropertyChanged("IsLoaded");
-            }
+            get => _IsLoaded;
+            set => SetProperty(ref _IsLoaded, value);
         }
         public TrackOrderViewModel(Track data, bool emptyGroups = false)
         {
             TrackOrderData = data;
             BackCommand = new Command<object>(GoBack);
-            InitializeAsync();
         }
-
-        private async void InitializeAsync()
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             await PopulateData();
         }

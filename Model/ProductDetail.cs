@@ -4,107 +4,54 @@ namespace EcommerceMAUI.Model
 {
     public class ProductDetail: BaseViewModel
     {
-        public string _ImageUrl { get; set; }
+        private string _ImageUrl;
         public string ImageUrl
         {
-            get
-            {
-                return _ImageUrl;
-            }
-            set
-            {
-                _ImageUrl = value;
-                OnPropertyChanged("ImageUrl");
-            }
+            get => _ImageUrl;
+            set => SetProperty(ref _ImageUrl, value);
         }
 
-        public string _Name { get; set; }
-
+        private string _Name;
         public string Name
         {
-            get
-            {
-                return _Name;
-            }
-            set
-            {
-                _Name = value;
-                OnPropertyChanged("Name");
-            }
+            get => _Name;
+            set => SetProperty(ref _Name, value);
         }
-        public List<string> _Sizes { get; set; }
 
+        private List<string> _Sizes;
         public List<string> Sizes
         {
-            get
-            {
-                return _Sizes;
-            }
-            set
-            {
-                _Sizes = value;
-                OnPropertyChanged("Sizes");
-            }
+            get => _Sizes;
+            set => SetProperty(ref _Sizes, value);
         }
 
-        public List<ReviewModel> _Reviews { get; set; }
+        private List<ReviewModel> _Reviews;
 
         public List<ReviewModel> Reviews
         {
-            get
-            {
-                return _Reviews;
-            }
-            set
-            {
-                _Reviews = value;
-                OnPropertyChanged("Reviews");
-            }
+            get => _Reviews;
+            set => SetProperty(ref _Reviews, value);
         }
 
-        public Color _Colors { get; set; }
-
+        public Color _Colors;
         public Color Colors
         {
-            get
-            {
-                return _Colors;
-            }
-            set
-            {
-                _Colors = value;
-                OnPropertyChanged("Colors");
-            }
+            get => _Colors;
+            set => SetProperty(ref _Colors, value);
         }
 
-        public string _Details { get; set; }
-
+        public string _Details;
         public string Details
         {
-            get
-            {
-                return _Details;
-            }
-            set
-            {
-                _Details = value;
-                OnPropertyChanged("Details");
-            }
+            get => _Details;
+            set => SetProperty(ref _Details, value);
         }
 
-        public double _Price { get; set; }
-
+        private double _Price;
         public double Price
         {
-            get
-            {
-                return _Price;
-            }
-            set
-            {
-                _Price = value;
-                OnPropertyChanged("Price");
-            }
+            get => _Price;
+            set => SetProperty(ref _Price, value);
         }
 
 

@@ -13,18 +13,12 @@ namespace EcommerceMAUI.Model
         }
         public string Name { private set; get; }
         public int Id { private set; get; }
-        public bool _IsSelected = false;
+
+        private bool _IsSelected = false;
         public bool IsSelected
         {
-            get
-            {
-                return _IsSelected;
-            }
-            set
-            {
-                _IsSelected = value;
-                OnPropertyChanged("IsSelected");
-            }
+            get => _IsSelected;
+            set => SetProperty(ref _IsSelected, value);
         }
 
         public override string ToString()

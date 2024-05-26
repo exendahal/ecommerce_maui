@@ -8,74 +8,51 @@ namespace EcommerceMAUI.ViewModel
 {
     public class HomePageViewModel : BaseViewModel
     {
-        public ICommand SelectProductCommand { get; private set; }
-        public ICommand BrandTapCommand { get; private set; }
-        public Command<object> RecommendedTapCommand { get; private set; }
-        public ICommand CategoryTapCommand { get; private set; }
-
-        public ObservableCollection<CategoriesModel> _CategoriesDataList = [];
+       
+        private ObservableCollection<CategoriesModel> _CategoriesDataList = [];
         public ObservableCollection<CategoriesModel> CategoriesDataList
         {
-            get
-            {
-                return _CategoriesDataList;
-            }
-            set
-            {
-                _CategoriesDataList = value;
-                OnPropertyChanged("CategoriesDataList");
-            }
+            get => _CategoriesDataList;
+            set => SetProperty(ref _CategoriesDataList, value);
+
         }
 
-        public ObservableCollection<ProductListModel> _BestSellingDataList = [];
+        private ObservableCollection<ProductListModel> _BestSellingDataList = [];
         public ObservableCollection<ProductListModel> BestSellingDataList
         {
-            get
-            {
-                return _BestSellingDataList;
-            }
-            set
-            {
-                _BestSellingDataList = value;
-                OnPropertyChanged("BestSellingDataList");
-            }
+            get => _BestSellingDataList;
+            set => SetProperty(ref _BestSellingDataList, value);
         }
 
-        public ObservableCollection<ProductListModel> _FeaturedBrandsDataList = [];
+        private ObservableCollection<ProductListModel> _FeaturedBrandsDataList = [];
         public ObservableCollection<ProductListModel> FeaturedBrandsDataList
         {
-            get { return _FeaturedBrandsDataList;}
-            set
-            {
-                _FeaturedBrandsDataList = value;
-                OnPropertyChanged("FeaturedBrandsDataList");
-            }
+            get => _FeaturedBrandsDataList;
+            set => SetProperty(ref _FeaturedBrandsDataList, value);
         }
 
-        bool _IsLoaded = false;
-
+        private bool _IsLoaded = false;
         public bool IsLoaded
         {
-            get { return _IsLoaded; }
-            set 
-            {
-                _IsLoaded = value;               
-                OnPropertyChanged("IsLoaded");
-            }
+            get => _IsLoaded;
+            set => SetProperty(ref _IsLoaded, value);
         }
+        public ICommand SelectProductCommand { get; }
+        public ICommand BrandTapCommand { get; }
+        public ICommand RecommendedTapCommand { get; }
+        public ICommand CategoryTapCommand { get; }
+
         public HomePageViewModel()
         {
-            SelectProductCommand = new Command<ProductListModel>(SelectProduct);
-            RecommendedTapCommand = new Command<object>(SelectRecommend);
-            CategoryTapCommand = new Command<CategoriesModel>(SelectCategory);
-            BrandTapCommand = new Command<ProductListModel>(SelectBrand);
-            InitializeAsync();
+            SelectProductCommand = new DelegateCommand<ProductListModel>(SelectProduct);
+            RecommendedTapCommand = new DelegateCommand(SelectRecommend);
+            CategoryTapCommand = new DelegateCommand<CategoriesModel>(SelectCategory);
+            BrandTapCommand = new DelegateCommand<ProductListModel>(SelectBrand);
         }
-
-        private async void InitializeAsync()
-        {            
-            await PopulateData(); 
-        }
+        public override async void OnNavigatedTo(INavigationParameters parameters)
+        {
+            await PopulateData();
+        }        
         async Task PopulateData()
         {
             await Task.Delay(500);
@@ -109,9 +86,9 @@ namespace EcommerceMAUI.ViewModel
 
         private async void SelectCategory(CategoriesModel obj)
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new CategoryDetailView(obj));
+            await Application.Current.MainPage.Navigation.PushModalAsync(new CategoryDetailView());
         }
-        private async void SelectRecommend(object obj)
+        private async void SelectRecommend()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new AllProductView());
         }

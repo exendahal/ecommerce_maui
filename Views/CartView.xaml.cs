@@ -7,7 +7,6 @@ public partial class CartView : ContentPage
     public CartView()
     {
         InitializeComponent();
-        BindingContext = new CartViewModel();
     }
     private void SwipeItem_Invoked(object sender, EventArgs e)
     {

@@ -1,16 +1,31 @@
 ﻿
-using System.ComponentModel;
-
 namespace EcommerceMAUI.ViewModel
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : BindableBase, INavigationAware, IActiveAware
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
+        private bool _isActive;
+        public event EventHandler IsActiveChanged;
+
+        public bool IsActive
         {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
+            get { return _isActive; }
+            set { SetProperty(ref _isActive, value, () => OnActiveChanged()); }
         }
+
+        public virtual void OnNavigatedFrom(INavigationParameters parameters)
+        {
+
+        }
+        public virtual void OnNavigatedTo(INavigationParameters parameters)
+        {
+
+        }
+        public virtual void OnActiveChanged()
+        {
+
+        }
+
+
+
     }
 }

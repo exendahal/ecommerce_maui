@@ -1,13 +1,10 @@
-using EcommerceMAUI.ViewModel;
-using static EcommerceMAUI.Model.TrackOrderModel;
 
 namespace EcommerceMAUI.Views;
 
 public partial class TrackOrderView : ContentPage
 {
-    public TrackOrderView(Track data)
+    public TrackOrderView()
     {
         InitializeComponent();
-        BindingContext = new TrackOrderViewModel(data);
     }
 }
