@@ -33,12 +33,12 @@ namespace EcommerceMAUI.ViewModel
         {
             SelectProductCommand = new Command<ProductListModel>(SelectProduct);
             SelectMenuCommand = new Command<TabPageModel>(SelectMenu);
-            InitializeAsync();
+            _ = InitializeAsync();
         }
 
-        private async void InitializeAsync()
+        private async Task InitializeAsync()
         {
-            await PopulateData();
+            await PopulateDataAsync();
         }
         private async void SelectProduct(ProductListModel obj)
         {
@@ -60,7 +60,7 @@ namespace EcommerceMAUI.ViewModel
             }
 
         }
-        async Task PopulateData()
+        async Task PopulateDataAsync()
         {
             await Task.Delay(500);
             //TODO: Remove Delay here and call API

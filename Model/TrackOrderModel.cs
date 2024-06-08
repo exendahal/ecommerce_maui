@@ -37,7 +37,7 @@ namespace EcommerceMAUI.Model
                 get => _Status;
                 set => SetProperty(ref _Status, value);
             }
-            private List<ImageList> _Images;
+            private List<ImageList> _Images = [];
             public List<ImageList> Images
             {
                 get => _Images;

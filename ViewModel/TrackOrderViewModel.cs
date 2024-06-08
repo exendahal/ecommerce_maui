@@ -28,14 +28,14 @@ namespace EcommerceMAUI.ViewModel
         {
             TrackOrderData = data;
             BackCommand = new Command<object>(GoBack);
-            InitializeAsync();
+            _ = InitializeAsync();
         }
 
-        private async void InitializeAsync()
+        private async Task InitializeAsync()
         {
-            await PopulateData();
+            await PopulateDataAsync();
         }
-        async Task PopulateData()
+        async Task PopulateDataAsync()
         {
             await Task.Delay(500);
             //TODO: Remove Delay here and call API if needed
