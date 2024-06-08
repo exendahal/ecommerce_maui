@@ -25,14 +25,14 @@ namespace EcommerceMAUI.ViewModel
         {           
             DeleteCommand = new Command<ProductListModel>(DeleteProduct);
             FavoriteCommand = new Command<ProductListModel>(FavoriteProduct);
-            InitializeAsync();
+            _ = InitializeAsync();
         }
 
-        private async void InitializeAsync()
+        private async Task InitializeAsync()
         {
-            await PopulateData();
+            await PopulateDataAsync();
         }
-        async Task PopulateData()
+        async Task PopulateDataAsync()
         {
             await Task.Delay(500);
             //TODO: Remove Delay here and call API

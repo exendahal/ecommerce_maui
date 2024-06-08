@@ -24,14 +24,14 @@ namespace EcommerceMAUI.ViewModel
         public AllProductViewModel()
         {
             SelectProductCommand = new Command<ProductListModel>(SelectProduct);
-            InitializeAsync();
+            _ = InitializeAsync();
         }
 
-        private async void InitializeAsync()
+        private async Task InitializeAsync()
         {
-            await PopulateData();
+            await PopulateDataAsync();
         }
-        async Task PopulateData()
+        async Task PopulateDataAsync()
         {
             await Task.Delay(500);
             //TODO: Remove Delay here and call API

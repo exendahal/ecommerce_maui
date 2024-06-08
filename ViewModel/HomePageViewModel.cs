@@ -46,15 +46,16 @@ namespace EcommerceMAUI.ViewModel
             RecommendedTapCommand = new Command<object>(SelectRecommend);
             CategoryTapCommand = new Command<CategoriesModel>(SelectCategory);
             BrandTapCommand = new Command<ProductListModel>(SelectBrand);
-            InitializeAsync();
+            _ = InitializeAsync();
         }
 
-        private async void InitializeAsync()
+        private async Task InitializeAsync()
         {            
-            await PopulateData(); 
+            await PopulateDataAsync(); 
         }
-        async Task PopulateData()
+        async Task PopulateDataAsync()
         {
+            // Delay added to display loading, remove during api call
             await Task.Delay(500);
             //TODO: Remove Delay here and call API
             CategoriesDataList.Add(new CategoriesModel() { CategoryID = 1, CategoryName = "Men", Icon = "\ufb22" });

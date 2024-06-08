@@ -6,9 +6,7 @@ namespace EcommerceMAUI.ViewModel
     public class ProductDetailsViewModel : BaseViewModel
     {
         double lastScrollIndex;
-        double currentScrollIndex;
-        public ICommand BackCommand { get; set; }
-        public ICommand FavCommand { get; set; }
+        double currentScrollIndex;       
 
         private bool _IsFooterVisible = false;
         public bool IsFooterVisible
@@ -42,22 +40,25 @@ namespace EcommerceMAUI.ViewModel
             set => SetProperty(ref _ProductDetail, value);
         }
 
-        private bool _IsLoaded = false;
+        private bool _IsLoaded;
         public bool IsLoaded
         {
             get => _IsLoaded;
             set => SetProperty(ref _IsLoaded, value);
         }
+        public ICommand BackCommand { get; set; }
+        public ICommand FavCommand { get; set; }
+
         public ProductDetailsViewModel()
         {
             BackCommand = new Command<object>(GoBack);
             FavCommand = new Command<Color>(FavItem);
-            InitializeAsync();
+            _ = InitializeAsync();
         }
 
-        private async void InitializeAsync()
+        private async Task InitializeAsync()
         {
-            await PopulateData();
+            await PopulateDataAsync();
         }
         private async void GoBack(object obj)
         {
@@ -81,7 +82,7 @@ namespace EcommerceMAUI.ViewModel
             }
             lastScrollIndex = currentScrollIndex;
         }
-        async Task PopulateData()
+        async Task PopulateDataAsync()
         {
             await Task.Delay(500);
             //TODO: Remove Delay here and call API
