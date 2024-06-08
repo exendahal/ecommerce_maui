@@ -51,11 +51,8 @@
             <CollectionView Margin="20" ItemsSource="{Binding TrackStatusData}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout
-                            HorizontalOptions="CenterAndExpand"
-                            Orientation="Horizontal"
-                            Spacing="0">
-                            <StackLayout>
+                        <Grid ColumnDefinitions="*,12,Auto,12,*">
+                            <StackLayout Grid.Column="0">
                                 <Label
                                     FontAttributes="Bold"
                                     FontSize="18"
@@ -67,11 +64,11 @@
                                     Text="{Binding Time}"
                                     TextColor="Gray" />
                             </StackLayout>
-                            <StackLayout Margin="30,0,20,0" Spacing="0">
+                            <StackLayout Grid.Column="2" Spacing="0">
                                 <Border
                                     Padding="4"
                                     Background="Transparent"
-                                    Stroke="black"
+                                    Stroke="Black"
                                     StrokeShape="RoundRectangle 16"
                                     StrokeThickness="1">
                                     <Border
@@ -94,7 +91,7 @@
                                     VerticalOptions="FillAndExpand"
                                     WidthRequest="2" />
                             </StackLayout>
-                            <StackLayout Margin="20,0">
+                            <StackLayout Grid.Column="4" Margin="20,0">
                                 <Label
                                     FontAttributes="Bold"
                                     FontSize="16"
@@ -106,7 +103,7 @@
                                     Text="{Binding Location}"
                                     TextColor="Black" />
                             </StackLayout>
-                        </StackLayout>
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

@@ -36,22 +36,29 @@ namespace EcommerceMAUI.Model
         public bool IsComplete
         {
             get => _IsComplete;
-            set => SetProperty(ref _IsComplete, value);
+            set
+            {
+                if (_IsComplete != value)
+                {
+                    _IsComplete = value;
+                    OnPropertyChanged(nameof(IsComplete));
+                    OnPropertyChanged(nameof(StatusColor));
+                    OnPropertyChanged(nameof(IsLineVisible));
+                }
+            }
+
         }
 
-        private Color _StatusColor;
         public Color StatusColor
         {
-            get => _StatusColor;
-            set => SetProperty(ref _StatusColor, value);
+            get { return IsComplete ? Color.FromArgb("#00C569") : Color.FromArgb("#C8C8C8"); }
         }
 
-        private bool _IsLineVisible;
+        private bool _IsLineVisible = true;
         public bool IsLineVisible
         {
             get => _IsLineVisible;
             set => SetProperty(ref _IsLineVisible, value);
         }
-
     }
 }
