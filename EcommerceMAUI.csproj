@@ -114,11 +114,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.20" />
+	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.40" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.20" />
+	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.40" />
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionEcommerceMAUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>
