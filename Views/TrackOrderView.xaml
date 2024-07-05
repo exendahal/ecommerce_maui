@@ -5,11 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
     xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
-    Title="{Binding PageTitle}"
-    BackgroundColor="White"
-    Shell.BackgroundColor="#00C569"
-    Shell.ForegroundColor="Black"
-    Shell.TitleColor="White">
+    Title="{Binding PageTitle}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
@@ -114,7 +110,7 @@
             IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
             VerticalOptions="Center"
             WidthRequest="45"
-            Color="#00C569" />
+            Color="{StaticResource Primary}" />
     </Grid>
 
 </ContentPage>

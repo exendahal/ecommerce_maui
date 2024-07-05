@@ -7,7 +7,6 @@
     xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
     x:Name="HomePage"
     Title="Home Page"
-    BackgroundColor="White"
     Shell.NavBarIsVisible="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -52,7 +51,7 @@
             <Border
                 Margin="6,0"
                 Padding="0"
-                Background="#00C569"
+                Background="{StaticResource Primary}"
                 HeightRequest="40"
                 HorizontalOptions="End"
                 StrokeShape="RoundRectangle 20"
@@ -200,7 +199,7 @@
                                                 FontSize="16"
                                                 HorizontalOptions="Center"
                                                 Text="{Binding Price}"
-                                                TextColor="#00C569"
+                                                TextColor="{StaticResource Primary}"
                                                 VerticalOptions="Start" />
                                         </StackLayout>
                                         <StackLayout.GestureRecognizers>
@@ -335,7 +334,7 @@
                                                 FontSize="16"
                                                 HorizontalOptions="Center"
                                                 Text="{Binding Price}"
-                                                TextColor="#00C569"
+                                                TextColor="{StaticResource Primary}"
                                                 VerticalOptions="Start" />
                                         </StackLayout>
                                         <StackLayout.GestureRecognizers>
@@ -354,7 +353,7 @@
                 IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
                 VerticalOptions="Center"
                 WidthRequest="45"
-                Color="#00C569" />
+                Color="{StaticResource Primary}" />
         </Grid>
     </Grid>
 </ContentPage>

@@ -4,10 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:EcommerceMAUI.Views"
-    Shell.FlyoutBehavior="Disabled"
-    Shell.TabBarBackgroundColor="White"
-    Shell.TabBarTitleColor="Green"
-    Shell.TabBarUnselectedColor="Black">
+    Shell.FlyoutBehavior="Disabled">
     <TabBar>
         <Tab Title="Explore">
             <Tab.Icon>

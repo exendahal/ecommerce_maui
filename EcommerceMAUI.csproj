@@ -78,6 +78,9 @@
 	  <Compile Update="Views\ProfileView.xaml.cs">
 	    <DependentUpon>ProfileView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\RegisterView.xaml.cs">
+	    <DependentUpon>RegisterView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\TrackOrderView.xaml.cs">
 	    <DependentUpon>TrackOrderView.xaml</DependentUpon>
 	  </Compile>
@@ -99,6 +102,9 @@
 	  <MauiXaml Update="Views\HomePageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\LoginView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\OrderDetailsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -108,17 +114,23 @@
 	  <MauiXaml Update="Views\ProfileView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\RegisterView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\TrackOrderView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\VerificationView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.40" />
+	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.61" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.40" />
+	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.61" />
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionEcommerceMAUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>

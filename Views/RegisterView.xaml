@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.RegisterView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="RegisterView">
+    <ScrollView>
+        <VerticalStackLayout Padding="18,82" Spacing="10">
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    Text="Sign Up"
+                    VerticalOptions="Center" />
+
+                <Button
+                    Command="{Binding LoginCommand}"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HorizontalOptions="EndAndExpand"
+                    Text="Login" />
+            </StackLayout>
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="14"
+                HorizontalOptions="Start"
+                Text="Register to continue"
+                TextColor="#929292"
+                VerticalOptions="Center" />
+            <StackLayout Margin="0,50,0,0" Spacing="40">
+                <StackLayout Spacing="0">
+                    <Label
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="Name"
+                        TextColor="#929292"
+                        VerticalOptions="Center" />
+                    <Entry
+                        FontSize="18"
+                        Placeholder="Enter Name"
+                        Text="{Binding Name}" />
+                </StackLayout>
+                <StackLayout Spacing="0">
+                    <Label
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="Email"
+                        TextColor="#929292"
+                        VerticalOptions="Center" />
+                    <Entry
+                        FontSize="18"
+                        Placeholder="Enter Email"
+                        Text="{Binding Email}" />
+                </StackLayout>
+                <StackLayout Margin="0" Spacing="0">
+                    <Label
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="Password"
+                        TextColor="#929292"
+                        VerticalOptions="Center" />
+                    <Entry
+                        FontSize="18"
+                        IsPassword="True"
+                        Placeholder="Enter Password"
+                        Text="{Binding Password}" />
+                </StackLayout>
+            </StackLayout>
+            <Button
+                Margin="0,60"
+                Padding="16"
+                Background="{DynamicResource Primary}"
+                Command="{Binding RegisterCommand}"
+                CornerRadius="4"
+                Text="SIGN UP"
+                TextColor="{DynamicResource White}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
