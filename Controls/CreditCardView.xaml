@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Frame
+    x:Class="EcommerceMAUI.Controls.CreditCardView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="CreditCardViewFrame"
+    Padding="20"
+    BackgroundColor="{StaticResource Default}"
+    CornerRadius="8"
+    HorizontalOptions="Center"
+    MinimumWidthRequest="360"
+    VerticalOptions="Start">
+
+    <Frame.Resources>
+        <Style x:Key="HeaderLabelStyle" TargetType="Label">
+            <Setter Property="LineBreakMode" Value="TailTruncation" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="TextColor" Value="{StaticResource HeaderLabelTextColor}" />
+        </Style>
+
+        <Style x:Key="InfoLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="TextColor" Value="{StaticResource InfoLabelTextColor}" />
+        </Style>
+
+        <Style x:Key="CreditCardImageLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="48" />
+            <Setter Property="TextColor" Value="#FFFFFF" />
+            <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+        </Style>
+    </Frame.Resources>
+
+    <Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="30"
+        RowDefinitions="Auto,Auto,40,Auto,40"
+        RowSpacing="0">
+
+        <Label
+            x:Name="CreditCardImageLabel"
+            Grid.Row="0"
+            Grid.Column="1"
+            Style="{StaticResource CreditCardImageLabelStyle}" />
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Style="{StaticResource HeaderLabelStyle}"
+            Text="Card Number" />
+
+        <Label
+            x:Name="CreditCardNumber"
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Style="{StaticResource InfoLabelStyle}" />
+
+        <Label
+            Grid.Row="3"
+            Grid.Column="0"
+            Style="{StaticResource HeaderLabelStyle}"
+            Text="Expiration" />
+
+        <Label
+            x:Name="ExpirationDateLabel"
+            Grid.Row="4"
+            Grid.Column="0"
+            Style="{StaticResource InfoLabelStyle}" />
+
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            HorizontalOptions="End"
+            Style="{StaticResource HeaderLabelStyle}"
+            Text="CVC" />
+
+        <Label
+            x:Name="CardValidationCodeLabel"
+            Grid.Row="4"
+            Grid.Column="1"
+            HorizontalOptions="End"
+            Style="{StaticResource InfoLabelStyle}" />
+
+    </Grid>
+</Frame>
