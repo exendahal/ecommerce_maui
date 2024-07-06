@@ -36,7 +36,7 @@ namespace EcommerceMAUI.ViewModel
         }
         private async void TrackCommand(object obj)
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new TrackOrderView((Track)obj));
+            await Application.Current.MainPage.Navigation.PushAsync(new TrackOrderView((Track)obj));
         }
         private async void GoBack(object obj)
         {

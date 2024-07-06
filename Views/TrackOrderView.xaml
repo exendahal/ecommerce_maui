@@ -12,38 +12,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid>
-        <StackLayout IsVisible="{Binding IsLoaded}">
-            <StackLayout
-                Margin="6,12"
-                HeightRequest="42"
-                Orientation="Horizontal">
-                <Border
-                    Padding="0"
-                    Background="transparent"
-                    HeightRequest="40"
-                    StrokeShape="RoundRectangle 20,20,20,20"
-                    StrokeThickness="0"
-                    WidthRequest="40">
-                    <Label
-                        FontFamily="MaterialIcon"
-                        FontSize="26"
-                        HorizontalOptions="Center"
-                        Text="&#xf141;"
-                        TextColor="Black"
-                        VerticalOptions="Center" />
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackCommand}" />
-                    </Border.GestureRecognizers>
-                </Border>
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="18"
-                    HorizontalOptions="CenterAndExpand"
-                    HorizontalTextAlignment="Center"
-                    Text="{Binding PageTitle}"
-                    TextColor="Black"
-                    VerticalOptions="CenterAndExpand" />
-            </StackLayout>
+        <StackLayout Margin="6,12" IsVisible="{Binding IsLoaded}">
+
             <CollectionView Margin="20" ItemsSource="{Binding TrackStatusData}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

@@ -38,5 +38,16 @@
     <Color x:Key="Blue100Accent">#3E8EED</Color>
     <Color x:Key="Blue200Accent">#72ACF1</Color>
     <Color x:Key="Blue300Accent">#A7CBF6</Color>
+    <Color x:Key="AmericanExpress">#3177CB</Color>
+    <Color x:Key="DinersClub">#1B4F8F</Color>
+    <Color x:Key="Discover">#E9752F</Color>
+    <Color x:Key="JCB">#9E2911</Color>
+    <Color x:Key="MasterCard">#394854</Color>
+    <Color x:Key="Visa">#2867BA</Color>
+    <Color x:Key="Default">#75849D</Color>
+
+    <Color x:Key="HeaderLabelTextColor">#BCBCBC</Color>
+    <Color x:Key="InfoLabelTextColor">#FFFFFF</Color>
+
 
 </ResourceDictionary>
