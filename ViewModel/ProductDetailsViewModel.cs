@@ -21,8 +21,9 @@ namespace EcommerceMAUI.ViewModel
             get => _IsFavorite;
             set
             {
-                if (SetProperty(ref _IsFavorite, value))
+                if ( _IsFavorite != value)
                 {
+                    _IsFavorite = value;
                     OnPropertyChanged(nameof(IsFavorite));
                     OnPropertyChanged(nameof(FavStatusColor));
                 }
