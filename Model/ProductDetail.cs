@@ -33,14 +33,14 @@ namespace EcommerceMAUI.Model
             set => SetProperty(ref _Reviews, value);
         }
 
-        public Color _Colors;
+        private Color _Colors;
         public Color Colors
         {
             get => _Colors;
             set => SetProperty(ref _Colors, value);
         }
 
-        public string _Details;
+        private string _Details;
         public string Details
         {
             get => _Details;
@@ -53,7 +53,6 @@ namespace EcommerceMAUI.Model
             get => _Price;
             set => SetProperty(ref _Price, value);
         }
-
 
     }
 
