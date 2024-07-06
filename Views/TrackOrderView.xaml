@@ -25,7 +25,7 @@
                     StrokeThickness="0"
                     WidthRequest="40">
                     <Label
-                        FontFamily="icon"
+                        FontFamily="MaterialIcon"
                         FontSize="26"
                         HorizontalOptions="Center"
                         Text="&#xf141;"

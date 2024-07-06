@@ -13,7 +13,7 @@
     </ContentPage.Resources>
     <Grid>
         <Grid IsVisible="{Binding IsLoaded}">
-            <ScrollView Scrolled="ScrollView_Scrolled">
+            <ScrollView Scrolled="ScrollViewScrolled">
                 <StackLayout IsClippedToBounds="True">
                     <Image
                         Aspect="AspectFill"
@@ -185,7 +185,7 @@
                     WidthRequest="40">
 
                     <Label
-                        FontFamily="icon"
+                        FontFamily="MaterialIcon"
                         FontSize="26"
                         HorizontalOptions="Center"
                         Text="&#xf141;"
@@ -207,7 +207,7 @@
                     WidthRequest="40">
 
                     <Label
-                        FontFamily="icon"
+                        FontFamily="MaterialIcon"
                         FontSize="26"
                         HorizontalOptions="Center"
                         Text="&#xf4d2;"

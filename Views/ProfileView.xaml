@@ -83,7 +83,7 @@
                                 </LinearGradientBrush>
                             </Border.Background>
                             <Label
-                                FontFamily="icon"
+                                FontFamily="MaterialIcon"
                                 FontSize="22"
                                 HorizontalOptions="Center"
                                 Text="{Binding Body}"
@@ -105,7 +105,7 @@
                         <Label
                             Grid.Column="2"
                             FontAttributes="Bold"
-                            FontFamily="icon"
+                            FontFamily="MaterialIcon"
                             FontSize="16"
                             HorizontalOptions="End"
                             HorizontalTextAlignment="Center"

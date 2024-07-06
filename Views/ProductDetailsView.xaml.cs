@@ -11,7 +11,7 @@ public partial class ProductDetailsView : ContentPage
         BindingContext = viewModel = new ProductDetailsViewModel();
     }
 
-    private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
+    private void ScrollViewScrolled(object sender, ScrolledEventArgs e)
     {
         viewModel.ChageFooterVisibility(e.ScrollY);
     }

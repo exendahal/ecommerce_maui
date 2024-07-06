@@ -92,7 +92,7 @@
                         Orientation="Horizontal"
                         Spacing="20">
                         <Label
-                            FontFamily="icon"
+                            FontFamily="Material-Icon"
                             FontSize="20"
                             HorizontalOptions="Center"
                             Text="&#xf20c;"
@@ -119,7 +119,7 @@
                         Orientation="Horizontal"
                         Spacing="20">
                         <Label
-                            FontFamily="icon"
+                            FontFamily="Material-Icon"
                             FontSize="20"
                             HorizontalOptions="Center"
                             Text="&#xf2ad;"
@@ -140,5 +140,4 @@
 
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
