@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.LoginView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
+    Title="Login">
+    <ScrollView>
+        <VerticalStackLayout Padding="18,82" Spacing="10">
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    Text="Welcome,"
+                    VerticalOptions="Center" />
+
+                <Button
+                    Command="{Binding RegisterCommand}"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HorizontalOptions="EndAndExpand"
+                    Text="Sign Up" />
+            </StackLayout>
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="14"
+                HorizontalOptions="Start"
+                Text="Sign in to Continue"
+                TextColor="#929292"
+                VerticalOptions="Center" />
+            <StackLayout Margin="0,50,0,0" Spacing="40">
+                <StackLayout Spacing="0">
+                    <Label
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="Email"
+                        TextColor="#929292"
+                        VerticalOptions="Center" />
+                    <Entry
+                        FontSize="18"
+                        Placeholder="Enter Email"
+                        Text="{Binding Email}" />
+                </StackLayout>
+                <StackLayout Margin="0" Spacing="0">
+                    <Label
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="Password"
+                        TextColor="#929292"
+                        VerticalOptions="Center" />
+                    <Entry
+                        FontSize="18"
+                        IsPassword="True"
+                        Placeholder="Enter Password"
+                        Text="{Binding Password}" />
+                </StackLayout>
+
+            </StackLayout>
+            <Button
+                Command="{Binding ForgotPasswordCommand}"
+                FontSize="14"
+                HorizontalOptions="EndAndExpand"
+                Text="Forgot Password?"
+                TextColor="{DynamicResource Black}" />
+
+            <Button
+                Padding="16"
+                Background="{DynamicResource Primary}"
+                Command="{Binding LoginCommand}"
+                CornerRadius="4"
+                Text="SIGN IN"
+                TextColor="{DynamicResource White}" />
+
+            <Label
+                Margin="0,20,0,0"
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalOptions="Center"
+                Text="-OR-"
+                TextColor="{DynamicResource Black}" />
+
+            <StackLayout Margin="0,20" Spacing="20">
+                <Border
+                    Padding="12"
+                    Stroke="#DDDDDD"
+                    StrokeShape="RoundRectangle 4"
+                    StrokeThickness="1">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="20">
+                        <Label
+                            FontFamily="icon"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="&#xf20c;"
+                            TextColor="#0866ff"
+                            VerticalOptions="Center" />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="Sign in with Facebook"
+                            TextColor="{DynamicResource Black}" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginFacebookCommand}" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                </Border>
+
+                <Border
+                    Padding="12"
+                    Stroke="#DDDDDD"
+                    StrokeShape="RoundRectangle 4"
+                    StrokeThickness="1">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="20">
+                        <Label
+                            FontFamily="icon"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="&#xf2ad;"
+                            TextColor="{DynamicResource Black}"
+                            VerticalOptions="Center" />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="Sign in with Google"
+                            TextColor="{DynamicResource Black}" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginGoogleCommand}" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                </Border>
+
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

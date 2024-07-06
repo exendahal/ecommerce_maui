@@ -6,12 +6,7 @@
     xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
     xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
     x:Name="CartPage"
-    Title="CartPage"
-    BackgroundColor="White"
-    Shell.BackgroundColor="White"
-    Shell.ForegroundColor="Black"
-    Shell.NavBarIsVisible="False"
-    Shell.TitleColor="Black">
+    Title="My Cart">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
@@ -74,7 +69,7 @@
                                         FontSize="16"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{Binding Price}"
-                                        TextColor="#00C569" />
+                                        TextColor="{StaticResource Primary}" />
                                 </StackLayout>
                                 <Stepper
                                     x:Name="_stepper"
@@ -95,6 +90,6 @@
             IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
             VerticalOptions="Center"
             WidthRequest="45"
-            Color="#00C569" />
+            Color="{StaticResource Primary}" />
     </Grid>
 </ContentPage>

@@ -6,11 +6,7 @@
     xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
     xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
     x:Name="OrderDetails"
-    Title="Order Details"
-    BackgroundColor="White"
-    Shell.BackgroundColor="#00C569"
-    Shell.ForegroundColor="Black"
-    Shell.TitleColor="White">
+    Title="Order Details">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
@@ -72,11 +68,11 @@
                                         FontSize="14"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{Binding Price}"
-                                        TextColor="#00C569" />
+                                        TextColor="{StaticResource Primary}" />
                                     <Frame
                                         Margin="0,16"
                                         Padding="0"
-                                        BackgroundColor="#00C569"
+                                        BackgroundColor="{StaticResource Primary}"
                                         BorderColor="Transparent"
                                         CornerRadius="2"
                                         HasShadow="False"
@@ -191,6 +187,6 @@
             IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
             VerticalOptions="Center"
             WidthRequest="45"
-            Color="#00C569" />
+            Color="{StaticResource Primary}" />
     </Grid>
 </ContentPage>

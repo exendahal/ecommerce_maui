@@ -9,7 +9,7 @@
     x:Name="BrandDetailPage"
     Title="Brand Detail"
     BackgroundColor="White"
-    Shell.BackgroundColor="#00C569"
+    Shell.BackgroundColor="{StaticResource Primary}"
     Shell.ForegroundColor="{AppThemeBinding Light={StaticResource Black},
                                             Dark={StaticResource White}}"
     Shell.TitleColor="White">
@@ -21,7 +21,7 @@
     <ContentPage.Content>
         <Grid>
             <StackLayout IsVisible="{Binding IsLoaded}" Spacing="0">
-                <CollectionView Background="#00C569" ItemsSource="{Binding TabPageList}">
+                <CollectionView Background="{StaticResource Primary}" ItemsSource="{Binding TabPageList}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout HorizontalItemSpacing="6" Orientation="Horizontal" />
                     </CollectionView.ItemsLayout>
@@ -97,7 +97,7 @@
                                         FontSize="16"
                                         HorizontalOptions="Center"
                                         Text="{Binding Price}"
-                                        TextColor="#00C569"
+                                        TextColor="{StaticResource Primary}"
                                         VerticalOptions="Start" />
                                 </StackLayout>
                                 <StackLayout.GestureRecognizers>
@@ -114,7 +114,7 @@
                 IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
                 VerticalOptions="Center"
                 WidthRequest="45"
-                Color="#00C569" />
+                Color="{StaticResource Primary}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

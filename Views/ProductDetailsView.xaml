@@ -5,8 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
     xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
-    Title="Product Detail"
-    Background="White">
+    Title="Product Detail">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
@@ -124,7 +123,7 @@
                                 FontSize="14"
                                 HorizontalOptions="StartAndExpand"
                                 Text="Write your review"
-                                TextColor="#00C569"
+                                TextColor="{StaticResource Primary}"
                                 VerticalTextAlignment="Center" />
                         </StackLayout>
 
@@ -241,19 +240,18 @@
                             FontSize="18"
                             HorizontalOptions="Center"
                             Text="{Binding ProductDetail.Price, StringFormat='{}{0:c}'}"
-                            TextColor="#00C569" />
+                            TextColor="{StaticResource Primary}" />
                     </StackLayout>
 
                     <Button
                         Padding="54,12"
-                        BackgroundColor="#00C569"
+                        BackgroundColor="{StaticResource Primary}"
                         HorizontalOptions="EndAndExpand"
                         Text="ADD"
                         TextColor="White"
                         VerticalOptions="CenterAndExpand" />
                 </StackLayout>
             </Border>
-
         </Grid>
         <ActivityIndicator
             HeightRequest="45"
@@ -261,6 +259,6 @@
             IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
             VerticalOptions="Center"
             WidthRequest="45"
-            Color="#00C569" />
+            Color="{StaticResource Primary}" />
     </Grid>
 </ContentPage>
