@@ -37,11 +37,14 @@
                                 TextColor="{StaticResource Primary}" />
                             <Button
                                 Margin="0,20,0,0"
+                                Padding="32,12"
                                 BackgroundColor="{Binding AvailableColor}"
                                 Command="{Binding Source={x:Reference WishPage}, Path=BindingContext.SelectProductCommand}"
                                 CommandParameter="{Binding .}"
                                 CornerRadius="4"
-                                Text="{Binding AvailableText}" />
+                                HorizontalOptions="Start"
+                                Text="{Binding AvailableText}"
+                                TextColor="White" />
                         </StackLayout>
                     </StackLayout>
                 </DataTemplate>

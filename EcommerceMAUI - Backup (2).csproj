@@ -50,6 +50,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\FontAwesome6-Brands.otf" />
+	  <None Remove="Resources\Fonts\FontAwesome6-Regular.otf" />
 	  <None Remove="Resources\Fonts\Material-Icon.ttf" />
 	</ItemGroup>
 
