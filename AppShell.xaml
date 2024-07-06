@@ -8,19 +8,19 @@
     <TabBar>
         <Tab Title="Explore">
             <Tab.Icon>
-                <FontImageSource FontFamily="icon" Glyph="&#xf56e;" />
+                <FontImageSource FontFamily="MaterialIcon" Glyph="&#xf56e;" />
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:HomePageView}" />
         </Tab>
         <Tab Title="Cart">
             <Tab.Icon>
-                <FontImageSource FontFamily="icon" Glyph="&#xf110;" />
+                <FontImageSource FontFamily="MaterialIcon" Glyph="&#xf110;" />
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:CartView}" />
         </Tab>
         <Tab Title="Account">
             <Tab.Icon>
-                <FontImageSource FontFamily="icon" Glyph="&#xf004;" />
+                <FontImageSource FontFamily="MaterialIcon" Glyph="&#xf004;" />
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:ProfileView}" />
         </Tab>

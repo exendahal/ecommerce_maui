@@ -32,7 +32,7 @@
                     Orientation="Horizontal"
                     VerticalOptions="CenterAndExpand">
                     <Label
-                        FontFamily="icon"
+                        FontFamily="MaterialIcon"
                         FontSize="20"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
@@ -58,7 +58,7 @@
                 StrokeThickness="0"
                 WidthRequest="40">
                 <Label
-                    FontFamily="icon"
+                    FontFamily="MaterialIcon"
                     FontSize="22"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
@@ -108,7 +108,7 @@
                                             VerticalOptions="Center"
                                             WidthRequest="60">
                                             <Label
-                                                FontFamily="icon"
+                                                FontFamily="MaterialIcon"
                                                 FontSize="24"
                                                 HorizontalOptions="Center"
                                                 HorizontalTextAlignment="Center"

@@ -33,9 +33,9 @@ namespace EcommerceMAUI.ViewModel
             RegisterCommand = new Command(SignUp);
         }
 
-        private void SignUp(object obj)
+        private async void SignUp(object obj)
         {
-            App.Current.MainPage = new AppShell();
+            await Application.Current.MainPage.Navigation.PushModalAsync(new VerificationView());
         }
 
         private void Login(object obj)

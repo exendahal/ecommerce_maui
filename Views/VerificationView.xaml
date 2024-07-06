@@ -1,12 +1,48 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EcommerceMAUI.Views.VerificationView"
-             Title="VerificationView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+<ContentPage
+    x:Class="EcommerceMAUI.Views.VerificationView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pinview="clr-namespace:PINView.Maui;assembly=PINView.Maui"
+    Title="VerificationView">
+    <VerticalStackLayout
+        Margin="0,50"
+        Padding="20"
+        Spacing="10">
+        <Label
+            FontAttributes="Bold"
+            FontSize="24"
+            HorizontalOptions="Center"
+            Text="Verification" />
+
+        <Label
+            FontSize="14"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="A 6 - Digit PIN has been sent to your email address, enter it below to continue"
+            TextColor="Gray" />
+
+        <Grid
+            Margin="0,50"
+            ColumnDefinitions="*"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center">
+            <pinview:PINView
+                AutoDismissKeyboard="True"
+                BoxBackgroundColor="Transparent"
+                BoxBorderColor="#DDDDDD"
+                BoxShape="RoundCorner"
+                PINEntryCompletedCommand="{Binding VerifyCommand}"
+                PINLength="6"
+                PINValue="{Binding Pin}"
+                Color="Black" />
+        </Grid>
+        <Button
+            Padding="16"
+            Background="{DynamicResource Primary}"
+            Command="{Binding VerifyCommand}"
+            CornerRadius="4"
+            Text="CONTINUE"
+            TextColor="{DynamicResource White}" />
     </VerticalStackLayout>
 </ContentPage>

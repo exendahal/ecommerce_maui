@@ -28,10 +28,20 @@ namespace EcommerceMAUI.ViewModel
         public LoginViewModel()
         {
             LoginCommand = new Command(Login);
-            LoginFacebookCommand = new Command(Login);
-            LoginGoogleCommand = new Command(Login);
+            LoginFacebookCommand = new Command(LoginWithFacebook);
+            LoginGoogleCommand = new Command(LoginWithGoogle);
             RegisterCommand = new Command(SignUp);
             ForgotPasswordCommand = new Command(ForgotPassword);
+        }
+
+        private void LoginWithGoogle(object obj)
+        {
+           
+        }
+
+        private void LoginWithFacebook(object obj)
+        {
+           
         }
 
         private void ForgotPassword(object obj)

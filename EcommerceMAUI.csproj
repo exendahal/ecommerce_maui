@@ -50,7 +50,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Fonts\icon.ttf" />
+	  <None Remove="Resources\Fonts\Material-Icon.ttf" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -127,12 +127,10 @@
 
 	<ItemGroup>
 	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.61" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.61" />
+	  <PackageReference Include="PINView.MAUI" Version="1.0.1" />
 	</ItemGroup>
-
+	
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionEcommerceMAUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>
