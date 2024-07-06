@@ -50,8 +50,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Fonts\FontAwesome6-Brands.otf" />
-	  <None Remove="Resources\Fonts\FontAwesome6-Regular.otf" />
 	  <None Remove="Resources\Fonts\Material-Icon.ttf" />
 	</ItemGroup>
 
@@ -132,9 +130,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\VerificationView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\WishListView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
