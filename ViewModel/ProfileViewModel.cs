@@ -25,13 +25,14 @@ namespace EcommerceMAUI.ViewModel
         }
 
         public ICommand SelectMenuCommand { get; private set; }
-        public ProfileViewModel()
+        public ProfileViewModel(INavigationService navigationService) : base(navigationService)
         {
             SelectMenuCommand = new Command<MenuItems>(SelectMenu);
-            _ = InitializeAsync();
+            _ = PopulateDataAsync();
         }
-        private async Task InitializeAsync()
+        public override async Task OnNavigatedTo(NavigationParameters parameters)
         {
+            await base.OnNavigatedTo(parameters);
             await PopulateDataAsync();
         }
         async Task PopulateDataAsync()

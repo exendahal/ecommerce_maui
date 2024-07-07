@@ -29,15 +29,15 @@ namespace EcommerceMAUI.ViewModel
         }
         public ICommand SelectProductCommand { get; }
         public ICommand SelectMenuCommand { get; }
-        public BrandDetailViewModel()
+        public BrandDetailViewModel(INavigationService navigationService) : base(navigationService)
         {
             SelectProductCommand = new Command<ProductListModel>(SelectProduct);
             SelectMenuCommand = new Command<TabPageModel>(SelectMenu);
-            _ = InitializeAsync();
         }
 
-        private async Task InitializeAsync()
+        public override async Task OnNavigatedTo(NavigationParameters parameters)
         {
+            await base.OnNavigatedTo(parameters);
             await PopulateDataAsync();
         }
         private async void SelectProduct(ProductListModel obj)

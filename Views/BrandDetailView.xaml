@@ -5,10 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
     xmlns:local="clr-namespace:EcommerceMAUI.Views"
+    xmlns:mvvm="http://burkus.co.uk"
     xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
     x:Name="BrandDetailPage"
     Title="Brand Detail"
     BackgroundColor="White"
+    BindingContext="{mvvm:ResolveBindingContext x:TypeArguments=vm:BrandDetailViewModel}"
     Shell.BackgroundColor="{StaticResource Primary}"
     Shell.ForegroundColor="{AppThemeBinding Light={StaticResource Black},
                                             Dark={StaticResource White}}"

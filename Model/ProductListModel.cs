@@ -1,8 +1,8 @@
-﻿using EcommerceMAUI.ViewModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace EcommerceMAUI.Model
 {
-    public class ProductListModel: BaseViewModel
+    public class ProductListModel: ObservableObject
     {
         public string ImageUrl { get; set; }
         public string Name { get; set; }

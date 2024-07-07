@@ -4,8 +4,11 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
+    xmlns:mvvm="http://burkus.co.uk"
+    xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
     x:Name="WishPage"
-    Title="Wish List">
+    Title="Wish List"
+    BindingContext="{mvvm:ResolveBindingContext x:TypeArguments=vm:WishListViewModel}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />

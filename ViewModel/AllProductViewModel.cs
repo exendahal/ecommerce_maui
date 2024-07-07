@@ -21,16 +21,16 @@ namespace EcommerceMAUI.ViewModel
             set => SetProperty(ref _IsLoaded, value);
         }
         public ICommand SelectProductCommand { get; }
-        public AllProductViewModel()
+        public AllProductViewModel(INavigationService navigationService) : base(navigationService)
         {
             SelectProductCommand = new Command<ProductListModel>(SelectProduct);
-            _ = InitializeAsync();
         }
 
-        private async Task InitializeAsync()
+        public override async Task OnNavigatedTo(NavigationParameters parameters)
         {
+            await base.OnNavigatedTo(parameters);
             await PopulateDataAsync();
-        }
+        }        
         async Task PopulateDataAsync()
         {
             await Task.Delay(500);

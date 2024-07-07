@@ -1,9 +1,9 @@
 ﻿
-using EcommerceMAUI.ViewModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace EcommerceMAUI.Model
 {
-    public class AddressModel: BaseViewModel
+    public class AddressModel: ObservableObject
     {
         public string AddressType { get; set; }
         public string FullAddress { get; set; }

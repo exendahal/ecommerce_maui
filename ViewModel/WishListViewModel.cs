@@ -21,25 +21,16 @@ namespace EcommerceMAUI.ViewModel
         }
 
         public ICommand SelectProductCommand { get; }
-        public WishListViewModel()
+        public WishListViewModel(INavigationService navigationService) : base(navigationService)
         {
             SelectProductCommand = new Command<ProductListModel>(SelectProduct);
-            _ = InitializeAsync();
         }
-
-        private async void SelectProduct(ProductListModel model)
+        public override async Task OnNavigatedTo(NavigationParameters parameters)
         {
-            if (model.IsAvailable)
-            {
-                await Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetailsView());
-            }
-        }
-
-        private async Task InitializeAsync()
-        {
+            await base.OnNavigatedTo(parameters);
             await PopulateDataAsync();
         }
-      
+
         async Task PopulateDataAsync()
         {
             await Task.Delay(500);
@@ -55,6 +46,14 @@ namespace EcommerceMAUI.ViewModel
             Products.Add(new ProductListModel() { Name = "Airpods", BrandName = "B&o Phone Case", Price = "$30", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image9.png" });
             IsLoaded = true;
         }
+        private async void SelectProduct(ProductListModel model)
+        {
+            if (model.IsAvailable)
+            {
+                await Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetailsView());
+            }
+        }
+
 
     }
 }

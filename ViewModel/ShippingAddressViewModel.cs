@@ -21,29 +21,14 @@ namespace EcommerceMAUI.ViewModel
         }
         public ICommand SelectAddressCommand { get; private set; }
 
-        public ShippingAddressViewModel()
+        public ShippingAddressViewModel(INavigationService navigationService) : base(navigationService)
         {
             SelectAddressCommand = new Command<AddressModel>(SelectAddress);
-            _ = InitializeAsync();
-        }
+        }        
 
-        private void SelectAddress(AddressModel model)
-        {           
-            foreach (var address in Addressess)
-            {
-                if (address.AddressType == model.AddressType)
-                {
-                    model.IsSelected = true;
-                }
-                else
-                {
-                    model.IsSelected = false;
-                }
-            }
-        }
-
-        private async Task InitializeAsync()
+        public override async Task OnNavigatedTo(NavigationParameters parameters)
         {
+            await base.OnNavigatedTo(parameters);
             await PopulateDataAsync();
         }
 
@@ -55,6 +40,21 @@ namespace EcommerceMAUI.ViewModel
             Addressess.Add(new AddressModel() { AddressType= "Home Address", FullAddress= "21, Alex Davidson Avenue, Opposite Omegatron, Vicent Smith Quarters, Victoria Island, Lagos, Nigeria", IsSelected = true });
             Addressess.Add(new AddressModel() { AddressType= "Work Address", FullAddress= "9, Martins Crescent, Bank of Nigeria, Abuja, Nigeria" });
              IsLoaded = true;
+        }
+
+        private void SelectAddress(AddressModel model)
+        {
+            foreach (var address in Addressess)
+            {
+                if (address.AddressType == model.AddressType)
+                {
+                    model.IsSelected = true;
+                }
+                else
+                {
+                    model.IsSelected = false;
+                }
+            }
         }
     }
 }

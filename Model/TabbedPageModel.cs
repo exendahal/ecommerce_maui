@@ -1,9 +1,9 @@
 ﻿
-using EcommerceMAUI.ViewModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace EcommerceMAUI.Model
 {
-    public class TabPageModel : BaseViewModel
+    public class TabPageModel : ObservableObject
     {
         public TabPageModel(string name, int id, bool isSelected)
         {

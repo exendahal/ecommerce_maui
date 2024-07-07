@@ -3,8 +3,11 @@
     x:Class="EcommerceMAUI.Views.LoginView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="http://burkus.co.uk"
     xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
-    Title="Login">
+    Title="Login"
+    BindingContext="{mvvm:ResolveBindingContext x:TypeArguments=vm:LoginViewModel}"
+    NavigationPage.HasNavigationBar="False">
     <ScrollView>
         <VerticalStackLayout Padding="18,82" Spacing="10">
             <StackLayout Orientation="Horizontal">

@@ -1,8 +1,8 @@
-﻿using EcommerceMAUI.ViewModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace EcommerceMAUI.Model
 {
-    public class ProductDetail : BaseViewModel
+    public class ProductDetail : ObservableObject
     {
         private string _ImageUrl;
         public string ImageUrl

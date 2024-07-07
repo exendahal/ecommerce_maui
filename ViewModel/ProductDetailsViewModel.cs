@@ -57,15 +57,15 @@ namespace EcommerceMAUI.ViewModel
         public ICommand BackCommand { get; set; }
         public ICommand FavCommand { get; set; }
 
-        public ProductDetailsViewModel()
+        public ProductDetailsViewModel(INavigationService navigationService) : base(navigationService)
         {
             BackCommand = new Command<object>(GoBack);
             FavCommand = new Command<Color>(FavItem);
-            _ = InitializeAsync();
         }
 
-        private async Task InitializeAsync()
+        public override async Task OnNavigatedTo(NavigationParameters parameters)
         {
+            await base.OnNavigatedTo(parameters);
             await PopulateDataAsync();
         }
         private async void GoBack(object obj)

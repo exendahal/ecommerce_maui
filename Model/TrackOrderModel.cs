@@ -1,4 +1,4 @@
-﻿using EcommerceMAUI.ViewModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using static EcommerceMAUI.Model.TrackOrderModel;
 
 namespace EcommerceMAUI.Model
@@ -17,7 +17,7 @@ namespace EcommerceMAUI.Model
             return Date;
         }
 
-        public class Track : BaseViewModel
+        public class Track : ObservableObject
         {
             private string _OrderId;
             public string OrderId

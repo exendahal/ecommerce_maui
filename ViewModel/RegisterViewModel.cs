@@ -27,7 +27,7 @@ namespace EcommerceMAUI.ViewModel
         }
         public ICommand LoginCommand { get; }
         public ICommand RegisterCommand { get; }
-        public RegisterViewModel()
+        public RegisterViewModel(INavigationService navigationService) : base(navigationService)
         {
             LoginCommand = new Command(Login);
             RegisterCommand = new Command(SignUp);
@@ -35,12 +35,12 @@ namespace EcommerceMAUI.ViewModel
 
         private async void SignUp(object obj)
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new VerificationView());
+            await navigationService.Push<VerificationView>();
         }
 
-        private void Login(object obj)
+        private async void Login(object obj)
         {
-            App.Current.MainPage = new LoginView();
+            await navigationService.Pop();
         }
     }
 }

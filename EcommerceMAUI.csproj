@@ -57,6 +57,9 @@
 	  <Compile Update="Views\AllProductView.xaml.cs">
 	    <DependentUpon>AllProductView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\AppShellView.xaml.cs">
+	    <DependentUpon>AppShellView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\BrandDetailView.xaml.cs">
 	    <DependentUpon>BrandDetailView.xaml</DependentUpon>
 	  </Compile>
@@ -140,6 +143,8 @@
 	<ItemGroup>
 	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.61" />
 	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.61" />
+	  <PackageReference Include="Burkus.Mvvm.Maui" Version="0.2.0" />
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 	  <PackageReference Include="PINView.MAUI" Version="1.0.1" />
 	</ItemGroup>
 	

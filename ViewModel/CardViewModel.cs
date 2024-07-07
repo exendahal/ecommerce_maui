@@ -19,13 +19,14 @@ namespace EcommerceMAUI.ViewModel
             set => SetProperty(ref _IsLoaded, value);
         }
 
-        public CardViewModel()
+        public CardViewModel(INavigationService navigationService) : base(navigationService)
         {
-            _ = InitializeAsync();
+           
         }
 
-        private async Task InitializeAsync()
+        public override async Task OnNavigatedTo(NavigationParameters parameters)
         {
+            await base.OnNavigatedTo(parameters);
             await PopulateDataAsync();
         }
 

@@ -21,15 +21,16 @@ namespace EcommerceMAUI.ViewModel
         }
         public ICommand DeleteCommand { get; }
         public ICommand FavoriteCommand { get; }
-        public CartViewModel()
+        public CartViewModel(INavigationService navigationService) : base(navigationService)
         {           
             DeleteCommand = new Command<ProductListModel>(DeleteProduct);
             FavoriteCommand = new Command<ProductListModel>(FavoriteProduct);
-            _ = InitializeAsync();
+            _ = PopulateDataAsync();
         }
 
-        private async Task InitializeAsync()
+        public override async Task OnNavigatedTo(NavigationParameters parameters)
         {
+            await base.OnNavigatedTo(parameters);
             await PopulateDataAsync();
         }
         async Task PopulateDataAsync()

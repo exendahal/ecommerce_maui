@@ -25,7 +25,7 @@ namespace EcommerceMAUI.ViewModel
         public ICommand LoginGoogleCommand { get; }
         public ICommand RegisterCommand { get; }
         public ICommand ForgotPasswordCommand { get; }
-        public LoginViewModel()
+        public LoginViewModel(INavigationService navigationService) : base(navigationService)
         {
             LoginCommand = new Command(Login);
             LoginFacebookCommand = new Command(LoginWithFacebook);
@@ -51,12 +51,12 @@ namespace EcommerceMAUI.ViewModel
 
         private async void SignUp(object obj)
         {
-           await Application.Current.MainPage.Navigation.PushModalAsync(new RegisterView());
+            await navigationService.Push<RegisterView>();
         }
 
-        private void Login(object obj)
-        {
-            App.Current.MainPage = new AppShell();
+        private async void Login(object obj)
+        {            
+            await navigationService.ResetStackAndPush<AppShellView>();
         }
     }
 }

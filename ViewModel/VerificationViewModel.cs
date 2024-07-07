@@ -11,16 +11,16 @@ namespace EcommerceMAUI.ViewModel
             set => SetProperty(ref _Pin, value);
         }
         public ICommand VerifyCommand { get; }
-        public VerificationViewModel()
+        public VerificationViewModel(INavigationService navigationService) : base(navigationService)
         {
             VerifyCommand = new Command(VerifyOtp);
         }
 
-        private void VerifyOtp(object obj)
+        private async void VerifyOtp(object obj)
         {            
-            if (Pin.Length == 6)
+            if (!string.IsNullOrWhiteSpace(Pin) && Pin.Length == 6)
             {
-                App.Current.MainPage = new AppShell();
+                await navigationService.ResetStackAndPush<AppShellView>();
             }
         }
     }

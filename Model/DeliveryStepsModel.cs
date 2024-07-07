@@ -1,10 +1,10 @@
 ﻿
-using EcommerceMAUI.ViewModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace EcommerceMAUI.Model
 {
 
-    public class DeliveryStepsModel : BaseViewModel
+    public class DeliveryStepsModel : ObservableObject
     {
         public int Id { get; set; }
         private string _Name;

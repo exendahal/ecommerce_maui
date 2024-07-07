@@ -1,5 +1,4 @@
 ﻿
-
 using EcommerceMAUI.Model;
 using EcommerceMAUI.Views;
 using System.Collections.ObjectModel;
@@ -29,7 +28,21 @@ namespace EcommerceMAUI.ViewModel
                 return CategoryModel.CategoryName;
             }
         }
-        CategoriesModel CategoryModel { get; set; }
+
+        private CategoriesModel _CategoryModel = new();
+        public CategoriesModel CategoryModel
+        {
+            get => _CategoryModel;
+            set
+            {
+                if (_CategoryModel != value)
+                {
+                    _CategoryModel = value;
+                    OnPropertyChanged(nameof(CategoryModel));
+                    OnPropertyChanged(nameof(PageTitle));
+                }
+            }
+        }       
 
         private bool _IsLoaded = false;
         public bool IsLoaded
@@ -39,17 +52,21 @@ namespace EcommerceMAUI.ViewModel
         }
         public ICommand BackCommand { get; }
         public ICommand SelectProductCommand { get; }
-        public CategoryDetailViewModel(CategoriesModel data)
+        public CategoryDetailViewModel(INavigationService navigationService) : base(navigationService)
         {
             BackCommand = new Command<object>(GoBack);
             SelectProductCommand = new Command<ProductListModel>(SelectProduct);
-            CategoryModel = new CategoriesModel();
-            CategoryModel = data;
-            _ = InitializeAsync();
         }
 
-        private async Task InitializeAsync()
+        public override async Task OnNavigatedTo(NavigationParameters parameters)
         {
+            await base.OnNavigatedTo(parameters);
+
+            if (parameters.ContainsKey(NavigationParameterKeys.CategoryData))
+            {
+                CategoryModel = new();               
+                CategoryModel = parameters.GetValue<CategoriesModel>(NavigationParameterKeys.CategoryData);
+            }
             await PopulateDataAsync();
         }
         async Task PopulateDataAsync()
@@ -75,11 +92,11 @@ namespace EcommerceMAUI.ViewModel
 
         private async void GoBack(object obj)
         {
-            await Application.Current.MainPage.Navigation.PopModalAsync();
+            await navigationService.PopToRoot();
         }
         private async void SelectProduct(ProductListModel obj)
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetailsView());
+            await navigationService.Push<ProductDetailsView>();
         }
 
     }

@@ -24,17 +24,21 @@ namespace EcommerceMAUI.ViewModel
             get => _IsLoaded;
             set => SetProperty(ref _IsLoaded, value);
         }
-        public TrackOrderViewModel(Track data, bool emptyGroups = false)
-        {
-            TrackOrderData = data;
+        public TrackOrderViewModel(INavigationService navigationService) : base(navigationService)
+        {           
             BackCommand = new Command<object>(GoBack);
-            _ = InitializeAsync();
         }
 
-        private async Task InitializeAsync()
+        public override async Task OnNavigatedTo(NavigationParameters parameters)
         {
+            await base.OnNavigatedTo(parameters);
+
+            if (parameters.ContainsKey(NavigationParameterKeys.TrackOrderData))
+            {
+                TrackOrderData = parameters.GetValue<Track>(NavigationParameterKeys.TrackOrderData);
+            }
             await PopulateDataAsync();
-        }
+        }        
         async Task PopulateDataAsync()
         {
             await Task.Delay(500);

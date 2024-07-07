@@ -1,4 +1,5 @@
 ﻿
+using Burkus.Mvvm.Maui;
 using EcommerceMAUI.Model;
 using EcommerceMAUI.Views;
 using System.Collections.ObjectModel;
@@ -40,18 +41,19 @@ namespace EcommerceMAUI.ViewModel
         public ICommand BrandTapCommand { get; }
         public ICommand RecommendedTapCommand { get; }
         public ICommand CategoryTapCommand { get; }
-        public HomePageViewModel()
+        public HomePageViewModel(INavigationService navigationService) : base(navigationService)
         {
             SelectProductCommand = new Command<ProductListModel>(SelectProduct);
             RecommendedTapCommand = new Command<object>(SelectRecommend);
             CategoryTapCommand = new Command<CategoriesModel>(SelectCategory);
             BrandTapCommand = new Command<ProductListModel>(SelectBrand);
-            _ = InitializeAsync();
+            _ = PopulateDataAsync();
         }
 
-        private async Task InitializeAsync()
-        {            
-            await PopulateDataAsync(); 
+        public override async Task OnNavigatedTo(NavigationParameters parameters)
+        {
+            await base.OnNavigatedTo(parameters);
+            await PopulateDataAsync();
         }
         async Task PopulateDataAsync()
         {
@@ -78,20 +80,24 @@ namespace EcommerceMAUI.ViewModel
 
         private async void SelectBrand(ProductListModel obj)
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new BrandDetailView());
+            await navigationService.Push<BrandDetailView>();
         }
         private async void SelectProduct(ProductListModel obj)
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetailsView());
+            await navigationService.Push<ProductDetailsView>();
         }
 
         private async void SelectCategory(CategoriesModel obj)
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new CategoryDetailView(obj));
+            var navigationParameters = new NavigationParameters
+        {
+            { NavigationParameterKeys.CategoryData, obj },
+        };
+            await navigationService.Push<CategoryDetailView>(navigationParameters);
         }
         private async void SelectRecommend(object obj)
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new AllProductView());
+            await navigationService.Push<AllProductView>();
         }
     }
 }
