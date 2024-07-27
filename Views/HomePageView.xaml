@@ -65,6 +65,9 @@
                     Text="&#xf100;"
                     TextColor="White"
                     VerticalOptions="CenterAndExpand" />
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenCameraCommand}" />
+                </Border.GestureRecognizers>
             </Border>
         </StackLayout>
         <Grid Grid.Row="1" VerticalOptions="CenterAndExpand">

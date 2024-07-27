@@ -30,5 +30,7 @@
 	<string>Assets.xcassets/appicon.appiconset</string>
 	<key>CFBundleDisplayName</key>
 	<string>WishBuy</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This app uses camera for demonstrating barcode scanning</string>
 </dict>
 </plist>

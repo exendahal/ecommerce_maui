@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.ScanCameraView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+    Title="CameraView">
+    <ScrollView>
+        <Grid>
+            <StackLayout
+                Grid.Row="0"
+                Spacing="24"
+                VerticalOptions="Center">
+                <cv:CameraView
+                    x:Name="cameraView"
+                    BarCodeDetectionEnabled="True"
+                    BarcodeDetected="CameraViewBarcodeDetected"
+                    CamerasLoaded="CameraViewCamerasLoaded"
+                    HeightRequest="320"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="300" />
+            </StackLayout>
+            <Button
+                Margin="8"
+                Padding="0"
+                BackgroundColor="Transparent"
+                Clicked="CloseCamera"
+                CornerRadius="20"
+                FontFamily="Material-Icon"
+                FontSize="32"
+                HeightRequest="40"
+                HorizontalOptions="EndAndExpand"
+                Text="&#xf159;"
+                TextColor="Gray"
+                VerticalOptions="StartAndExpand"
+                WidthRequest="40" />
+        </Grid>
+
+    </ScrollView>
+</ContentPage>

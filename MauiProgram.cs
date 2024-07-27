@@ -1,4 +1,5 @@
 ﻿
+using Camera.MAUI;
 using CommunityToolkit.Maui;
 
 namespace EcommerceMAUI;
@@ -11,6 +12,7 @@ public static class MauiProgram
         builder
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
+             .UseMauiCameraView()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

@@ -15,7 +15,7 @@
     <Grid
         Margin="15,12"
         RowDefinitions="Auto,*"
-        VerticalOptions="Center">
+        VerticalOptions="StartAndExpand">
         <StackLayout
             Grid.Row="0"
             Margin="0,30"
