@@ -39,13 +39,13 @@ namespace EcommerceMAUI.ViewModel
             await Task.Delay(500);
             //TODO: Remove Delay here and call API if needed
             MenuItems.Clear();
-            MenuItems.Add(new MenuItems() { Title = "Edit Profile", Body = "\uf3eb" });
+            //MenuItems.Add(new MenuItems() { Title = "Edit Profile", Body = "\uf3eb" });
             MenuItems.Add(new MenuItems() { Title = "Shipping Address", Body = "\uf34e", TargetType = typeof(ShippingAddressView) });
             MenuItems.Add(new MenuItems() { Title = "Wishlist", Body = "\uf2d5", TargetType = typeof(WishListView) });
             MenuItems.Add(new MenuItems() { Title = "Order History", Body = "\uf150", TargetType = typeof(OrderDetailsView) });
             MenuItems.Add(new MenuItems() { Title = "Track Order", Body = "\uf787", TargetType = typeof(OrderDetailsView) });
             MenuItems.Add(new MenuItems() { Title = "Cards", Body = "\uf19b", TargetType = typeof(CardView) });
-            MenuItems.Add(new MenuItems() { Title = "Notifications", Body = "\uf09c"});
+            //MenuItems.Add(new MenuItems() { Title = "Notifications", Body = "\uf09c"});
             MenuItems.Add(new MenuItems() { Title = "Logout", Body = "\uf343", TargetType = typeof(LoginView) });
             IsLoaded = true;
         }
