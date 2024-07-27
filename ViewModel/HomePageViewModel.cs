@@ -76,20 +76,20 @@ namespace EcommerceMAUI.ViewModel
             IsLoaded = true;
         }
 
-        private async void SelectBrand(ProductListModel obj)
+        private async void SelectBrand(ProductListModel product)
         {
             await Application.Current.MainPage.Navigation.PushAsync(new BrandDetailView());
         }
-        private async void SelectProduct(ProductListModel obj)
+        private async void SelectProduct(ProductListModel product)
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetailsView());
         }
 
-        private async void SelectCategory(CategoriesModel obj)
+        private async void SelectCategory(CategoriesModel category)
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new CategoryDetailView(obj));
+            await Application.Current.MainPage.Navigation.PushModalAsync(new CategoryDetailView(category));
         }
-        private async void SelectRecommend(object obj)
+        private async void SelectRecommend(object product)
         {
             await Application.Current.MainPage.Navigation.PushAsync(new AllProductView());
         }

@@ -70,7 +70,7 @@
         <Grid Grid.Row="1" VerticalOptions="CenterAndExpand">
             <Grid IsVisible="{Binding IsLoaded}">
                 <ScrollView VerticalOptions="FillAndExpand">
-                    <StackLayout Spacing="0">
+                    <StackLayout Spacing="0" VerticalOptions="Start">
                         <Label
                             Margin="0,12"
                             FontAttributes="Bold"
@@ -272,6 +272,7 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
+
                         <StackLayout
                             Margin="0,12"
                             Orientation="Horizontal"
@@ -281,7 +282,7 @@
                                 FontSize="16"
                                 HorizontalOptions="Start"
                                 HorizontalTextAlignment="Start"
-                                Text="Recommended"
+                                Text="Best Selling"
                                 TextColor="Black"
                                 VerticalOptions="Center" />
                             <Button
@@ -338,7 +339,7 @@
                                                 VerticalOptions="Start" />
                                         </StackLayout>
                                         <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Source={x:Reference homePage}, Path=BindingContext.TapCommand}" CommandParameter="{Binding .}" />
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference HomePage}, Path=BindingContext.TapCommand}" CommandParameter="{Binding .}" />
                                         </StackLayout.GestureRecognizers>
                                     </StackLayout>
                                 </DataTemplate>
