@@ -17,11 +17,11 @@ namespace EcommerceMAUI.ViewModel
         }
 
         private void VerifyOtp(object obj)
-        {            
-            if (Pin.Length == 6)
+        {
+            if (Pin != null && Pin.Length == 6) 
             {
                 App.Current.MainPage = new AppShell();
-            }
+            }           
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿
+using Camera.MAUI;
+using Camera.MAUI.ZXingHelper;
 using EcommerceMAUI.Model;
 using EcommerceMAUI.Views;
 using System.Collections.ObjectModel;
@@ -40,15 +42,16 @@ namespace EcommerceMAUI.ViewModel
         public ICommand BrandTapCommand { get; }
         public ICommand RecommendedTapCommand { get; }
         public ICommand CategoryTapCommand { get; }
+        public ICommand OpenCameraCommand { get; }
         public HomePageViewModel()
         {
             SelectProductCommand = new Command<ProductListModel>(SelectProduct);
             RecommendedTapCommand = new Command<object>(SelectRecommend);
             CategoryTapCommand = new Command<CategoriesModel>(SelectCategory);
             BrandTapCommand = new Command<ProductListModel>(SelectBrand);
+            OpenCameraCommand = new Command(OpenCamera);
             _ = InitializeAsync();
         }
-
         private async Task InitializeAsync()
         {            
             await PopulateDataAsync(); 
@@ -76,22 +79,50 @@ namespace EcommerceMAUI.ViewModel
             IsLoaded = true;
         }
 
-        private async void SelectBrand(ProductListModel obj)
+        private async void SelectBrand(ProductListModel product)
         {
             await Application.Current.MainPage.Navigation.PushAsync(new BrandDetailView());
         }
-        private async void SelectProduct(ProductListModel obj)
+        private async void SelectProduct(ProductListModel product)
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetailsView());
         }
 
-        private async void SelectCategory(CategoriesModel obj)
+        private async void SelectCategory(CategoriesModel category)
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new CategoryDetailView(obj));
+            await Application.Current.MainPage.Navigation.PushModalAsync(new CategoryDetailView(category));
         }
-        private async void SelectRecommend(object obj)
+        private async void SelectRecommend(object product)
         {
             await Application.Current.MainPage.Navigation.PushAsync(new AllProductView());
+        }
+        private async void OpenCamera()
+        {
+            var response = await App.Current.MainPage.DisplayAlert("Scan QR", "Do you want to open camera?", "Yes", "No");
+            if (response)
+            {
+                PermissionStatus status = await Permissions.RequestAsync<Permissions.Camera>();
+                if (status == PermissionStatus.Granted)
+                {
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new ScanCameraView());
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Permission Denied", "Camera access is required but not granted. Please enable camera permissions in your device settings.", "OK");
+
+                }
+
+            }
+        }
+
+        private void CameraViewBarcodeDetected(object sender, BarcodeEventArgs args)
+        {
+           
+        }
+
+        private void CameraViewCamerasLoaded(object sender, EventArgs e)
+        {
+           
         }
     }
 }

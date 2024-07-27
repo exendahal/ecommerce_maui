@@ -111,7 +111,7 @@
 
                 <Border
                     Padding="12"
-                    Stroke="#DDDDDD"
+                    Stroke="White"
                     StrokeShape="RoundRectangle 4"
                     StrokeThickness="1">
                     <StackLayout

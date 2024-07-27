@@ -34,29 +34,30 @@ namespace EcommerceMAUI.ViewModel
             ForgotPasswordCommand = new Command(ForgotPassword);
         }
 
-        private void LoginWithGoogle(object obj)
+        private void LoginWithGoogle()
         {
            
         }
 
-        private void LoginWithFacebook(object obj)
+        private void LoginWithFacebook()
         {
            
         }
 
-        private void ForgotPassword(object obj)
+        private void ForgotPassword()
         {
            
         }
 
-        private async void SignUp(object obj)
+        private async void SignUp()
         {
            await Application.Current.MainPage.Navigation.PushModalAsync(new RegisterView());
         }
 
-        private void Login(object obj)
-        {
-            App.Current.MainPage = new AppShell();
+        private void Login()
+        {           
+            Application.Current.MainPage = new AppShell();
+
         }
     }
 }

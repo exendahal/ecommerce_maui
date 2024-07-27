@@ -33,10 +33,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#00C569" Resize="false" BaseSize="128,128" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#00C569" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -59,6 +59,9 @@
 	  </Compile>
 	  <Compile Update="Views\BrandDetailView.xaml.cs">
 	    <DependentUpon>BrandDetailView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\ScanCameraView.xaml.cs">
+	    <DependentUpon>ScanCameraView.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\CartView.xaml.cs">
 	    <DependentUpon>CartView.xaml</DependentUpon>
@@ -94,6 +97,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\BrandDetailView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ScanCameraView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\CardView.xaml">
@@ -138,9 +144,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.61" />
-	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.61" />
-	  <PackageReference Include="PINView.MAUI" Version="1.0.1" />
+	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.70" />
+	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.70" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
+	  <PackageReference Include="PINView.MAUI" Version="1.0.2" />
+	  <PackageReference Include="Camera.MAUI" Version="1.5.1" />
 	</ItemGroup>
 	
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionEcommerceMAUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>
