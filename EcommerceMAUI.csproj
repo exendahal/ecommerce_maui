@@ -138,9 +138,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.61" />
-	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.61" />
-	  <PackageReference Include="PINView.MAUI" Version="1.0.1" />
+	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.70" />
+	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.70" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
+	  <PackageReference Include="PINView.MAUI" Version="1.0.2" />
 	</ItemGroup>
 	
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionEcommerceMAUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>

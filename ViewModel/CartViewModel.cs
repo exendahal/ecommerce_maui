@@ -21,13 +21,14 @@ namespace EcommerceMAUI.ViewModel
         }
         public ICommand DeleteCommand { get; }
         public ICommand FavoriteCommand { get; }
+        public ICommand QtyChangeCommand { get; }
         public CartViewModel()
         {           
             DeleteCommand = new Command<ProductListModel>(DeleteProduct);
             FavoriteCommand = new Command<ProductListModel>(FavoriteProduct);
+            QtyChangeCommand = new Command<ProductListModel>(ChangeProductQty);
             _ = InitializeAsync();
         }
-
         private async Task InitializeAsync()
         {
             await PopulateDataAsync();
@@ -54,5 +55,10 @@ namespace EcommerceMAUI.ViewModel
         {
 
         }
+        private void ChangeProductQty(ProductListModel model)
+        {
+
+        }
+
     }
 }
