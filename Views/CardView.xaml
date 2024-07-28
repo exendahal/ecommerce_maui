@@ -11,8 +11,13 @@
             <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <Grid Margin="16">
-        <CollectionView IsVisible="{Binding IsLoaded}" ItemsSource="{Binding Cards}">
+    <Grid>
+        <CollectionView
+            x:Name="MyCollectionView"
+            Margin="16"
+            IsVisible="{Binding IsLoaded}"
+            ItemsSource="{Binding Cards}"
+            Scrolled="OnCollectionViewScrolled">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="16" />
             </CollectionView.ItemsLayout>
@@ -34,5 +39,18 @@
             VerticalOptions="Center"
             WidthRequest="45"
             Color="{StaticResource Primary}" />
+        <Button
+            x:Name="FloatingButton"
+            Margin="0,0,18,28"
+            Padding="0"
+            BackgroundColor="{StaticResource Primary}"
+            CornerRadius="35"
+            FontFamily="Material-Icon"
+            FontSize="32"
+            HeightRequest="70"
+            HorizontalOptions="EndAndExpand"
+            Text=""
+            VerticalOptions="EndAndExpand"
+            WidthRequest="70" />
     </Grid>
 </ContentPage>
