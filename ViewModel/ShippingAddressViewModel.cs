@@ -27,17 +27,17 @@ namespace EcommerceMAUI.ViewModel
             _ = InitializeAsync();
         }
 
-        private void SelectAddress(AddressModel model)
+        private void SelectAddress(AddressModel address)
         {           
-            foreach (var address in Addressess)
+            foreach (var add in Addressess)
             {
-                if (address.AddressType == model.AddressType)
+                if (add.AddressType == address.AddressType)
                 {
-                    model.IsSelected = true;
+                    add.IsSelected = true;
                 }
                 else
                 {
-                    model.IsSelected = false;
+                    add.IsSelected = false;
                 }
             }
         }
