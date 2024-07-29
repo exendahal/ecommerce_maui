@@ -9,7 +9,7 @@ namespace EcommerceMAUI.Model
         public string BrandName { get; set; }
         public double Price { get; set; }
         public string Details { get; set; }
-        public double Qty { get; set; }
+        public double Qty { get; set; } = 1;
 
         private bool _IsAvailable;
         public bool IsAvailable

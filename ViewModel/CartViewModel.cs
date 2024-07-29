@@ -1,4 +1,5 @@
 ﻿using EcommerceMAUI.Model;
+using EcommerceMAUI.Views;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -70,9 +71,9 @@ namespace EcommerceMAUI.ViewModel
         {
             SubTotal = AllProductDataList.Sum(item => (item.Qty * item.Price));
         }
-        private void Checkout()
+        private async void Checkout()
         {
-
+            await Application.Current.MainPage.Navigation.PushAsync(new CartCalculation(AllProductDataList));
         }
     }
 }

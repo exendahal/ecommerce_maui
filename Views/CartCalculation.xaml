@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.CartCalculation"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
+    Title="Checkout items">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView>
+            <StackLayout>
+                <StackLayout
+                    Margin="0,12"
+                    BindableLayout.ItemsSource="{Binding AllProductDataList}"
+                    Spacing="12">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal" Spacing="16">
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="100"
+                                    Source="{Binding ImageUrl}"
+                                    WidthRequest="120" />
+                                <StackLayout Spacing="6">
+                                    <Label
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{Binding Name}"
+                                        TextColor="Black" />
+                                    <StackLayout Orientation="Horizontal" Spacing="16">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding Qty, StringFormat='QTY: {0}'}"
+                                            TextColor="Black" />
+                                        <Label
+                                            FontSize="16"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding Price, StringFormat='${0:F2}'}"
+                                            TextColor="{StaticResource Primary}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <BoxView
+                    Margin="0,16"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand"
+                    Color="#DDDDDD" />
+
+                <Grid ColumnDefinitions="16,Auto,*,Auto,16" RowDefinitions="Auto,16,Auto">
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Sub Total"
+                        TextColor="Black" />
+                    <Path
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="12,0"
+                        Data="M 0 0 L 300 0"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="#DDDDDD"
+                        StrokeDashArray="2,2"
+                        StrokeThickness="1"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Tax"
+                        TextColor="Black" />
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="EndAndExpand"
+                        Text="$3950"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="EndAndExpand"
+                        Text="$50"
+                        TextColor="Black" />
+
+                    <Path
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Margin="12,0"
+                        Data="M 0 0 L 300 0"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="#DDDDDD"
+                        StrokeDashArray="2,2"
+                        StrokeThickness="1"
+                        VerticalOptions="Center" />
+
+                </Grid>
+                <BoxView
+                    Margin="0,16"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand"
+                    Color="#DDDDDD" />
+
+                <Border
+                    Margin="16"
+                    Padding="0"
+                    Stroke="#DDDDDD"
+                    StrokeShape="RoundRectangle 4"
+                    StrokeThickness="1">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Entry
+                            Margin="4"
+                            FontSize="18"
+                            Placeholder="Enter Voucher Code" />
+                        <Button
+                            Grid.Column="1"
+                            Padding="16,12"
+                            Background="Transparent"
+                            Command="{Binding ApplyVoucherCommand}"
+                            CornerRadius="4"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            Text="APPLY"
+                            TextColor="Black" />
+                    </Grid>
+                </Border>
+
+                <Grid Margin="0,42" ColumnDefinitions="*,*,30">
+                    <Button
+                        Grid.Column="1"
+                        Padding="16"
+                        Background="{DynamicResource Primary}"
+                        Command="{Binding CheckoutCommand}"
+                        CornerRadius="4"
+                        Text="CHECKOUT"
+                        TextColor="{DynamicResource White}" />
+                </Grid>
+
+
+            </StackLayout>
+        </ScrollView>
+        <ActivityIndicator
+            HeightRequest="45"
+            HorizontalOptions="Center"
+            IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
+            VerticalOptions="Center"
+            WidthRequest="45"
+            Color="{StaticResource Primary}" />
+    </Grid>
+</ContentPage>

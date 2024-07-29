@@ -99,6 +99,9 @@
 	  <MauiXaml Update="Views\BrandDetailView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\CartCalculation.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ScanCameraView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
