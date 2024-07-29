@@ -39,10 +39,10 @@
         </Grid>
         <Button
             Padding="16"
-            Background="{DynamicResource Primary}"
+            Background="{StaticResource Primary}"
             Command="{Binding VerifyCommand}"
             CornerRadius="4"
             Text="CONTINUE"
-            TextColor="{DynamicResource White}" />
+            TextColor="{StaticResource White}" />
     </VerticalStackLayout>
 </ContentPage>

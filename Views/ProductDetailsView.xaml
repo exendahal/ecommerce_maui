@@ -235,7 +235,7 @@
                             FontSize="12"
                             HorizontalOptions="Center"
                             Text="PRICE"
-                            TextColor="#929292" />
+                            TextColor="{StaticResource SecondaryTextColor}" />
                         <Label
                             FontSize="18"
                             HorizontalOptions="Center"

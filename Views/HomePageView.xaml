@@ -195,13 +195,13 @@
                                                 FontSize="12"
                                                 HorizontalOptions="Center"
                                                 Text="{Binding BrandName}"
-                                                TextColor="#929292"
+                                                TextColor="{StaticResource SecondaryTextColor}"
                                                 VerticalOptions="Start" />
 
                                             <Label
                                                 FontSize="16"
                                                 HorizontalOptions="Center"
-                                                Text="{Binding Price}"
+                                                Text="{Binding Price, StringFormat='${0:F2}'}"
                                                 TextColor="{StaticResource Primary}"
                                                 VerticalOptions="Start" />
                                         </StackLayout>
@@ -264,7 +264,7 @@
                                                         FontSize="12"
                                                         HorizontalOptions="Center"
                                                         Text="{Binding Details}"
-                                                        TextColor="#929292" />
+                                                        TextColor="{StaticResource SecondaryTextColor}" />
                                                 </StackLayout>
                                             </StackLayout>
                                             <Border.GestureRecognizers>
@@ -332,12 +332,12 @@
                                                 FontSize="12"
                                                 HorizontalOptions="Center"
                                                 Text="{Binding BrandName}"
-                                                TextColor="#929292"
+                                                TextColor="{StaticResource SecondaryTextColor}"
                                                 VerticalOptions="Start" />
                                             <Label
                                                 FontSize="16"
                                                 HorizontalOptions="Center"
-                                                Text="{Binding Price}"
+                                                Text="{Binding Price, StringFormat='${0:F2}'}"
                                                 TextColor="{StaticResource Primary}"
                                                 VerticalOptions="Start" />
                                         </StackLayout>

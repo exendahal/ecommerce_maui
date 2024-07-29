@@ -27,7 +27,7 @@
                 FontSize="14"
                 HorizontalOptions="Start"
                 Text="Register to continue"
-                TextColor="#929292"
+                TextColor="{StaticResource SecondaryTextColor}"
                 VerticalOptions="Center" />
             <StackLayout Margin="0,50,0,0" Spacing="40">
                 <StackLayout Spacing="0">
@@ -35,7 +35,7 @@
                         FontSize="14"
                         HorizontalOptions="Start"
                         Text="Name"
-                        TextColor="#929292"
+                        TextColor="{StaticResource SecondaryTextColor}"
                         VerticalOptions="Center" />
                     <Entry
                         FontSize="18"
@@ -47,7 +47,7 @@
                         FontSize="14"
                         HorizontalOptions="Start"
                         Text="Email"
-                        TextColor="#929292"
+                        TextColor="{StaticResource SecondaryTextColor}"
                         VerticalOptions="Center" />
                     <Entry
                         FontSize="18"
@@ -59,7 +59,7 @@
                         FontSize="14"
                         HorizontalOptions="Start"
                         Text="Password"
-                        TextColor="#929292"
+                        TextColor="{StaticResource SecondaryTextColor}"
                         VerticalOptions="Center" />
                     <Entry
                         FontSize="18"
