@@ -101,7 +101,8 @@
         <Grid
             Grid.Row="1"
             Margin="0,4"
-            ColumnDefinitions="32,Auto,*,Auto,32">
+            ColumnDefinitions="32,Auto,*,Auto,16"
+            IsVisible="{Binding IsLoaded}">
             <StackLayout Grid.Column="1">
                 <Label
                     FontSize="12"

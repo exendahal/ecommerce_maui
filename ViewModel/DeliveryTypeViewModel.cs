@@ -62,6 +62,7 @@ namespace EcommerceMAUI.ViewModel
                 if (delType.Name == type.Name)
                 {
                     delType.IsSelected = true;
+                    deliveryType = type;
                 }
                 else
                 {

@@ -145,7 +145,7 @@
                     </Grid>
                 </Border>
 
-                <Grid Margin="0,42" ColumnDefinitions="*,*,30">
+                <Grid Margin="0,42" ColumnDefinitions="*,*,16">
                     <Button
                         Grid.Column="1"
                         Padding="16"
