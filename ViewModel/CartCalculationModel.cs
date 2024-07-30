@@ -1,4 +1,5 @@
 ﻿using EcommerceMAUI.Model;
+using EcommerceMAUI.Views;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -6,11 +7,11 @@ namespace EcommerceMAUI.ViewModel
 {
     public class CartCalculationViewModel : BaseViewModel
     {
-        private ObservableCollection<ProductListModel> _AllProductDataList = [];
-        public ObservableCollection<ProductListModel> AllProductDataList
+        private ObservableCollection<ProductListModel> _Products = [];
+        public ObservableCollection<ProductListModel> Products
         {
-            get => _AllProductDataList;
-            set => SetProperty(ref _AllProductDataList, value);
+            get => _Products;
+            set => SetProperty(ref _Products, value);
         }
 
         private bool _IsLoaded = false;
@@ -28,18 +29,18 @@ namespace EcommerceMAUI.ViewModel
         public ICommand CheckoutCommand { get; }
         public ICommand ApplyVoucherCommand { get; }
 
-        public CartCalculationViewModel(ObservableCollection<ProductListModel> ProductList)
+        public CartCalculationViewModel(ObservableCollection<ProductListModel> products)
         {
-            AllProductDataList = ProductList;
-            SubTotal = AllProductDataList.Sum(item => (item.Qty * item.Price));
+            Products = products;
+            SubTotal = Products.Sum(item => (item.Qty * item.Price));
             CheckoutCommand = new Command(Checkout);
             ApplyVoucherCommand = new Command<string>(ApplyVoucher);
             IsLoaded = true;
         }
 
-        private void Checkout()
+        private async void Checkout()
         {
-            
+            await Application.Current.MainPage.Navigation.PushAsync(new DeliveryTypeView(Products));
         }
         private void ApplyVoucher(string vaucher)
         {

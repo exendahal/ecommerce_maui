@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.DeliveryTypeView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
+    x:Name="DeliveryTypePage"
+    Title="Checkout">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <Grid RowDefinitions="*,Auto">
+            <Grid>
+                <StackLayout
+                    Margin="16"
+                    BindableLayout.ItemsSource="{Binding DeliveryTypes}"
+                    IsVisible="{Binding IsLoaded}"
+                    Spacing="32">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Spacing="10">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="{Binding Name}"
+                                    TextColor="Black" />
+                                <Grid ColumnDefinitions="*,18,24">
+                                    <Label
+                                        Grid.Column="0"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding Description}"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Column="2"
+                                        FontFamily="MaterialIcon"
+                                        FontSize="24"
+                                        HorizontalOptions="Center"
+                                        IsVisible="{Binding IsSelected}"
+                                        Text="&#xf133;"
+                                        TextColor="{DynamicResource Primary}"
+                                        VerticalOptions="Center" />
+                                </Grid>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference DeliveryTypePage}, Path=BindingContext.SelectDeliveryTypeCommand}" CommandParameter="{Binding .}" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+
+                <ActivityIndicator
+                    HeightRequest="45"
+                    HorizontalOptions="Center"
+                    IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
+                    VerticalOptions="Center"
+                    WidthRequest="45"
+                    Color="{StaticResource Primary}" />
+            </Grid>
+
+            <Button
+                Grid.Row="1"
+                Margin="16"
+                Padding="16"
+                Background="{DynamicResource Primary}"
+                Command="{Binding NextCommand}"
+                CornerRadius="4"
+                HorizontalOptions="EndAndExpand"
+                MinimumWidthRequest="120"
+                Text="NEXT"
+                TextColor="{DynamicResource White}" />
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

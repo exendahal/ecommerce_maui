@@ -15,7 +15,7 @@
             <StackLayout>
                 <StackLayout
                     Margin="0,12"
-                    BindableLayout.ItemsSource="{Binding AllProductDataList}"
+                    BindableLayout.ItemsSource="{Binding Products}"
                     Spacing="12">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
@@ -31,19 +31,21 @@
                                         HorizontalOptions="StartAndExpand"
                                         Text="{Binding Name}"
                                         TextColor="Black" />
-                                    <StackLayout Orientation="Horizontal" Spacing="16">
+                                    <Grid ColumnDefinitions="Auto,16,Auto">
                                         <Label
+                                            Grid.Column="0"
                                             FontAttributes="Bold"
                                             FontSize="16"
                                             HorizontalOptions="StartAndExpand"
                                             Text="{Binding Qty, StringFormat='QTY: {0}'}"
                                             TextColor="Black" />
                                         <Label
+                                            Grid.Column="2"
                                             FontSize="16"
                                             HorizontalOptions="StartAndExpand"
                                             Text="{Binding Price, StringFormat='${0:F2}'}"
                                             TextColor="{StaticResource Primary}" />
-                                    </StackLayout>
+                                    </Grid>
                                 </StackLayout>
                             </StackLayout>
                         </DataTemplate>
@@ -53,7 +55,7 @@
                     Margin="0,16"
                     HeightRequest="1"
                     HorizontalOptions="FillAndExpand"
-                    Color="#DDDDDD" />
+                    Color="{StaticResource GrayLine}" />
 
                 <Grid ColumnDefinitions="16,Auto,*,Auto,16" RowDefinitions="Auto,16,Auto">
                     <Label
@@ -70,7 +72,7 @@
                         Margin="12,0"
                         Data="M 0 0 L 300 0"
                         HorizontalOptions="FillAndExpand"
-                        Stroke="#DDDDDD"
+                        Stroke="{StaticResource GrayLine}"
                         StrokeDashArray="2,2"
                         StrokeThickness="1"
                         VerticalOptions="Center" />
@@ -107,7 +109,7 @@
                         Margin="12,0"
                         Data="M 0 0 L 300 0"
                         HorizontalOptions="FillAndExpand"
-                        Stroke="#DDDDDD"
+                        Stroke="{StaticResource GrayLine}"
                         StrokeDashArray="2,2"
                         StrokeThickness="1"
                         VerticalOptions="Center" />
@@ -117,12 +119,12 @@
                     Margin="0,16"
                     HeightRequest="1"
                     HorizontalOptions="FillAndExpand"
-                    Color="#DDDDDD" />
+                    Color="{StaticResource GrayLine}" />
 
                 <Border
                     Margin="16"
                     Padding="0"
-                    Stroke="#DDDDDD"
+                    Stroke="{StaticResource GrayLine}"
                     StrokeShape="RoundRectangle 4"
                     StrokeThickness="1">
                     <Grid ColumnDefinitions="*,Auto">

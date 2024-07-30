@@ -128,7 +128,7 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                    <CollectionView Margin="12" ItemsSource="{Binding AllProductDataList}">
+                    <CollectionView Margin="12" ItemsSource="{Binding Products}">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout
                                 HorizontalItemSpacing="12"

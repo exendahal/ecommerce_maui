@@ -86,7 +86,7 @@
 
                         <CollectionView
                             Margin="0,6"
-                            ItemsSource="{Binding CategoriesDataList}"
+                            ItemsSource="{Binding Categories}"
                             SelectionMode="Single"
                             VerticalScrollBarVisibility="Never">
                             <CollectionView.ItemsLayout>
@@ -159,7 +159,7 @@
                                 VerticalOptions="Center" />
                         </StackLayout>
 
-                        <CollectionView Margin="0,12" ItemsSource="{Binding BestSellingDataList}">
+                        <CollectionView Margin="0,12" ItemsSource="{Binding BestSellingProducts}">
 
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout ItemSpacing="12" Orientation="Horizontal" />
@@ -223,7 +223,7 @@
                             TextColor="Black"
                             VerticalOptions="EndAndExpand" />
 
-                        <CollectionView Margin="0,10" ItemsSource="{Binding FeaturedBrandsDataList}">
+                        <CollectionView Margin="0,10" ItemsSource="{Binding FeaturedBrands}">
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout ItemSpacing="12" Orientation="Horizontal" />
                             </CollectionView.ItemsLayout>

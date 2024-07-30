@@ -84,7 +84,7 @@
             <StackLayout Margin="0,20" Spacing="20">
                 <Border
                     Padding="12"
-                    Stroke="#DDDDDD"
+                    Stroke="{StaticResource GrayLine}"
                     StrokeShape="RoundRectangle 4"
                     StrokeThickness="1">
                     <StackLayout

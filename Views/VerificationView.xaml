@@ -30,7 +30,7 @@
             <pinview:PINView
                 AutoDismissKeyboard="True"
                 BoxBackgroundColor="Transparent"
-                BoxBorderColor="#DDDDDD"
+                BoxBorderColor="{StaticResource GrayLine}"
                 BoxShape="RoundCorner"
                 PINEntryCompletedCommand="{Binding VerifyCommand}"
                 PINLength="6"

@@ -17,7 +17,7 @@
         <CollectionView
             Margin="0,12"
             IsVisible="{Binding IsLoaded}"
-            ItemsSource="{Binding AllProductDataList}">
+            ItemsSource="{Binding Products}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout
                     Orientation="Vertical"
@@ -117,7 +117,7 @@
 
             <Button
                 Grid.Column="3"
-                Padding="16,12"
+                Padding="16"
                 Background="{DynamicResource Primary}"
                 Command="{Binding CheckoutCommand}"
                 CornerRadius="4"

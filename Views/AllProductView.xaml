@@ -16,7 +16,7 @@
         <CollectionView
             Margin="12"
             IsVisible="{Binding IsLoaded}"
-            ItemsSource="{Binding AllProductDataList}">
+            ItemsSource="{Binding Products}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout
                     HorizontalItemSpacing="12"
