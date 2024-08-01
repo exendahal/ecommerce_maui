@@ -1,4 +1,5 @@
 ﻿using EcommerceMAUI.Model;
+using EcommerceMAUI.Views;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -60,9 +61,9 @@ namespace EcommerceMAUI.ViewModel
              IsLoaded = true;
         }
 
-        private void ConfirmAddress()
+        private async void ConfirmAddress()
         {
-           
+            await Application.Current.MainPage.Navigation.PushAsync(new ConfirmPaymentView(Products, DeliveryType, PrimaryAddress));
         }
     }
 }

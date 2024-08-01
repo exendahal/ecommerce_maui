@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
-    Title="Checkout">
+    Title="Address">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
@@ -27,7 +27,7 @@
                             VerticalOptions="Center" />
                         <Label
                             FontSize="14"
-                            HorizontalOptions="Start"
+                            HorizontalOptions="FillAndExpand"
                             Text="{Binding DeliveryType.Description}"
                             TextColor="Black"
                             VerticalOptions="Center" />
