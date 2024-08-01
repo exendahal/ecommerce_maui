@@ -46,7 +46,7 @@
                                     Text="Delete" />
                             </SwipeItems>
                         </SwipeView.RightItems>
-                        <StackLayout Orientation="Horizontal" Spacing="16">
+                        <StackLayout Orientation="Horizontal" Spacing="32">
                             <Image
                                 Aspect="AspectFit"
                                 HeightRequest="120"

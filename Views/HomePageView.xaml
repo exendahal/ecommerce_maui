@@ -297,7 +297,7 @@
                                 TextColor="Black"
                                 VerticalOptions="Center" />
                         </StackLayout>
-                        <CollectionView Margin="12" ItemsSource="{Binding BestSellingDataList}">
+                        <CollectionView Margin="12" ItemsSource="{Binding BestSellingProducts}">
                             <CollectionView.ItemsLayout>
                                 <GridItemsLayout
                                     HorizontalItemSpacing="12"
