@@ -111,7 +111,7 @@
 
                 <Border
                     Padding="12"
-                    Stroke="White"
+                    Stroke="{StaticResource GrayLine}"
                     StrokeShape="RoundRectangle 4"
                     StrokeThickness="1">
                     <StackLayout

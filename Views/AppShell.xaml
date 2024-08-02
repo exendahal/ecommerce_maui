@@ -10,19 +10,19 @@
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialIcon" Glyph="&#xf56e;" />
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:HomePageView}" />
+            <ShellContent ContentTemplate="{DataTemplate views:HomePageView}" Route="HomePageView" />
         </Tab>
         <Tab Title="Cart">
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialIcon" Glyph="&#xf110;" />
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:CartView}" />
+            <ShellContent ContentTemplate="{DataTemplate views:CartView}" Route="CartView" />
         </Tab>
         <Tab Title="Account">
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialIcon" Glyph="&#xf004;" />
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:ProfileView}" />
+            <ShellContent ContentTemplate="{DataTemplate views:ProfileView}" Route="ProfileView" />
         </Tab>
     </TabBar>
 

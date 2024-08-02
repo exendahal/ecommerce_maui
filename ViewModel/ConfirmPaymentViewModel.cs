@@ -11,6 +11,7 @@ namespace EcommerceMAUI.ViewModel
         readonly private AddressModel _PrimaryAddress;
         readonly private ObservableCollection<ProductListModel> _Products = [];
         private CardInfoModel _SelectedCard;
+        
         private bool _IsLoaded = false;
         public bool IsLoaded
         {
@@ -27,6 +28,8 @@ namespace EcommerceMAUI.ViewModel
         }
         public ICommand NextCommand { get; private set; }
         public ICommand SelectPaymentCommand { get; private set; }
+        public ICommand BackCommand { get; private set; }
+
 
         public ConfirmPaymentViewModel(ObservableCollection<ProductListModel> products, DeliveryTypeModel deliveryType, AddressModel address)
         {
@@ -35,6 +38,7 @@ namespace EcommerceMAUI.ViewModel
             _PrimaryAddress = address;
             NextCommand = new Command(ConfirmPayment);
             SelectPaymentCommand = new Command<CardInfoModel>(SelectPayment);
+            BackCommand = new Command(GoBack);
             _ = InitializeAsync();
         }
 
@@ -76,6 +80,9 @@ namespace EcommerceMAUI.ViewModel
                 }
             }
         }
-
+        private async void GoBack(object obj)
+        {
+            await Application.Current.MainPage.Navigation.PopAsync();
+        }
     }
 }

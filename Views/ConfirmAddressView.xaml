@@ -93,18 +93,31 @@
                     Color="{StaticResource Primary}" />
             </Grid>
         </ScrollView>
-        <Button
+        <Grid
             Grid.Row="1"
             Margin="16"
-            Padding="16"
-            Background="{DynamicResource Primary}"
-            Command="{Binding NextCommand}"
-            CornerRadius="4"
-            HorizontalOptions="EndAndExpand"
-            IsVisible="{Binding IsLoaded}"
-            MinimumWidthRequest="120"
-            Text="NEXT"
-            TextColor="{DynamicResource White}" />
+            ColumnDefinitions="*,24,*">
+            <Button
+                Grid.Column="0"
+                Padding="16"
+                Background="Transparent"
+                BorderColor="{DynamicResource Primary}"
+                Command="{Binding BackCommand}"
+                CornerRadius="4"
+                IsVisible="{Binding IsLoaded}"
+                Text="BACK"
+                TextColor="{DynamicResource Black}" />
+            <Button
+                Grid.Column="2"
+                Padding="16"
+                Background="{DynamicResource Primary}"
+                Command="{Binding NextCommand}"
+                CornerRadius="4"
+                IsVisible="{Binding IsLoaded}"
+                Text="NEXT"
+                TextColor="{DynamicResource White}" />
+
+        </Grid>
 
     </Grid>
 

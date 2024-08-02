@@ -28,6 +28,8 @@ namespace EcommerceMAUI.ViewModel
         }
         public ICommand CheckoutCommand { get; }
         public ICommand ApplyVoucherCommand { get; }
+        public ICommand BackCommand { get; private set; }
+
 
         public CartCalculationViewModel(ObservableCollection<ProductListModel> products)
         {
@@ -35,6 +37,7 @@ namespace EcommerceMAUI.ViewModel
             SubTotal = Products.Sum(item => (item.Qty * item.Price));
             CheckoutCommand = new Command(Checkout);
             ApplyVoucherCommand = new Command<string>(ApplyVoucher);
+            BackCommand = new Command(GoBack);
             IsLoaded = true;
         }
 
@@ -45,6 +48,11 @@ namespace EcommerceMAUI.ViewModel
         private void ApplyVoucher(string vaucher)
         {
 
+        }
+
+        private async void GoBack(object obj)
+        {
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
     }
 }

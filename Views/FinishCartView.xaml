@@ -1,12 +1,173 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EcommerceMAUI.Views.FinishCartView"
-             Title="FinishCartView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.FinishCartView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
+    x:Name="FinishCartPage"
+    Title="Summary">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+        <Style x:Key="CreditCardImageLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="48" />
+            <Setter Property="TextColor" Value="#FFFFFF" />
+            <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+        </Style>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView>
+            <Grid
+                Margin="16,8"
+                IsVisible="{Binding IsLoaded}"
+                RowDefinitions="12,Auto,32,Auto,48,Auto,*">
+
+                <CollectionView Grid.Row="1" ItemsSource="{Binding Products}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="12" Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout
+                                Margin="0"
+                                Background="White"
+                                HorizontalOptions="FillAndExpand">
+                                <Border
+                                    Padding="0"
+                                    Background="transparent"
+                                    StrokeShape="RoundRectangle 6"
+                                    StrokeThickness="1">
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="120"
+                                        Source="{Binding ImageUrl}"
+                                        WidthRequest="120" />
+                                </Border>
+
+                                <StackLayout Margin="0,8,0,0">
+                                    <Label
+                                        FontSize="16"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="CharacterWrap"
+                                        Text="{Binding Name}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        FontSize="16"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding Price, StringFormat='${0:F2}'}"
+                                        TextColor="{StaticResource Primary}"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference FinishCartPage}, Path=BindingContext.SelectProductCommand}" CommandParameter="{Binding .}" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <StackLayout Grid.Row="3" Spacing="16">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Shipping Address"
+                        TextColor="Black" />
+
+                    <Grid ColumnDefinitions="*,18,24">
+                        <Label
+                            Grid.Column="0"
+                            FontSize="14"
+                            HorizontalOptions="Start"
+                            Text="{Binding FullAddress}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Column="2"
+                            FontFamily="MaterialIcon"
+                            FontSize="24"
+                            HorizontalOptions="Center"
+                            IsVisible="True"
+                            Text="&#xf133;"
+                            TextColor="{DynamicResource Primary}"
+                            VerticalOptions="Center" />
+                    </Grid>
+
+                </StackLayout>
+
+                <StackLayout Grid.Row="5" Spacing="16">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Payment"
+                        TextColor="Black" />
+                    <Grid
+                        Padding="0,12"
+                        ColumnDefinitions="Auto,12,*,12,Auto"
+                        HorizontalOptions="FillAndExpand">
+                        <Border
+                            Grid.Column="0"
+                            Padding="0"
+                            Background="{Binding SelectedCard.CardColor}"
+                            Stroke="{Binding SelectedCard.CardColor}"
+                            StrokeShape="RoundRectangle 4">
+                            <Label
+                                FontFamily="{Binding SelectedCard.FontFamily}"
+                                Style="{StaticResource CreditCardImageLabelStyle}"
+                                Text="{Binding SelectedCard.Icon}" />
+                        </Border>
+                        <StackLayout
+                            Grid.Column="2"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="14"
+                                HorizontalOptions="FillAndExpand"
+                                Text="{Binding SelectedCard.CardType}"
+                                VerticalOptions="Center" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding SelectedCard.MaskedCardNumber}"
+                                TextColor="Black" />
+                        </StackLayout>
+                        <Label
+                            Grid.Column="4"
+                            FontFamily="MaterialIcon"
+                            FontSize="24"
+                            HorizontalOptions="EndAndExpand"
+                            IsVisible="{Binding IsSelected}"
+                            Text="&#xf133;"
+                            TextColor="{DynamicResource Primary}"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+
+        <Grid
+            Grid.Row="1"
+            Margin="16"
+            ColumnDefinitions="*,24,*">
+            <Button
+                Grid.Column="0"
+                Padding="16"
+                Background="Transparent"
+                BorderColor="{DynamicResource Primary}"
+                Command="{Binding BackCommand}"
+                CornerRadius="4"
+                IsVisible="{Binding IsLoaded}"
+                Text="BACK"
+                TextColor="{DynamicResource Black}" />
+            <Button
+                Grid.Column="2"
+                Padding="16"
+                Background="{DynamicResource Primary}"
+                Command="{Binding FinishCommand}"
+                CornerRadius="4"
+                IsVisible="{Binding IsLoaded}"
+                Text="FINISH"
+                TextColor="{DynamicResource White}" />
+        </Grid>
+    </Grid>
 </ContentPage>

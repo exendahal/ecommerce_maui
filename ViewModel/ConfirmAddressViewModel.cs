@@ -35,11 +35,13 @@ namespace EcommerceMAUI.ViewModel
             set => SetProperty(ref _IsLoaded, value);
         }
         public ICommand NextCommand { get; private set; }
+        public ICommand BackCommand { get; private set; }
         public ConfirmAddressViewModel(ObservableCollection<ProductListModel> products, DeliveryTypeModel deliveryType)
         {
             DeliveryType = deliveryType;
             Products = products;
             NextCommand = new Command(ConfirmAddress);
+            BackCommand = new Command(GoBack);
             _ = InitializeAsync();
         }
 
@@ -64,6 +66,11 @@ namespace EcommerceMAUI.ViewModel
         private async void ConfirmAddress()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new ConfirmPaymentView(Products, DeliveryType, PrimaryAddress));
+        }
+
+        private async void GoBack(object obj)
+        {
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
     }
 }
