@@ -21,7 +21,7 @@
     <ContentPage.Content>
         <Grid>
             <StackLayout IsVisible="{Binding IsLoaded}" Spacing="0">
-                <CollectionView Background="{StaticResource Primary}" ItemsSource="{Binding TabPageList}">
+                <CollectionView Background="{StaticResource Primary}" ItemsSource="{Binding TabPages}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout HorizontalItemSpacing="6" Orientation="Horizontal" />
                     </CollectionView.ItemsLayout>
@@ -55,7 +55,7 @@
                 </CollectionView>
                 <CollectionView
                     Margin="12"
-                    ItemsSource="{Binding AllProductDataList}"
+                    ItemsSource="{Binding Products}"
                     VerticalOptions="FillAndExpand">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout
@@ -91,12 +91,12 @@
                                         FontSize="12"
                                         HorizontalOptions="Center"
                                         Text="{Binding BrandName}"
-                                        TextColor="#929292"
+                                        TextColor="{StaticResource SecondaryTextColor}"
                                         VerticalOptions="Start" />
                                     <Label
                                         FontSize="16"
                                         HorizontalOptions="Center"
-                                        Text="{Binding Price}"
+                                        Text="{Binding Price, StringFormat='${0:F2}'}"
                                         TextColor="{StaticResource Primary}"
                                         VerticalOptions="Start" />
                                 </StackLayout>

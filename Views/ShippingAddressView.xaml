@@ -14,7 +14,7 @@
     <Grid Margin="16">
         <CollectionView IsVisible="{Binding IsLoaded}" ItemsSource="{Binding Addressess}">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="18" />
+                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="32" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>

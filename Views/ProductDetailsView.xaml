@@ -11,9 +11,9 @@
             <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <Grid>
+    <Grid RowDefinitions="*,Auto">
         <Grid IsVisible="{Binding IsLoaded}">
-            <ScrollView Scrolled="ScrollViewScrolled">
+            <ScrollView>
                 <StackLayout IsClippedToBounds="True">
                     <Image
                         Aspect="AspectFill"
@@ -122,19 +122,23 @@
                                 FontAttributes="Bold"
                                 FontSize="14"
                                 HorizontalOptions="StartAndExpand"
-                                Text="Write your review"
+                                Text="Write your Review"
                                 TextColor="{StaticResource Primary}"
                                 VerticalTextAlignment="Center" />
                         </StackLayout>
 
-                        <CollectionView Margin="0,16" ItemsSource="{Binding ProductDetail.Reviews}">
+                        <CollectionView
+                            Margin="0,16"
+                            ItemSizingStrategy="MeasureAllItems"
+                            ItemsSource="{Binding ProductDetail.Reviews}">
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout ItemSpacing="12" Orientation="Vertical" />
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout Orientation="Horizontal">
+                                    <Grid ColumnDefinitions="Auto,*">
                                         <Border
+                                            Grid.Column="0"
                                             Padding="0"
                                             HeightRequest="46"
                                             StrokeShape="RoundRectangle 23"
@@ -147,20 +151,26 @@
                                                 WidthRequest="46" />
                                         </Border>
 
-                                        <StackLayout Margin="8,0" Spacing="2">
+                                        <Grid
+                                            Grid.Column="1"
+                                            Margin="8,0"
+                                            RowDefinitions="Auto,2,Auto">
                                             <Label
+                                                Grid.Row="0"
                                                 FontAttributes="Bold"
                                                 FontSize="14"
                                                 Text="{Binding Name}"
                                                 TextColor="Black" />
 
                                             <Label
+                                                Grid.Row="2"
                                                 FontSize="14"
+                                                LineBreakMode="WordWrap"
                                                 Text="{Binding Review}"
                                                 TextColor="Black"
                                                 VerticalTextAlignment="Center" />
-                                        </StackLayout>
-                                    </StackLayout>
+                                        </Grid>
+                                    </Grid>
 
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
@@ -188,9 +198,16 @@
                         FontFamily="MaterialIcon"
                         FontSize="26"
                         HorizontalOptions="Center"
-                        Text="&#xf141;"
                         TextColor="Black"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Center">
+                        <Label.Text>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="Android" Value="&#xf04d;" />
+                                <On Platform="iOS" Value="&#xf141;" />
+                                <On Platform="Default" Value="&#xf04d;" />
+                            </OnPlatform>
+                        </Label.Text>
+                    </Label>
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </Border.GestureRecognizers>
@@ -219,39 +236,6 @@
                 </Border>
 
             </StackLayout>
-
-            <Border
-                Padding="0"
-                Background="White"
-                HeightRequest="80"
-                HorizontalOptions="FillAndExpand"
-                IsVisible="{Binding IsFooterVisible}"
-                StrokeShape="RoundRectangle 6,6,0,0"
-                StrokeThickness="1"
-                VerticalOptions="EndAndExpand">
-                <StackLayout Margin="24,0" Orientation="Horizontal">
-                    <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
-                        <Label
-                            FontSize="12"
-                            HorizontalOptions="Center"
-                            Text="PRICE"
-                            TextColor="#929292" />
-                        <Label
-                            FontSize="18"
-                            HorizontalOptions="Center"
-                            Text="{Binding ProductDetail.Price, StringFormat='{}{0:c}'}"
-                            TextColor="{StaticResource Primary}" />
-                    </StackLayout>
-
-                    <Button
-                        Padding="54,12"
-                        BackgroundColor="{StaticResource Primary}"
-                        HorizontalOptions="EndAndExpand"
-                        Text="ADD"
-                        TextColor="White"
-                        VerticalOptions="CenterAndExpand" />
-                </StackLayout>
-            </Border>
         </Grid>
         <ActivityIndicator
             HeightRequest="45"
@@ -260,5 +244,33 @@
             VerticalOptions="Center"
             WidthRequest="45"
             Color="{StaticResource Primary}" />
+
+        <Grid
+            Grid.Row="1"
+            Margin="0,8,8,16"
+            ColumnDefinitions="32,Auto,*,Auto,16"
+            IsVisible="{Binding IsLoaded}">
+            <StackLayout Grid.Column="1">
+                <Label
+                    FontSize="12"
+                    HorizontalOptions="StartAndExpand"
+                    Text="PRICE"
+                    TextColor="{StaticResource SecondaryTextColor}" />
+                <Label
+                    FontSize="18"
+                    HorizontalOptions="StartAndExpand"
+                    Text="{Binding ProductDetail.Price, StringFormat='${0:F2}'}"
+                    TextColor="{StaticResource Primary}" />
+            </StackLayout>
+
+            <Button
+                Grid.Column="3"
+                Padding="16"
+                Background="{DynamicResource Primary}"
+                Command="{Binding AddToCartCommand}"
+                CornerRadius="4"
+                Text="ADD TO CART"
+                TextColor="{DynamicResource White}" />
+        </Grid>
     </Grid>
 </ContentPage>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.ConfirmAddressView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
+    Title="Address">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView>
+            <Grid>
+                <StackLayout
+                    Padding="24,16"
+                    IsVisible="{Binding IsLoaded}"
+                    Spacing="24">
+                    <StackLayout Orientation="Horizontal" Spacing="16">
+                        <Label
+                            FontFamily="MaterialIcon"
+                            FontSize="24"
+                            HorizontalOptions="Start"
+                            Text="&#xf133;"
+                            TextColor="{DynamicResource Primary}"
+                            VerticalOptions="Center" />
+                        <Label
+                            FontSize="14"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{Binding DeliveryType.Description}"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <StackLayout Spacing="0">
+                        <Label
+                            FontSize="14"
+                            HorizontalOptions="Start"
+                            Text="Street 1"
+                            TextColor="{StaticResource SecondaryTextColor}"
+                            VerticalOptions="Center" />
+                        <Entry
+                            FontSize="18"
+                            Placeholder="Enter Street 1"
+                            Text="{Binding PrimaryAddress.StreetOne}" />
+                    </StackLayout>
+
+                    <StackLayout Spacing="0">
+                        <Label
+                            FontSize="14"
+                            HorizontalOptions="Start"
+                            Text="Street 2"
+                            TextColor="{StaticResource SecondaryTextColor}"
+                            VerticalOptions="Center" />
+                        <Entry
+                            FontSize="18"
+                            Placeholder="Enter Street 2"
+                            Text="{Binding PrimaryAddress.StreetTwo}" />
+                    </StackLayout>
+
+                    <StackLayout Spacing="0">
+                        <Label
+                            FontSize="14"
+                            HorizontalOptions="Start"
+                            Text="City"
+                            TextColor="{StaticResource SecondaryTextColor}"
+                            VerticalOptions="Center" />
+                        <Entry
+                            FontSize="18"
+                            Placeholder="Enter city"
+                            Text="{Binding PrimaryAddress.City}" />
+                    </StackLayout>
+                    <StackLayout Spacing="0">
+                        <Label
+                            FontSize="14"
+                            HorizontalOptions="Start"
+                            Text="State"
+                            TextColor="{StaticResource SecondaryTextColor}"
+                            VerticalOptions="Center" />
+                        <Entry
+                            FontSize="18"
+                            Placeholder="Enter State"
+                            Text="{Binding PrimaryAddress.State}" />
+                    </StackLayout>
+                </StackLayout>
+                <ActivityIndicator
+                    HeightRequest="45"
+                    HorizontalOptions="Center"
+                    IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
+                    VerticalOptions="Center"
+                    WidthRequest="45"
+                    Color="{StaticResource Primary}" />
+            </Grid>
+        </ScrollView>
+        <Button
+            Grid.Row="1"
+            Margin="16"
+            Padding="16"
+            Background="{DynamicResource Primary}"
+            Command="{Binding NextCommand}"
+            CornerRadius="4"
+            HorizontalOptions="EndAndExpand"
+            IsVisible="{Binding IsLoaded}"
+            MinimumWidthRequest="120"
+            Text="NEXT"
+            TextColor="{DynamicResource White}" />
+
+    </Grid>
+
+</ContentPage>

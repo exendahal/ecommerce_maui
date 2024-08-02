@@ -8,6 +8,6 @@ public partial class App : Application
     {
         InitializeComponent();
         Current.UserAppTheme = AppTheme.Light;
-        MainPage = new AppShell();
+        MainPage = new LoginView();
     }
 }

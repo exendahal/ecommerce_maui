@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.ConfirmPaymentView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:EcommerceMAUI.Converters"
+    x:Name="ConfirmPaymentPage"
+    Title="Select Payment">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+        <Style x:Key="CreditCardImageLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="48" />
+            <Setter Property="TextColor" Value="#FFFFFF" />
+            <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+        </Style>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView>
+            <StackLayout
+                Margin="16"
+                BindableLayout.ItemsSource="{Binding Cards}"
+                IsVisible="{Binding IsLoaded}"
+                Spacing="12">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="16">
+                            <Grid
+                                Padding="0,12"
+                                ColumnDefinitions="Auto,12,*,12,Auto"
+                                HorizontalOptions="FillAndExpand">
+                                <Border
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    Background="{Binding CardColor}"
+                                    Stroke="{Binding CardColor}"
+                                    StrokeShape="RoundRectangle 4">
+                                    <Label
+                                        FontFamily="{Binding FontFamily}"
+                                        Style="{StaticResource CreditCardImageLabelStyle}"
+                                        Text="{Binding Icon}" />
+                                </Border>
+                                <StackLayout Grid.Column="2" HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="{Binding CardNumber}"
+                                        TextColor="Black" />
+
+                                    <Label
+                                        FontSize="14"
+                                        HorizontalOptions="FillAndExpand"
+                                        Text="{Binding CardType}"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+
+                                <Label
+                                    Grid.Column="4"
+                                    FontFamily="MaterialIcon"
+                                    FontSize="24"
+                                    HorizontalOptions="EndAndExpand"
+                                    IsVisible="{Binding IsSelected}"
+                                    Text="&#xf133;"
+                                    TextColor="{DynamicResource Primary}"
+                                    VerticalOptions="Center" />
+
+                            </Grid>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference ConfirmPaymentPage}, Path=BindingContext.SelectPaymentCommand}" CommandParameter="{Binding .}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+
+        <ActivityIndicator
+            HeightRequest="45"
+            HorizontalOptions="Center"
+            IsRunning="{Binding IsLoaded, Converter={StaticResource InverseBoolConverter}}"
+            VerticalOptions="Center"
+            WidthRequest="45"
+            Color="{StaticResource Primary}" />
+        <Button
+            Grid.Row="1"
+            Margin="16"
+            Padding="16"
+            Background="{DynamicResource Primary}"
+            Command="{Binding NextCommand}"
+            CornerRadius="4"
+            HorizontalOptions="EndAndExpand"
+            IsVisible="{Binding IsLoaded}"
+            MinimumWidthRequest="120"
+            Text="NEXT"
+            TextColor="{DynamicResource White}" />
+    </Grid>
+</ContentPage>

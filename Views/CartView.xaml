@@ -13,11 +13,11 @@
             <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <Grid>
+    <Grid RowDefinitions="*,Auto">
         <CollectionView
             Margin="0,12"
             IsVisible="{Binding IsLoaded}"
-            ItemsSource="{Binding AllProductDataList}">
+            ItemsSource="{Binding Products}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout
                     Orientation="Vertical"
@@ -46,7 +46,7 @@
                                     Text="Delete" />
                             </SwipeItems>
                         </SwipeView.RightItems>
-                        <StackLayout Orientation="Horizontal" Spacing="16">
+                        <StackLayout Orientation="Horizontal" Spacing="32">
                             <Image
                                 Aspect="AspectFit"
                                 HeightRequest="120"
@@ -68,7 +68,7 @@
                                     <Label
                                         FontSize="16"
                                         HorizontalOptions="StartAndExpand"
-                                        Text="{Binding Price}"
+                                        Text="{Binding Price, StringFormat='${0:F2}'}"
                                         TextColor="{StaticResource Primary}" />
                                 </StackLayout>
                                 <Stepper
@@ -98,5 +98,33 @@
             VerticalOptions="Center"
             WidthRequest="45"
             Color="{StaticResource Primary}" />
+        <Grid
+            Grid.Row="1"
+            Margin="0,4"
+            ColumnDefinitions="32,Auto,*,Auto,16"
+            IsVisible="{Binding IsLoaded}">
+            <StackLayout Grid.Column="1">
+                <Label
+                    FontSize="12"
+                    HorizontalOptions="StartAndExpand"
+                    Text="TOTAL"
+                    TextColor="{StaticResource SecondaryTextColor}" />
+                <Label
+                    FontSize="18"
+                    HorizontalOptions="StartAndExpand"
+                    Text="{Binding SubTotal, StringFormat='${0:F2}'}"
+                    TextColor="{StaticResource Primary}" />
+            </StackLayout>
+
+            <Button
+                Grid.Column="3"
+                Padding="16"
+                Background="{DynamicResource Primary}"
+                Command="{Binding CheckoutCommand}"
+                CornerRadius="4"
+                Text="CHECKOUT"
+                TextColor="{DynamicResource White}" />
+        </Grid>
+
     </Grid>
 </ContentPage>
