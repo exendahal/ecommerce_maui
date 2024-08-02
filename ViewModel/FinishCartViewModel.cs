@@ -17,7 +17,15 @@ namespace EcommerceMAUI.ViewModel
         public AddressModel PrimaryAddress
         {
             get => _PrimaryAddress;
-            set => SetProperty(ref _PrimaryAddress, value);
+            set
+            {
+                if (_PrimaryAddress != value)
+                {
+                    _PrimaryAddress = value;
+                    OnPropertyChanged(nameof(PrimaryAddress));
+                    OnPropertyChanged(nameof(FullAddress));
+                }
+            }
         }
 
         private ObservableCollection<ProductListModel> _Products = [];
@@ -34,13 +42,44 @@ namespace EcommerceMAUI.ViewModel
             set => SetProperty(ref _SelectedCard, value);
         }
 
-        public ICommand FinishCommand { get; private set; }
+        public string FullAddress
+        {
+            get
+            {
+                return $"{PrimaryAddress.StreetOne}, {PrimaryAddress.StreetTwo}, {PrimaryAddress.City}, {PrimaryAddress.State}";
+            }
+        }
+
+        private bool _IsLoaded = false;
+        public bool IsLoaded
+        {
+            get => _IsLoaded;
+            set => SetProperty(ref _IsLoaded, value);
+        }
+        public ICommand FinishCommand { get; }
+        public ICommand BackCommand { get; }
+
         public FinishCartViewModel(ObservableCollection<ProductListModel> products, DeliveryTypeModel deliveryType, AddressModel address, CardInfoModel card)
         {
-            _DeliveryType = deliveryType;
-            _Products = products;
-            _PrimaryAddress = address;
-            _SelectedCard = card;
+            DeliveryType = deliveryType;
+            Products = products;
+            PrimaryAddress = address;
+            SelectedCard = card;          
+            FinishCommand = new Command(FinishOrder);
+            BackCommand = new Command(GoBack);
+            IsLoaded = true;
+
         }
+
+        private void FinishOrder()
+        {
+            Application.Current.MainPage = new AppShell();
+        }
+        private async void GoBack(object obj)
+        {
+            await Application.Current.MainPage.Navigation.PopAsync();
+        }
+
+
     }
 }

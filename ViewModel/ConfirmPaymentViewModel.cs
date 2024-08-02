@@ -11,6 +11,7 @@ namespace EcommerceMAUI.ViewModel
         readonly private AddressModel _PrimaryAddress;
         readonly private ObservableCollection<ProductListModel> _Products = [];
         private CardInfoModel _SelectedCard;
+        
         private bool _IsLoaded = false;
         public bool IsLoaded
         {

@@ -48,7 +48,7 @@
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="16"
-                                        Text="{Binding CardNumber}"
+                                        Text="{Binding MaskedCardNumber}"
                                         TextColor="Black" />
 
                                     <Label
