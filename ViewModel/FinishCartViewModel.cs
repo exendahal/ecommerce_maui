@@ -70,16 +70,14 @@ namespace EcommerceMAUI.ViewModel
             IsLoaded = true;
 
         }
-
-        private void FinishOrder()
-        {
-            Application.Current.MainPage = new AppShell();
+        private async void FinishOrder()
+        {            
+            await Application.Current.MainPage.Navigation.PopToRootAsync();
+            await Shell.Current.GoToAsync("///HomePageView");
         }
         private async void GoBack(object obj)
         {
             await Application.Current.MainPage.Navigation.PopAsync();
         }
-
-
     }
 }
