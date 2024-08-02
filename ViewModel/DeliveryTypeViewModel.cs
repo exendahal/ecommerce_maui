@@ -32,10 +32,12 @@ namespace EcommerceMAUI.ViewModel
 
         public ICommand SelectDeliveryTypeCommand { get; private set; }
         public ICommand NextCommand { get; private set; }
+        public ICommand BackCommand { get; private set; }
         public DeliveryTypeViewModel(ObservableCollection<ProductListModel> products)
         {
             SelectDeliveryTypeCommand = new Command<DeliveryTypeModel>(SelectDeliveryType);
             NextCommand = new Command(ConfirmDeliverType);
+            BackCommand = new Command(GoBack);
             Products = products;
             _ = InitializeAsync();
         }
@@ -74,5 +76,10 @@ namespace EcommerceMAUI.ViewModel
         {
             await Application.Current.MainPage.Navigation.PushAsync(new ConfirmAddressView(Products, deliveryType));
         }
+        private async void GoBack(object obj)
+        {
+            await Application.Current.MainPage.Navigation.PopAsync();
+        }
+
     }
 }

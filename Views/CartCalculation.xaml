@@ -145,18 +145,30 @@
                     </Grid>
                 </Border>
 
-                <Grid Margin="0,42" ColumnDefinitions="*,*,16">
+                <Grid
+                    Grid.Row="1"
+                    Margin="16,42"
+                    ColumnDefinitions="*,24,*">
                     <Button
-                        Grid.Column="1"
+                        Grid.Column="0"
+                        Padding="16"
+                        Background="Transparent"
+                        BorderColor="{DynamicResource Primary}"
+                        Command="{Binding BackCommand}"
+                        CornerRadius="4"
+                        IsVisible="{Binding IsLoaded}"
+                        Text="BACK"
+                        TextColor="{DynamicResource Black}" />
+                    <Button
+                        Grid.Column="2"
                         Padding="16"
                         Background="{DynamicResource Primary}"
                         Command="{Binding CheckoutCommand}"
                         CornerRadius="4"
+                        IsVisible="{Binding IsLoaded}"
                         Text="CHECKOUT"
                         TextColor="{DynamicResource White}" />
                 </Grid>
-
-
             </StackLayout>
         </ScrollView>
         <ActivityIndicator
