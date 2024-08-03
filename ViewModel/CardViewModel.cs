@@ -1,5 +1,7 @@
 ﻿using EcommerceMAUI.Model;
+using EcommerceMAUI.Views;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace EcommerceMAUI.ViewModel
 {
@@ -19,8 +21,10 @@ namespace EcommerceMAUI.ViewModel
             set => SetProperty(ref _IsLoaded, value);
         }
 
+        public ICommand AddNewCommand { get; private set; }
         public CardViewModel()
         {
+            AddNewCommand = new Command(AddNewCard);
             _ = InitializeAsync();
         }
 
@@ -42,5 +46,10 @@ namespace EcommerceMAUI.ViewModel
             Cards.Add(new CardInfoModel() { CardNumber = "4012888888881881", CardValidationCode= "987", ExpirationDate= "2028-12-01" });
             IsLoaded = true;
         }
+        private async void AddNewCard()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new AddNewCardView());
+        }
+
     }
 }

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EcommerceMAUI.Views.AddNewCardView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:EcommerceMAUI.Controls"
+    Title="Add New Card">
+    <Grid Margin="16" RowDefinitions="*,Auto">
+        <ScrollView>
+            <StackLayout>
+                <views:CreditCardView
+                    CardNumber="{Binding CardNumber}"
+                    CardValidationCode="{Binding CVV}"
+                    ExpirationDate="{Binding ExpireDateString}"
+                    HorizontalOptions="FillAndExpand" />
+                <StackLayout Margin="0,52" Spacing="18">
+                    <StackLayout Spacing="0">
+                        <Label
+                            FontSize="14"
+                            HorizontalOptions="Start"
+                            Text="Name on Card"
+                            TextColor="{StaticResource SecondaryTextColor}"
+                            VerticalOptions="Center" />
+                        <Entry
+                            FontSize="18"
+                            Placeholder="Enter Name on Card"
+                            Text="{Binding NameOnCard}" />
+                    </StackLayout>
+
+                    <StackLayout Spacing="0">
+                        <Label
+                            FontSize="14"
+                            HorizontalOptions="Start"
+                            Text="Card Number"
+                            TextColor="{StaticResource SecondaryTextColor}"
+                            VerticalOptions="Center" />
+                        <Entry
+                            FontSize="18"
+                            MaxLength="16"
+                            Placeholder="Enter Card Number"
+                            Text="{Binding CardNumber, Mode=TwoWay}" />
+                    </StackLayout>
+                    <Grid ColumnDefinitions="*,12,*">
+                        <StackLayout Grid.Column="0" Spacing="0">
+                            <Label
+                                FontSize="14"
+                                HorizontalOptions="Start"
+                                Text="Expiry Date"
+                                TextColor="{StaticResource SecondaryTextColor}"
+                                VerticalOptions="Center" />
+                            <DatePicker Date="{Binding ExpireDate, Mode=TwoWay}" FontSize="18" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="2" Spacing="0">
+                            <Label
+                                FontSize="14"
+                                HorizontalOptions="Start"
+                                Text="CVV"
+                                TextColor="{StaticResource SecondaryTextColor}"
+                                VerticalOptions="Center" />
+                            <Entry
+                                FontSize="18"
+                                Keyboard="Numeric"
+                                MaxLength="3"
+                                Placeholder="Enter CVV"
+                                Text="{Binding CVV, Mode=TwoWay}" />
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+
+        </ScrollView>
+        <Grid
+            Grid.Row="1"
+            Margin="0,16"
+            ColumnDefinitions="*,24,*">
+            <Button
+                Grid.Column="0"
+                Padding="16"
+                Background="Transparent"
+                BorderColor="{DynamicResource Primary}"
+                Command="{Binding BackCommand}"
+                CornerRadius="4"
+                IsVisible="{Binding IsLoaded}"
+                Text="BACK"
+                TextColor="{DynamicResource Black}" />
+            <Button
+                Grid.Column="2"
+                Padding="16"
+                Background="{DynamicResource Primary}"
+                Command="{Binding SaveCommand}"
+                CornerRadius="4"
+                IsVisible="{Binding IsLoaded}"
+                Text="SAVE"
+                TextColor="{DynamicResource White}" />
+
+        </Grid>
+
+    </Grid>
+</ContentPage>

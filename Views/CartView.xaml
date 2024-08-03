@@ -29,21 +29,59 @@
                     <SwipeView>
                         <SwipeView.LeftItems>
                             <SwipeItems>
-                                <SwipeItem
+                                <SwipeItemView
                                     BackgroundColor="#FFC107"
                                     Command="{Binding Source={x:Reference CartPage}, Path=BindingContext.FavoriteCommand}"
-                                    CommandParameter="{Binding .}"
-                                    Text="Favorite" />
+                                    CommandParameter="{Binding .}">
+                                    <StackLayout
+                                        Spacing="8"
+                                        VerticalOptions="Center"
+                                        WidthRequest="92">
+                                        <Label
+                                            FontFamily="MaterialIcon"
+                                            FontSize="32"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="&#xf4ce;"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            HorizontalOptions="Center"
+                                            Text="Favorite"
+                                            TextColor="White"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+                                </SwipeItemView>
                             </SwipeItems>
                         </SwipeView.LeftItems>
 
                         <SwipeView.RightItems>
                             <SwipeItems>
-                                <SwipeItem
+                                <SwipeItemView
                                     BackgroundColor="#FF3D00"
                                     Command="{Binding Source={x:Reference CartPage}, Path=BindingContext.DeleteCommand}"
-                                    CommandParameter="{Binding .}"
-                                    Text="Delete" />
+                                    CommandParameter="{Binding .}">
+                                    <StackLayout
+                                        Spacing="8"
+                                        VerticalOptions="Center"
+                                        WidthRequest="92">
+                                        <Label
+                                            FontFamily="MaterialIcon"
+                                            FontSize="32"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="&#xf9e6;"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            HorizontalOptions="Center"
+                                            Text="Delete"
+                                            TextColor="White"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+                                </SwipeItemView>
                             </SwipeItems>
                         </SwipeView.RightItems>
                         <StackLayout Orientation="Horizontal" Spacing="32">

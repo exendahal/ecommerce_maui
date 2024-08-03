@@ -7,12 +7,7 @@
     xmlns:local="clr-namespace:EcommerceMAUI.Views"
     xmlns:vm="clr-namespace:EcommerceMAUI.ViewModel"
     x:Name="BrandDetailPage"
-    Title="Brand Detail"
-    BackgroundColor="White"
-    Shell.BackgroundColor="{StaticResource Primary}"
-    Shell.ForegroundColor="{AppThemeBinding Light={StaticResource Black},
-                                            Dark={StaticResource White}}"
-    Shell.TitleColor="White">
+    Title="Brand Detail">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:InverseBooleanConverter x:Key="InverseBoolConverter" />
