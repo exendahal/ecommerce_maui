@@ -27,7 +27,7 @@
                 BackgroundColor="Transparent"
                 Clicked="CloseCamera"
                 CornerRadius="20"
-                FontFamily="Material-Icon"
+                FontFamily="MaterialIcon"
                 FontSize="32"
                 HeightRequest="40"
                 HorizontalOptions="EndAndExpand"

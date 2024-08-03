@@ -20,7 +20,8 @@
                     FontAttributes="Bold"
                     FontSize="18"
                     HorizontalOptions="EndAndExpand"
-                    Text="Sign Up" />
+                    Text="Sign Up"
+                    TextColor="{DynamicResource Primary}" />
             </StackLayout>
 
             <Label
@@ -92,7 +93,7 @@
                         Orientation="Horizontal"
                         Spacing="20">
                         <Label
-                            FontFamily="Material-Icon"
+                            FontFamily="MaterialIcon"
                             FontSize="20"
                             HorizontalOptions="Center"
                             Text="&#xf20c;"
@@ -119,7 +120,7 @@
                         Orientation="Horizontal"
                         Spacing="20">
                         <Label
-                            FontFamily="Material-Icon"
+                            FontFamily="MaterialIcon"
                             FontSize="20"
                             HorizontalOptions="Center"
                             Text="&#xf2ad;"

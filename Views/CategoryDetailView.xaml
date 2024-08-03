@@ -31,9 +31,16 @@
                         FontFamily="MaterialIcon"
                         FontSize="26"
                         HorizontalOptions="Center"
-                        Text="&#xf141;"
                         TextColor="Black"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Center">
+                        <Label.Text>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="Android" Value="&#xf04d;" />
+                                <On Platform="iOS" Value="&#xf141;" />
+                                <On Platform="Default" Value="&#xf04d;" />
+                            </OnPlatform>
+                        </Label.Text>
+                    </Label>
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </Border.GestureRecognizers>

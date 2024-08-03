@@ -342,7 +342,7 @@
                                                 VerticalOptions="Start" />
                                         </StackLayout>
                                         <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Source={x:Reference HomePage}, Path=BindingContext.TapCommand}" CommandParameter="{Binding .}" />
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference HomePage}, Path=BindingContext.SelectProductCommand}" CommandParameter="{Binding .}" />
                                         </StackLayout.GestureRecognizers>
                                     </StackLayout>
                                 </DataTemplate>

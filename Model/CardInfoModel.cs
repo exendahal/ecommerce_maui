@@ -7,6 +7,7 @@ namespace EcommerceMAUI.Model
     public class CardInfoModel : BaseViewModel
     {
         public string CardNumber { get; set; }
+        public string NameOnCard { get; set; }
         public string CardValidationCode { get; set; }
         public string ExpirationDate { get; set; }
 
