@@ -12,13 +12,13 @@ on:
     paths-ignore:
       - "**.md"
   pull_request:
-    branches: [ "main" ]
+    branches: [ "develop" ]
 
 # Customize with your values here
 env:
   BUILD_CONFIGURATION: Release
   DOTNET_VERSION: 8.0.x
-  CSPROJ_TO_BUILD: MauiApp1.csproj
+  CSPROJ_TO_BUILD: EcommerceMAUI.csproj
 
 jobs:
   build-ci:
