@@ -1,0 +1,37 @@
+# This GitHub Action builds a .NET MAUI project for all targeted platforms
+# The workflow can be triggered manually, on a git push, or
+# when a PR is opened that targets the develop branch.
+# This verifies the project builds, no artifacts are being uploaded or can be retrieved.
+
+name: Build .NET MAUI Project
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "develop" ]
+    paths-ignore:
+      - "**.md"
+  pull_request:
+    branches: [ "main" ]
+
+# Customize with your values here
+env:
+  BUILD_CONFIGURATION: Release
+  DOTNET_VERSION: 8.0.x
+  CSPROJ_TO_BUILD: MauiApp1.csproj
+
+jobs:
+  build-ci:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET ${{ env.DOTNET_VERSION }}
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    - name: Install .NET MAUI Workload
+      run: dotnet workload install maui
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.CSPROJ_TO_BUILD }}
+    - name: Build ${{ env.CSPROJ_TO_BUILD }}
+      run: dotnet build ${{ env.CSPROJ_TO_BUILD }} -c ${{ env.BUILD_CONFIGURATION }}
