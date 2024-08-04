@@ -18,64 +18,178 @@
     </ContentPage.Resources>
     <Grid RowDefinitions="*,Auto">
         <ScrollView>
-            <StackLayout
-                Margin="16"
-                BindableLayout.ItemsSource="{Binding Cards}"
-                IsVisible="{Binding IsLoaded}"
-                Spacing="12">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout
+            <StackLayout Margin="16">
+                <Grid Margin="8,42" RowDefinitions="Auto,12,Auto">
+                    <Grid ColumnDefinitions="8,Auto,*,Auto,*,Auto,8">
+                        <Border
+                            Grid.Column="1"
+                            Padding="4"
+                            Background="Transparent"
+                            HeightRequest="32"
                             HorizontalOptions="FillAndExpand"
-                            Orientation="Horizontal"
-                            Spacing="16">
-                            <Grid
-                                Padding="0,12"
-                                ColumnDefinitions="Auto,12,*,12,Auto"
-                                HorizontalOptions="FillAndExpand">
-                                <Border
-                                    Grid.Column="0"
-                                    Padding="0"
-                                    Background="{Binding CardColor}"
-                                    Stroke="{Binding CardColor}"
-                                    StrokeShape="RoundRectangle 4">
-                                    <Label
-                                        FontFamily="{Binding FontFamily}"
-                                        Style="{StaticResource CreditCardImageLabelStyle}"
-                                        Text="{Binding Icon}" />
-                                </Border>
-                                <StackLayout Grid.Column="2" HorizontalOptions="FillAndExpand">
-                                    <Label
-                                        FontAttributes="Bold"
-                                        FontSize="16"
-                                        Text="{Binding MaskedCardNumber}"
-                                        TextColor="Black" />
+                            Stroke="{StaticResource Gray200}"
+                            StrokeShape="RoundRectangle 16"
+                            StrokeThickness="1"
+                            WidthRequest="32">
+                            <Border
+                                Padding="4"
+                                Background="{StaticResource Primary}"
+                                HeightRequest="16"
+                                Stroke="{StaticResource Primary}"
+                                StrokeShape="RoundRectangle 16"
+                                StrokeThickness="1"
+                                WidthRequest="16" />
+                        </Border>
+
+                        <Border
+                            Grid.Column="2"
+                            Background="{StaticResource Primary}"
+                            HeightRequest="2"
+                            HorizontalOptions="FillAndExpand"
+                            Stroke="{StaticResource Primary}"
+                            StrokeShape="RoundRectangle 16"
+                            StrokeThickness="1"
+                            VerticalOptions="CenterAndExpand" />
+
+                        <Border
+                            Grid.Column="3"
+                            Padding="4"
+                            Background="Transparent"
+                            HeightRequest="32"
+                            HorizontalOptions="CenterAndExpand"
+                            Stroke="{StaticResource Gray200}"
+                            StrokeShape="RoundRectangle 16"
+                            StrokeThickness="1"
+                            WidthRequest="32">
+                            <Border
+                                Padding="4"
+                                Background="{StaticResource Primary}"
+                                HeightRequest="16"
+                                Stroke="{StaticResource Primary}"
+                                StrokeShape="RoundRectangle 16"
+                                StrokeThickness="1"
+                                WidthRequest="16" />
+                        </Border>
+
+                        <Border
+                            Grid.Column="4"
+                            Background="{StaticResource Primary}"
+                            HeightRequest="2"
+                            HorizontalOptions="FillAndExpand"
+                            Stroke="{StaticResource Primary}"
+                            StrokeShape="RoundRectangle 16"
+                            StrokeThickness="1"
+                            VerticalOptions="CenterAndExpand" />
+
+                        <Border
+                            Grid.Column="5"
+                            Padding="4"
+                            Background="Transparent"
+                            HeightRequest="32"
+                            HorizontalOptions="CenterAndExpand"
+                            Stroke="{StaticResource Primary}"
+                            StrokeShape="RoundRectangle 16"
+                            StrokeThickness="1"
+                            WidthRequest="32">
+                            <Border
+                                Padding="4"
+                                Background="{StaticResource Primary}"
+                                HeightRequest="16"
+                                Stroke="{StaticResource Primary}"
+                                StrokeShape="RoundRectangle 16"
+                                StrokeThickness="1"
+                                WidthRequest="16" />
+                        </Border>
+
+                    </Grid>
+
+                    <Grid
+                        Grid.Row="2"
+                        ColumnDefinitions="Auto,*,Auto,*,Auto"
+                        HorizontalOptions="FillAndExpand">
+                        <Label
+                            Grid.Column="0"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            Text="Delivery"
+                            TextColor="Black" />
+
+                        <Label
+                            Grid.Column="2"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            Text="Address"
+                            TextColor="Black" />
+
+                        <Label
+                            Grid.Column="4"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            Text="Payments"
+                            TextColor="Black" />
+
+                    </Grid>
+                </Grid>
+
+                <StackLayout
+                    BindableLayout.ItemsSource="{Binding Cards}"
+                    IsVisible="{Binding IsLoaded}"
+                    Spacing="12">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                Spacing="16">
+                                <Grid
+                                    Padding="0,12"
+                                    ColumnDefinitions="Auto,12,*,12,Auto"
+                                    HorizontalOptions="FillAndExpand">
+                                    <Border
+                                        Grid.Column="0"
+                                        Padding="0"
+                                        Background="{Binding CardColor}"
+                                        Stroke="{Binding CardColor}"
+                                        StrokeShape="RoundRectangle 4">
+                                        <Label
+                                            FontFamily="{Binding FontFamily}"
+                                            Style="{StaticResource CreditCardImageLabelStyle}"
+                                            Text="{Binding Icon}" />
+                                    </Border>
+                                    <StackLayout Grid.Column="2" HorizontalOptions="FillAndExpand">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            Text="{Binding MaskedCardNumber}"
+                                            TextColor="Black" />
+
+                                        <Label
+                                            FontSize="14"
+                                            HorizontalOptions="FillAndExpand"
+                                            Text="{Binding CardType}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
 
                                     <Label
-                                        FontSize="14"
-                                        HorizontalOptions="FillAndExpand"
-                                        Text="{Binding CardType}"
+                                        Grid.Column="4"
+                                        FontFamily="MaterialIcon"
+                                        FontSize="24"
+                                        HorizontalOptions="EndAndExpand"
+                                        IsVisible="{Binding IsSelected}"
+                                        Text="&#xf133;"
+                                        TextColor="{DynamicResource Primary}"
                                         VerticalOptions="Center" />
-                                </StackLayout>
 
-                                <Label
-                                    Grid.Column="4"
-                                    FontFamily="MaterialIcon"
-                                    FontSize="24"
-                                    HorizontalOptions="EndAndExpand"
-                                    IsVisible="{Binding IsSelected}"
-                                    Text="&#xf133;"
-                                    TextColor="{DynamicResource Primary}"
-                                    VerticalOptions="Center" />
-
-                            </Grid>
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:Reference ConfirmPaymentPage}, Path=BindingContext.SelectPaymentCommand}" CommandParameter="{Binding .}" />
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
+                                </Grid>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference ConfirmPaymentPage}, Path=BindingContext.SelectPaymentCommand}" CommandParameter="{Binding .}" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
             </StackLayout>
+
         </ScrollView>
 
         <ActivityIndicator

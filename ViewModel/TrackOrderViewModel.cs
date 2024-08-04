@@ -8,8 +8,7 @@ namespace EcommerceMAUI.ViewModel
 {
     public class TrackOrderViewModel : BaseViewModel
     {
-        public List<DeliveryStepsModel> TrackStatusData { get; private set; } = [];
-        public ICommand BackCommand { get; set; }
+        public List<DeliveryStepsModel> TrackStatusData { get; private set; } = [];     
         Track TrackOrderData { get; set; }
         public string PageTitle
         {
@@ -24,6 +23,8 @@ namespace EcommerceMAUI.ViewModel
             get => _IsLoaded;
             set => SetProperty(ref _IsLoaded, value);
         }
+        public ICommand BackCommand { get; set; }
+
         public TrackOrderViewModel(Track data, bool emptyGroups = false)
         {
             TrackOrderData = data;

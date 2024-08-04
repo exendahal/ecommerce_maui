@@ -1,6 +1,7 @@
 ﻿using EcommerceMAUI.Model;
 using EcommerceMAUI.Views;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace EcommerceMAUI.ViewModel
@@ -21,7 +22,7 @@ namespace EcommerceMAUI.ViewModel
             get => _Products;
             set => SetProperty(ref _Products, value);
         }
-
+        
         private bool _IsLoaded = false;
         public bool IsLoaded
         {
