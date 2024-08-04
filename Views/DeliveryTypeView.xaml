@@ -14,43 +14,156 @@
     <Grid RowDefinitions="*,Auto">
         <ScrollView>
             <Grid>
-                <StackLayout
-                    Margin="16"
-                    BindableLayout.ItemsSource="{Binding DeliveryTypes}"
-                    IsVisible="{Binding IsLoaded}"
-                    Spacing="32">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout Spacing="10">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="18"
-                                    Text="{Binding Name}"
-                                    TextColor="Black" />
-                                <Grid ColumnDefinitions="*,18,24">
+                <StackLayout Margin="16">
+                    <Grid Margin="8,42" RowDefinitions="Auto,12,Auto">
+                        <Grid ColumnDefinitions="8,Auto,*,Auto,*,Auto,8">
+                            <Border
+                                Grid.Column="1"
+                                Padding="4"
+                                Background="Transparent"
+                                HeightRequest="32"
+                                HorizontalOptions="FillAndExpand"
+                                Stroke="{StaticResource Primary}"
+                                StrokeShape="RoundRectangle 16"
+                                StrokeThickness="1"
+                                WidthRequest="32">
+                                <Border
+                                    Padding="4"
+                                    Background="{StaticResource Primary}"
+                                    HeightRequest="16"
+                                    Stroke="{StaticResource Primary}"
+                                    StrokeShape="RoundRectangle 16"
+                                    StrokeThickness="1"
+                                    WidthRequest="16" />
+                            </Border>
+
+                            <Border
+                                Grid.Column="2"
+                                Background="{StaticResource Gray200}"
+                                HeightRequest="2"
+                                HorizontalOptions="FillAndExpand"
+                                Stroke="{StaticResource Gray200}"
+                                StrokeShape="RoundRectangle 16"
+                                StrokeThickness="1"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <Border
+                                Grid.Column="3"
+                                Padding="4"
+                                Background="Transparent"
+                                HeightRequest="32"
+                                HorizontalOptions="CenterAndExpand"
+                                Stroke="{StaticResource Gray200}"
+                                StrokeShape="RoundRectangle 16"
+                                StrokeThickness="1"
+                                WidthRequest="32">
+                                <Border
+                                    Padding="4"
+                                    Background="{StaticResource Gray200}"
+                                    HeightRequest="16"
+                                    Stroke="{StaticResource Gray200}"
+                                    StrokeShape="RoundRectangle 16"
+                                    StrokeThickness="1"
+                                    WidthRequest="16" />
+                            </Border>
+
+                            <Border
+                                Grid.Column="4"
+                                Background="{StaticResource Gray200}"
+                                HeightRequest="2"
+                                HorizontalOptions="FillAndExpand"
+                                Stroke="{StaticResource Gray200}"
+                                StrokeShape="RoundRectangle 16"
+                                StrokeThickness="1"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <Border
+                                Grid.Column="5"
+                                Padding="4"
+                                Background="Transparent"
+                                HeightRequest="32"
+                                HorizontalOptions="CenterAndExpand"
+                                Stroke="{StaticResource Gray200}"
+                                StrokeShape="RoundRectangle 16"
+                                StrokeThickness="1"
+                                WidthRequest="32">
+                                <Border
+                                    Padding="4"
+                                    Background="{StaticResource Gray200}"
+                                    HeightRequest="16"
+                                    Stroke="{StaticResource Gray200}"
+                                    StrokeShape="RoundRectangle 16"
+                                    StrokeThickness="1"
+                                    WidthRequest="16" />
+                            </Border>
+
+                        </Grid>
+
+                        <Grid
+                            Grid.Row="2"
+                            ColumnDefinitions="Auto,*,Auto,*,Auto"
+                            HorizontalOptions="FillAndExpand">
+                            <Label
+                                Grid.Column="0"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="Delivery"
+                                TextColor="Black" />
+
+                            <Label
+                                Grid.Column="2"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="Address"
+                                TextColor="{StaticResource Gray200}" />
+
+                            <Label
+                                Grid.Column="4"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="Payments"
+                                TextColor="{StaticResource Gray200}" />
+
+                        </Grid>
+                    </Grid>
+                    <StackLayout
+                        BindableLayout.ItemsSource="{Binding DeliveryTypes}"
+                        IsVisible="{Binding IsLoaded}"
+                        Spacing="32">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Spacing="10">
                                     <Label
-                                        Grid.Column="0"
-                                        FontSize="14"
-                                        HorizontalOptions="Start"
-                                        Text="{Binding Description}"
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="{Binding Name}"
                                         TextColor="Black" />
-                                    <Label
-                                        Grid.Column="2"
-                                        FontFamily="MaterialIcon"
-                                        FontSize="24"
-                                        HorizontalOptions="Center"
-                                        IsVisible="{Binding IsSelected}"
-                                        Text="&#xf133;"
-                                        TextColor="{DynamicResource Primary}"
-                                        VerticalOptions="Center" />
-                                </Grid>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:Reference DeliveryTypePage}, Path=BindingContext.SelectDeliveryTypeCommand}" CommandParameter="{Binding .}" />
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
+                                    <Grid ColumnDefinitions="*,18,24">
+                                        <Label
+                                            Grid.Column="0"
+                                            FontSize="14"
+                                            HorizontalOptions="Start"
+                                            Text="{Binding Description}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Column="2"
+                                            FontFamily="MaterialIcon"
+                                            FontSize="24"
+                                            HorizontalOptions="Center"
+                                            IsVisible="{Binding IsSelected}"
+                                            Text="&#xf133;"
+                                            TextColor="{StaticResource Primary}"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference DeliveryTypePage}, Path=BindingContext.SelectDeliveryTypeCommand}" CommandParameter="{Binding .}" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
                 </StackLayout>
+
 
                 <ActivityIndicator
                     HeightRequest="45"
