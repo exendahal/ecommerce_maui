@@ -26,9 +26,9 @@ namespace EcommerceMAUI.ViewModel
             set => SetProperty(ref _Cards, value);
 
         }
-        public ICommand NextCommand { get; private set; }
-        public ICommand SelectPaymentCommand { get; private set; }
-        public ICommand BackCommand { get; private set; }
+        public ICommand NextCommand { get; }
+        public ICommand SelectPaymentCommand { get; }
+        public ICommand BackCommand { get; }
 
 
         public ConfirmPaymentViewModel(ObservableCollection<ProductListModel> products, DeliveryTypeModel deliveryType, AddressModel address)

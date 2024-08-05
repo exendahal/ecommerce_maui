@@ -1,6 +1,5 @@
-﻿
-
-using EcommerceMAUI.Model;
+﻿using EcommerceMAUI.Model;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using static EcommerceMAUI.Model.TrackOrderModel;
 
@@ -8,8 +7,14 @@ namespace EcommerceMAUI.ViewModel
 {
     public class TrackOrderViewModel : BaseViewModel
     {
-        public List<DeliveryStepsModel> TrackStatusData { get; private set; } = [];     
-        Track TrackOrderData { get; set; }
+        private ObservableCollection<DeliveryStepsModel> _TrackStatus = [];
+        public ObservableCollection<DeliveryStepsModel> TrackStatus
+        {
+            get => _TrackStatus;
+            set => SetProperty(ref _TrackStatus, value);
+
+        }  
+        public Track TrackOrderData { get; set; }
         public string PageTitle
         {
             get
@@ -40,11 +45,11 @@ namespace EcommerceMAUI.ViewModel
         {
             await Task.Delay(500);
             //TODO: Remove Delay here and call API if needed
-            TrackStatusData.Add(new DeliveryStepsModel() { Id = 1, DateMonth = "04/06/2023", IsComplete = true, Time = "08:00", Name = "Order Placed", Location = "Lagos State, Nigeria" });
-            TrackStatusData.Add(new DeliveryStepsModel() { Id = 2, DateMonth = "04/06/2023", IsComplete = true, Time = "10:00", Name = "Order Confirmed", Location = "Lagos State, Nigeria" });
-            TrackStatusData.Add(new DeliveryStepsModel() { Id = 3, DateMonth = "05/06/2023", IsComplete = true, Time = "09:30", Name = "Order Dispatched", Location = "Lagos State, Nigeria" });
-            TrackStatusData.Add(new DeliveryStepsModel() { Id = 4, DateMonth = "06/06/2023", IsComplete = false, Time = "14:00", Name = "Out for Delivery", Location = "Lagos State, Nigeria" });
-            TrackStatusData.Add(new DeliveryStepsModel() { Id = 5, DateMonth = "06/06/2023", IsComplete = false, Time = "17:00", Name = "Order Delivered", Location = "Lagos State, Nigeria" , IsLineVisible  = false});
+            TrackStatus.Add(new DeliveryStepsModel() { Id = 1, DeliveryStatusDate = DateTime.Now.AddDays(-4), IsComplete = true, Name = "Order Placed", Location = "Lagos State, Nigeria" });
+            TrackStatus.Add(new DeliveryStepsModel() { Id = 2, DeliveryStatusDate = DateTime.Now.AddDays(-3), IsComplete = true, Name = "Order Confirmed", Location = "Lagos State, Nigeria" });
+            TrackStatus.Add(new DeliveryStepsModel() { Id = 3, DeliveryStatusDate = DateTime.Now.AddDays(-2), IsComplete = true, Name = "Order Dispatched", Location = "Lagos State, Nigeria" });
+            TrackStatus.Add(new DeliveryStepsModel() { Id = 4, DeliveryStatusDate = DateTime.Now.AddDays(-1), IsComplete = false, Name = "Out for Delivery", Location = "Lagos State, Nigeria" });
+            TrackStatus.Add(new DeliveryStepsModel() { Id = 5, DeliveryStatusDate = DateTime.Now, IsComplete = false, Name = "Order Delivered", Location = "Lagos State, Nigeria" , IsLineVisible  = false});
             IsLoaded = true;
         }
 

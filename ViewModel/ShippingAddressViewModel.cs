@@ -19,7 +19,7 @@ namespace EcommerceMAUI.ViewModel
             get => _IsLoaded;
             set => SetProperty(ref _IsLoaded, value);
         }
-        public ICommand SelectAddressCommand { get; private set; }
+        public ICommand SelectAddressCommand { get; }
 
         public ShippingAddressViewModel()
         {

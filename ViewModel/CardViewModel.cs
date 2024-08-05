@@ -21,7 +21,7 @@ namespace EcommerceMAUI.ViewModel
             set => SetProperty(ref _IsLoaded, value);
         }
 
-        public ICommand AddNewCommand { get; private set; }
+        public ICommand AddNewCommand { get; }
         public CardViewModel()
         {
             AddNewCommand = new Command(AddNewCard);

@@ -31,9 +31,9 @@ namespace EcommerceMAUI.ViewModel
         }
         private DeliveryTypeModel deliveryType;
 
-        public ICommand SelectDeliveryTypeCommand { get; private set; }
-        public ICommand NextCommand { get; private set; }
-        public ICommand BackCommand { get; private set; }
+        public ICommand SelectDeliveryTypeCommand { get; }
+        public ICommand NextCommand { get; }
+        public ICommand BackCommand { get; }
         public DeliveryTypeViewModel(ObservableCollection<ProductListModel> products)
         {
             SelectDeliveryTypeCommand = new Command<DeliveryTypeModel>(SelectDeliveryType);

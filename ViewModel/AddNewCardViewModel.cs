@@ -64,8 +64,8 @@ namespace EcommerceMAUI.ViewModel
 
 
 
-        public ICommand SaveCommand { get; private set; }
-        public ICommand BackCommand { get; private set; }
+        public ICommand SaveCommand { get; }
+        public ICommand BackCommand { get; }
 
         public AddNewCardViewModel()
         {

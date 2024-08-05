@@ -8,9 +8,6 @@ namespace EcommerceMAUI.ViewModel
 {
     public class OrderDetailsViewModel : BaseViewModel
     {
-        public ICommand BackCommand { get; set; }
-        public ICommand SelectOrderCommand { get; set; }      
-
         private ObservableCollection<TrackOrderModel> _TrackData = [];
         public ObservableCollection<TrackOrderModel> TrackData
         {
@@ -24,6 +21,8 @@ namespace EcommerceMAUI.ViewModel
             get => _IsLoaded;
             set => SetProperty(ref _IsLoaded, value);
         }
+        public ICommand BackCommand { get; }
+        public ICommand SelectOrderCommand { get; }
         public OrderDetailsViewModel(bool emptyGroups = false)
         {
             BackCommand = new Command<object>(GoBack);

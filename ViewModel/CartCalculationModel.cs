@@ -28,7 +28,7 @@ namespace EcommerceMAUI.ViewModel
         }
         public ICommand CheckoutCommand { get; }
         public ICommand ApplyVoucherCommand { get; }
-        public ICommand BackCommand { get; private set; }
+        public ICommand BackCommand { get; }
 
 
         public CartCalculationViewModel(ObservableCollection<ProductListModel> products)
