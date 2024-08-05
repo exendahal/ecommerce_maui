@@ -1,0 +1,57 @@
+name: Build .NET MAUI Project
+
+# Trigger the workflow on manual dispatch, push to develop branch, pull request to develop branch, and new tag creation
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "develop" ]
+    paths-ignore:
+      - "**.md"
+  pull_request:
+    branches: [ "develop" ]
+  create:
+    tags:
+      - '*'
+
+# Environment variables for build configuration
+env:
+  BUILD_CONFIGURATION: Release
+  DOTNET_VERSION: 8.0.x
+  CSPROJ_TO_BUILD: EcommerceMAUI.csproj
+
+jobs:
+  build-ci:
+    runs-on: windows-latest
+
+    steps:
+    # Checkout the repository
+    - uses: actions/checkout@v3
+
+    # Setup the specified .NET version
+    - name: Setup .NET ${{ env.DOTNET_VERSION }}
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    # Install the .NET MAUI workload
+    - name: Install .NET MAUI Workload
+      run: dotnet workload install maui
+
+    # Restore project dependencies
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.CSPROJ_TO_BUILD }}
+
+    # Build the project for the specified configuration and Android target framework
+    - name: Build ${{ env.CSPROJ_TO_BUILD }}
+      run: dotnet build ${{ env.CSPROJ_TO_BUILD }} -c ${{ env.BUILD_CONFIGURATION }} -f:net6.0-android
+
+    # Publish the APK to the output directory
+    - name: Publish APK
+      run: dotnet publish ${{ env.CSPROJ_TO_BUILD }} -c ${{ env.BUILD_CONFIGURATION }} -f:net6.0-android -o ./output
+
+    # Upload the APK as an artifact
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: apk
+        path: ./output/*.apk
