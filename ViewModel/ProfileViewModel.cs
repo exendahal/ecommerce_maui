@@ -24,7 +24,7 @@ namespace EcommerceMAUI.ViewModel
             set => SetProperty(ref _IsLoaded, value);
         }
 
-        public ICommand SelectMenuCommand { get; private set; }
+        public ICommand SelectMenuCommand { get; }
         public ProfileViewModel()
         {
             SelectMenuCommand = new Command<MenuItems>(SelectMenu);

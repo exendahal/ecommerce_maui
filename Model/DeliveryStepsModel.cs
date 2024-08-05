@@ -19,18 +19,12 @@ namespace EcommerceMAUI.Model
             get => _Location;
             set => SetProperty(ref _Location, value);
         }
-        private string _DateMonth;
-        public string DateMonth
+        private DateTime _DeliveryStatusDate;
+        public DateTime DeliveryStatusDate
         {
-            get => _DateMonth;
-            set => SetProperty(ref _DateMonth, value);
-        }
-        private string _Time;
-        public string Time
-        {
-            get => _Time;
-            set => SetProperty(ref _Time, value);
-        }
+            get => _DeliveryStatusDate;
+            set => SetProperty(ref _DeliveryStatusDate, value);
+        }       
 
         private bool _IsComplete;
         public bool IsComplete

@@ -14,7 +14,7 @@
     <Grid>
         <StackLayout Margin="6,12" IsVisible="{Binding IsLoaded}">
 
-            <CollectionView Margin="20" ItemsSource="{Binding TrackStatusData}">
+            <CollectionView Margin="20" ItemsSource="{Binding TrackStatus}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid ColumnDefinitions="*,12,Auto,12,*">
@@ -22,12 +22,12 @@
                                 <Label
                                     FontAttributes="Bold"
                                     FontSize="18"
-                                    Text="{Binding DateMonth}"
+                                    Text="{Binding DeliveryStatusDate, StringFormat='{0:dd MMMM yyyy}'}"
                                     TextColor="Gray" />
                                 <Label
                                     FontAttributes="Bold"
                                     FontSize="14"
-                                    Text="{Binding Time}"
+                                    Text="{Binding DeliveryStatusDate, StringFormat='{0:hh:mm:ss tt}'}"
                                     TextColor="Gray" />
                             </StackLayout>
                             <StackLayout Grid.Column="2" Spacing="0">

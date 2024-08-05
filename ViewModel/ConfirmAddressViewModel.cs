@@ -34,8 +34,8 @@ namespace EcommerceMAUI.ViewModel
             get => _IsLoaded;
             set => SetProperty(ref _IsLoaded, value);
         }
-        public ICommand NextCommand { get; private set; }
-        public ICommand BackCommand { get; private set; }
+        public ICommand NextCommand { get; }
+        public ICommand BackCommand { get; }
         public ConfirmAddressViewModel(ObservableCollection<ProductListModel> products, DeliveryTypeModel deliveryType)
         {
             DeliveryType = deliveryType;

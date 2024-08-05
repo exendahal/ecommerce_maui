@@ -54,9 +54,9 @@ namespace EcommerceMAUI.ViewModel
             get => _IsLoaded;
             set => SetProperty(ref _IsLoaded, value);
         }
-        public ICommand BackCommand { get; set; }
-        public ICommand FavCommand { get; set; }
-        public ICommand AddToCartCommand { get; set; }
+        public ICommand BackCommand { get; }
+        public ICommand FavCommand { get; }
+        public ICommand AddToCartCommand { get; }
 
         public ProductDetailsViewModel()
         {
