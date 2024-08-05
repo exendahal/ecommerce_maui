@@ -43,11 +43,11 @@ jobs:
 
     # Build the project for the specified configuration and Android target framework
     - name: Build ${{ env.CSPROJ_TO_BUILD }}
-      run: dotnet build ${{ env.CSPROJ_TO_BUILD }} -c ${{ env.BUILD_CONFIGURATION }} -f:net6.0-android
+      run: dotnet build ${{ env.CSPROJ_TO_BUILD }} -c ${{ env.BUILD_CONFIGURATION }} -f:net8.0-android
 
     # Publish the APK to the output directory
     - name: Publish APK
-      run: dotnet publish ${{ env.CSPROJ_TO_BUILD }} -c ${{ env.BUILD_CONFIGURATION }} -f:net6.0-android -o ./output
+      run: dotnet publish ${{ env.CSPROJ_TO_BUILD }} -c ${{ env.BUILD_CONFIGURATION }} -f:net8.0-android -o ./output
 
     # Upload the APK as an artifact
     - name: Upload APK
