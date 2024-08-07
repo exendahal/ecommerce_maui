@@ -1,5 +1,4 @@
-﻿
-using EcommerceMAUI.Views;
+﻿using EcommerceMAUI.Views;
 using System.Windows.Input;
 
 namespace EcommerceMAUI.ViewModel

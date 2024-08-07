@@ -30,7 +30,6 @@ namespace EcommerceMAUI.ViewModel
         public ICommand ApplyVoucherCommand { get; }
         public ICommand BackCommand { get; }
 
-
         public CartCalculationViewModel(ObservableCollection<ProductListModel> products)
         {
             Products = products;

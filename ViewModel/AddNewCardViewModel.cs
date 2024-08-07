@@ -1,6 +1,5 @@
 ﻿using EcommerceMAUI.Model;
 using System.Windows.Input;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace EcommerceMAUI.ViewModel
 {
