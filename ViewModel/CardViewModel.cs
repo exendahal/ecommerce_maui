@@ -32,7 +32,6 @@ namespace EcommerceMAUI.ViewModel
         {
             await PopulateDataAsync();
         }
-
         async Task PopulateDataAsync()
         {
             // Delay added to display loading, remove during api call

@@ -1,7 +1,6 @@
 ﻿using EcommerceMAUI.Model;
 using EcommerceMAUI.Views;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace EcommerceMAUI.ViewModel
