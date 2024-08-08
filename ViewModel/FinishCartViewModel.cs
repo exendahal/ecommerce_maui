@@ -1,4 +1,5 @@
-﻿using EcommerceMAUI.Model;
+﻿using EcommerceMAUI.Helpers;
+using EcommerceMAUI.Model;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -74,6 +75,7 @@ namespace EcommerceMAUI.ViewModel
         {            
             await Application.Current.MainPage.Navigation.PopToRootAsync();
             await Shell.Current.GoToAsync("///HomePageView");
+            await ToastHelper.ShowToast("Order Complete");
         }
         private async void GoBack(object obj)
         {

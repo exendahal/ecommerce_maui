@@ -1,4 +1,5 @@
-﻿using EcommerceMAUI.Views;
+﻿using EcommerceMAUI.Helpers;
+using EcommerceMAUI.Views;
 using System.Windows.Input;
 
 namespace EcommerceMAUI.ViewModel
@@ -53,9 +54,10 @@ namespace EcommerceMAUI.ViewModel
            await Application.Current.MainPage.Navigation.PushModalAsync(new RegisterView());
         }
 
-        private void Login()
+        private async void Login()
         {           
             Application.Current.MainPage = new AppShell();
+            await ToastHelper.ShowToast("Welcome");
 
         }
     }

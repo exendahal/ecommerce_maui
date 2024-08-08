@@ -165,8 +165,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.71" />
-	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.71" />
+	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.80" />
+	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.80" />
 	  <PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
 	  <PackageReference Include="PINView.MAUI" Version="1.0.2" />
 	  <PackageReference Include="Camera.MAUI" Version="1.5.1" />

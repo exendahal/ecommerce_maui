@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using EcommerceMAUI.Helpers;
+using System.Windows.Input;
 
 namespace EcommerceMAUI.ViewModel
 {
@@ -16,11 +17,12 @@ namespace EcommerceMAUI.ViewModel
             VerifyCommand = new Command(VerifyOtp);
         }
 
-        private void VerifyOtp(object obj)
+        private async void VerifyOtp(object obj)
         {
             if (Pin != null && Pin.Length == 6) 
             {
                 App.Current.MainPage = new AppShell();
+                await ToastHelper.ShowToast("Welcome");
             }           
         }
     }
