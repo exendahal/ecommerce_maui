@@ -1,4 +1,5 @@
-﻿using EcommerceMAUI.Model;
+﻿using EcommerceMAUI.Helpers;
+using EcommerceMAUI.Model;
 using System.Windows.Input;
 
 namespace EcommerceMAUI.ViewModel
@@ -60,9 +61,6 @@ namespace EcommerceMAUI.ViewModel
 
         }
 
-
-
-
         public ICommand SaveCommand { get; }
         public ICommand BackCommand { get; }
 
@@ -75,6 +73,7 @@ namespace EcommerceMAUI.ViewModel
         private async void SaveCard()
         {
             await Application.Current.MainPage.Navigation.PopAsync();
+            await ToastHelper.ShowToast("Add card added.");
         }
         private async void GoBack()
         {
