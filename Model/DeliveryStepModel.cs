@@ -4,7 +4,7 @@ using EcommerceMAUI.ViewModel;
 namespace EcommerceMAUI.Model
 {
 
-    public class DeliveryStepsModel : BaseViewModel
+    public class DeliveryStepModel : BaseViewModel
     {
         public int Id { get; set; }
         private string _Name;

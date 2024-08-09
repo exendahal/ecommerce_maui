@@ -15,8 +15,8 @@ namespace EcommerceMAUI.ViewModel
 
         }
 
-        private ObservableCollection<ProductListModel> _Products = [];
-        public ObservableCollection<ProductListModel> Products
+        private ObservableCollection<ProductModel> _Products = [];
+        public ObservableCollection<ProductModel> Products
         {
             get => _Products;
             set => SetProperty(ref _Products, value);
@@ -33,7 +33,7 @@ namespace EcommerceMAUI.ViewModel
         public ICommand SelectDeliveryTypeCommand { get; }
         public ICommand NextCommand { get; }
         public ICommand BackCommand { get; }
-        public DeliveryTypeViewModel(ObservableCollection<ProductListModel> products)
+        public DeliveryTypeViewModel(ObservableCollection<ProductModel> products)
         {
             SelectDeliveryTypeCommand = new Command<DeliveryTypeModel>(SelectDeliveryType);
             NextCommand = new Command(ConfirmDeliverType);

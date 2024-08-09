@@ -2,8 +2,11 @@
 
 namespace EcommerceMAUI.Model
 {
-    public class ProductListModel: BaseViewModel
+    public class ProductModel: BaseViewModel
     {
+        public int CategoryId { get; set; }
+        public int ProductId { get; set; }
+        public int BrandId { get; set; }
         public string ImageUrl { get; set; }
         public string Name { get; set; }
         public string BrandName { get; set; }
@@ -48,6 +51,10 @@ namespace EcommerceMAUI.Model
                 return "Out of Stock";
             }
         }
+
+        public bool IsBestSelling { get; set; }
+        public bool IsFeatured { get; set; }
+        public bool IsWishList { get; set; }
 
     }
 }

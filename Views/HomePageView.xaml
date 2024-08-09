@@ -285,7 +285,7 @@
                                 FontSize="16"
                                 HorizontalOptions="Start"
                                 HorizontalTextAlignment="Start"
-                                Text="Best Selling"
+                                Text="Featured Products"
                                 TextColor="Black"
                                 VerticalOptions="Center" />
                             <Button

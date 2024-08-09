@@ -1,6 +1,7 @@
 ﻿using EcommerceMAUI.Model;
 using EcommerceMAUI.Views;
 using System.Collections.ObjectModel;
+using System.Text.Json;
 using System.Windows.Input;
 
 namespace EcommerceMAUI.ViewModel

@@ -7,8 +7,8 @@ namespace EcommerceMAUI.ViewModel
 {
     public class CartCalculationViewModel : BaseViewModel
     {
-        private ObservableCollection<ProductListModel> _Products = [];
-        public ObservableCollection<ProductListModel> Products
+        private ObservableCollection<ProductModel> _Products = [];
+        public ObservableCollection<ProductModel> Products
         {
             get => _Products;
             set => SetProperty(ref _Products, value);
@@ -30,7 +30,7 @@ namespace EcommerceMAUI.ViewModel
         public ICommand ApplyVoucherCommand { get; }
         public ICommand BackCommand { get; }
 
-        public CartCalculationViewModel(ObservableCollection<ProductListModel> products)
+        public CartCalculationViewModel(ObservableCollection<ProductModel> products)
         {
             Products = products;
             SubTotal = Products.Sum(item => (item.Qty * item.Price));

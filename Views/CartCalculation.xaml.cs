@@ -6,7 +6,7 @@ namespace EcommerceMAUI.Views;
 
 public partial class CartCalculation : ContentPage
 {
-	public CartCalculation(ObservableCollection<ProductListModel> ProductList)
+	public CartCalculation(ObservableCollection<ProductModel> ProductList)
 	{
 		InitializeComponent();
         BindingContext = new CartCalculationViewModel(ProductList);

@@ -2,29 +2,30 @@
 using EcommerceMAUI.Model;
 using EcommerceMAUI.Views;
 using System.Collections.ObjectModel;
+using System.Text.Json;
 using System.Windows.Input;
 
 namespace EcommerceMAUI.ViewModel
 {
     public class HomePageViewModel : BaseViewModel
     {
-        private ObservableCollection<CategoriesModel> _Categories = [];
-        public ObservableCollection<CategoriesModel> Categories
+        private ObservableCollection<CategoyModel> _Categories = [];
+        public ObservableCollection<CategoyModel> Categories
         {
             get => _Categories;
             set => SetProperty(ref _Categories, value);
 
         }
 
-        private ObservableCollection<ProductListModel> _BestSellingProducts = [];
-        public ObservableCollection<ProductListModel> BestSellingProducts
+        private ObservableCollection<ProductModel> _BestSellingProducts = [];
+        public ObservableCollection<ProductModel> BestSellingProducts
         {
             get => _BestSellingProducts;
             set => SetProperty(ref _BestSellingProducts, value);
         }
 
-        private ObservableCollection<ProductListModel> _FeaturedBrands = [];
-        public ObservableCollection<ProductListModel> FeaturedBrands
+        private ObservableCollection<BrandModels> _FeaturedBrands = [];
+        public ObservableCollection<BrandModels> FeaturedBrands
         {
             get => _FeaturedBrands;
             set => SetProperty(ref _FeaturedBrands, value);
@@ -43,10 +44,10 @@ namespace EcommerceMAUI.ViewModel
         public ICommand OpenCameraCommand { get; }
         public HomePageViewModel()
         {
-            SelectProductCommand = new Command<ProductListModel>(SelectProduct);
+            SelectProductCommand = new Command<BrandModels>(SelectProduct);
             RecommendedTapCommand = new Command<object>(SelectRecommend);
-            CategoryTapCommand = new Command<CategoriesModel>(SelectCategory);
-            BrandTapCommand = new Command<ProductListModel>(SelectBrand);
+            CategoryTapCommand = new Command<CategoyModel>(SelectCategory);
+            BrandTapCommand = new Command<ProductModel>(SelectBrand);
             OpenCameraCommand = new Command(OpenCamera);
             _ = InitializeAsync();
         }
@@ -59,34 +60,36 @@ namespace EcommerceMAUI.ViewModel
             // Delay added to display loading, remove during api call
             await Task.Delay(500);
             //TODO: Remove Delay here and call API
-            Categories.Add(new CategoriesModel() { CategoryID = 1, CategoryName = "Men", Icon = "\ufb22" });
-            Categories.Add(new CategoriesModel() { CategoryID = 2, CategoryName = "Women", Icon = "\ufb23" });
-            Categories.Add(new CategoriesModel() { CategoryID = 2, CategoryName = "Devices", Icon = "\uf322" });
-            Categories.Add(new CategoriesModel() { CategoryID = 2, CategoryName = "Gadgets", Icon = "\uf2cb" });
-            Categories.Add(new CategoriesModel() { CategoryID = 2, CategoryName = "Games", Icon = "\uf5ba" });
+            Categories.Add(new CategoyModel() { CategoryID = 1, CategoryName = "Men", Icon = "\ufb22" });
+            Categories.Add(new CategoyModel() { CategoryID = 2, CategoryName = "Women", Icon = "\ufb23" });
+            Categories.Add(new CategoyModel() { CategoryID = 2, CategoryName = "Devices", Icon = "\uf322" });
+            Categories.Add(new CategoyModel() { CategoryID = 2, CategoryName = "Gadgets", Icon = "\uf2cb" });
+            Categories.Add(new CategoyModel() { CategoryID = 2, CategoryName = "Games", Icon = "\uf5ba" });
 
-            BestSellingProducts.Add(new ProductListModel() { Name = "BeoPlay Speaker", BrandName = "Bang and Olufsen", Price = 755, ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image1.png" });
-            BestSellingProducts.Add(new ProductListModel() { Name = "Leather Wristwatch", BrandName = "Tag Heuer", Price = 450, ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image2.png" });
-            BestSellingProducts.Add(new ProductListModel() { Name = "Smart Bluetooth Speaker", BrandName = "Google LLC", Price = 900, ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image3.png" });
-            BestSellingProducts.Add(new ProductListModel() { Name = "Smart Luggage", BrandName = "Smart Inc", Price = 1200, ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image4.png" });
+            FeaturedBrands.Add(new BrandModels() { BrandName = "B&o", Details = "5693 Products", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Icon_Bo.png" });
+            FeaturedBrands.Add(new BrandModels() { BrandName = "Beats", Details = "1124 Products", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/beats.png" });
+            FeaturedBrands.Add(new BrandModels() { BrandName = "Apple Inc", Details = "5693 Products", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Icon_Apple.png" });
 
-            FeaturedBrands.Add(new ProductListModel() { BrandName = "B&o", Details = "5693 Products", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Icon_Bo.png" });
-            FeaturedBrands.Add(new ProductListModel() { BrandName = "Beats", Details = "1124 Products", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/beats.png" });
-            FeaturedBrands.Add(new ProductListModel() { BrandName = "Apple Inc", Details = "5693 Products", ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Icon_Apple.png" });
+            BestSellingProducts.Add(new ProductModel() { Name = "BeoPlay Speaker", BrandName = "Bang and Olufsen", Price = 755, ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image1.png" });
+            BestSellingProducts.Add(new ProductModel() { Name = "Leather Wristwatch", BrandName = "Tag Heuer", Price = 450, ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image2.png" });
+            BestSellingProducts.Add(new ProductModel() { Name = "Smart Bluetooth Speaker", BrandName = "Google LLC", Price = 900, ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image3.png" });
+            BestSellingProducts.Add(new ProductModel() { Name = "Smart Luggage", BrandName = "Smart Inc", Price = 1200, ImageUrl = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Image4.png" });
+
+           
 
             IsLoaded = true;
         }
 
-        private async void SelectBrand(ProductListModel product)
+        private async void SelectBrand(ProductModel product)
         {
             await Application.Current.MainPage.Navigation.PushAsync(new BrandDetailView());
         }
-        private async void SelectProduct(ProductListModel product)
+        private async void SelectProduct(BrandModels brand)
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(new ProductDetailsView());
         }
 
-        private async void SelectCategory(CategoriesModel category)
+        private async void SelectCategory(CategoyModel category)
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(new CategoryDetailView(category));
         }

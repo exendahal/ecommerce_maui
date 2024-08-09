@@ -29,8 +29,8 @@ namespace EcommerceMAUI.ViewModel
             }
         }
 
-        private ObservableCollection<ProductListModel> _Products = [];
-        public ObservableCollection<ProductListModel> Products
+        private ObservableCollection<ProductModel> _Products = [];
+        public ObservableCollection<ProductModel> Products
         {
             get => _Products;
             set => SetProperty(ref _Products, value);
@@ -60,7 +60,7 @@ namespace EcommerceMAUI.ViewModel
         public ICommand FinishCommand { get; }
         public ICommand BackCommand { get; }
 
-        public FinishCartViewModel(ObservableCollection<ProductListModel> products, DeliveryTypeModel deliveryType, AddressModel address, CardInfoModel card)
+        public FinishCartViewModel(ObservableCollection<ProductModel> products, DeliveryTypeModel deliveryType, AddressModel address, CardInfoModel card)
         {
             DeliveryType = deliveryType;
             Products = products;

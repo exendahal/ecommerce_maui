@@ -21,8 +21,8 @@ namespace EcommerceMAUI.ViewModel
             set => SetProperty(ref _PrimaryAddress, value);
         }
 
-        private ObservableCollection<ProductListModel> _Products = [];
-        public ObservableCollection<ProductListModel> Products
+        private ObservableCollection<ProductModel> _Products = [];
+        public ObservableCollection<ProductModel> Products
         {
             get => _Products;
             set => SetProperty(ref _Products, value);
@@ -36,7 +36,7 @@ namespace EcommerceMAUI.ViewModel
         }
         public ICommand NextCommand { get; }
         public ICommand BackCommand { get; }
-        public ConfirmAddressViewModel(ObservableCollection<ProductListModel> products, DeliveryTypeModel deliveryType)
+        public ConfirmAddressViewModel(ObservableCollection<ProductModel> products, DeliveryTypeModel deliveryType)
         {
             DeliveryType = deliveryType;
             Products = products;

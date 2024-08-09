@@ -6,7 +6,7 @@ namespace EcommerceMAUI.Views;
 
 public partial class ConfirmAddressView : ContentPage
 {
-	public ConfirmAddressView(ObservableCollection<ProductListModel> products, DeliveryTypeModel deliveryType)
+	public ConfirmAddressView(ObservableCollection<ProductModel> products, DeliveryTypeModel deliveryType)
 	{
 		InitializeComponent();
         BindingContext = new ConfirmAddressViewModel(products, deliveryType);

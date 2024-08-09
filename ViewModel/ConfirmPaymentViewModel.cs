@@ -9,7 +9,7 @@ namespace EcommerceMAUI.ViewModel
     {
         readonly private DeliveryTypeModel _DeliveryType;
         readonly private AddressModel _PrimaryAddress;
-        readonly private ObservableCollection<ProductListModel> _Products = [];
+        readonly private ObservableCollection<ProductModel> _Products = [];
         private CardInfoModel _SelectedCard;
         
         private bool _IsLoaded = false;
@@ -31,7 +31,7 @@ namespace EcommerceMAUI.ViewModel
         public ICommand BackCommand { get; }
 
 
-        public ConfirmPaymentViewModel(ObservableCollection<ProductListModel> products, DeliveryTypeModel deliveryType, AddressModel address)
+        public ConfirmPaymentViewModel(ObservableCollection<ProductModel> products, DeliveryTypeModel deliveryType, AddressModel address)
         {
             _DeliveryType = deliveryType;
             _Products = products;
