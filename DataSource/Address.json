@@ -1,0 +1,20 @@
+[
+  {
+    "AddressType": "Home Address",
+    "FullAddress": "21, Alex Davidson Avenue, Opposite Omegatron, Vicent Smith Quarters, Victoria Island, Lagos, Nigeria",
+    "StreetOne": null,
+    "StreetTwo": null,
+    "City": null,
+    "State": null,
+    "IsSelected": true
+  },
+  {
+    "AddressType": "Work Address",
+    "FullAddress": "9, Martins Crescent, Bank of Nigeria, Abuja, Nigeria",
+    "StreetOne": null,
+    "StreetTwo": null,
+    "City": null,
+    "State": null,
+    "IsSelected": false
+  }
+]

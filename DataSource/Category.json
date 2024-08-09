@@ -1,0 +1,27 @@
+[
+  {
+    "CategoryID": 1,
+    "CategoryName": "Men",
+    "Icon": "\uFB22"
+  },
+  {
+    "CategoryID": 2,
+    "CategoryName": "Women",
+    "Icon": "\uFB23"
+  },
+  {
+    "CategoryID": 3,
+    "CategoryName": "Devices",
+    "Icon": "\uF322"
+  },
+  {
+    "CategoryID": 4,
+    "CategoryName": "Gadgets",
+    "Icon": "\uF2CB"
+  },
+  {
+    "CategoryID": 5,
+    "CategoryName": "Games",
+    "Icon": "\uF5BA"
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "CardNumber": "371449635398431",
+    "NameOnCard": null,
+    "CardValidationCode": "123",
+    "ExpirationDate": "2024-12-01",
+    "IsSelected": false,
+    "CardType": "American Express",
+    "CardColor": {},
+    "Icon": "\uF1F3",
+    "FontFamily": "FA6Brands",
+    "MaskedCardNumber": "**** **** **** 8431"
+  },
+  {
+    "CardNumber": "38520000023237",
+    "NameOnCard": null,
+    "CardValidationCode": "456",
+    "ExpirationDate": "2025-12-01",
+    "IsSelected": false,
+    "CardType": "Diners Club",
+    "CardColor": {},
+    "Icon": "\uF24C",
+    "FontFamily": "FA6Brands",
+    "MaskedCardNumber": "**** **** **** 3237"
+  },
+  {
+    "CardNumber": "6011000990139424",
+    "NameOnCard": null,
+    "CardValidationCode": "789",
+    "ExpirationDate": "2026-12-01",
+    "IsSelected": false,
+    "CardType": "Discover",
+    "CardColor": {},
+    "Icon": "\uF1F2",
+    "FontFamily": "FA6Brands",
+    "MaskedCardNumber": "**** **** **** 9424"
+  },
+  {
+    "CardNumber": "3566002020360505",
+    "NameOnCard": null,
+    "CardValidationCode": "321",
+    "ExpirationDate": "2027-12-01",
+    "IsSelected": false,
+    "CardType": "JCB",
+    "CardColor": {},
+    "Icon": "\uF24B",
+    "FontFamily": "FA6Brands",
+    "MaskedCardNumber": "**** **** **** 0505"
+  },
+  {
+    "CardNumber": "5555555555554444",
+    "NameOnCard": null,
+    "CardValidationCode": "654",
+    "ExpirationDate": "2028-12-01",
+    "IsSelected": false,
+    "CardType": "Master Card",
+    "CardColor": {},
+    "Icon": "\uF1F1",
+    "FontFamily": "FA6Brands",
+    "MaskedCardNumber": "**** **** **** 4444"
+  },
+  {
+    "CardNumber": "4012888888881881",
+    "NameOnCard": null,
+    "CardValidationCode": "987",
+    "ExpirationDate": "2028-12-01",
+    "IsSelected": false,
+    "CardType": "Visa",
+    "CardColor": {},
+    "Icon": "\uF1F0",
+    "FontFamily": "FA6Brands",
+    "MaskedCardNumber": "**** **** **** 1881"
+  }
+]

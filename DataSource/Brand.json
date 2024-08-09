@@ -1,0 +1,20 @@
+[
+  {
+    "BrandId": 0,
+    "BrandName": "B\u0026o",
+    "Details": "5693 Products",
+    "ImageUrl": "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Icon_Bo.png"
+  },
+  {
+    "BrandId": 1,
+    "BrandName": "Beats",
+    "Details": "1124 Products",
+    "ImageUrl": "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/beats.png"
+  },
+  {
+    "BrandId": 2,
+    "BrandName": "Apple Inc",
+    "Details": "5693 Products",
+    "ImageUrl": "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Icon_Apple.png"
+  }
+]
